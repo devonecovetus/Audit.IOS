@@ -1,0 +1,162 @@
+/* 
+  Localizable.strings
+  Audit
+
+  Created by Rupesh Chhabra on 29/10/18.
+  Copyright © 2018 Mac. All rights reserved.
+*/
+
+/**
+ Validation Messages:
+ */
+//MARK: Validation Messages:
+
+"enterSubject" = "Please enter subject";
+"enterDescription" = "Please enter the description";
+"strEnterFirstName" = "Please enter first name";
+"strEnterLastName" = "Please enter last name";
+"strEnterEmail" = "Please enter email";
+"strEnterValidEmail" = "Please enter valid email";
+"strEnterMobile" = "Please enter mobile number";
+"strMobileLength" = "Mobile number at least contains 10 digits";
+ "strValidMobile" = "Please enter valid mobile";
+"strOldPassword" = "Please enter your old password";
+"strNewPassword" = "Please enter your new password";
+"strEnterPassword" = "Please enter password";
+"strEnterConfirmPassword" = "Password not match";
+"passwordNotMatch" = "Your password not match";
+"strPasswordLength" = "Password contains at least 6 character";
+"strEnterValidCredentials" = "Please enter valid email or password";
+"strInternalError" = "Internal error, Please try again";
+"strLogout" = "Are you sure you want to logout from app";
+"strServerError" = "Server communication error, Please try again";
+"strInternetIsNotAvailable" = "Internet is not available, Please establish network connection";
+"enterUserName" = "Please enter username";
+"forgotPasswordMessage" = "An email sent successfully on your email address. Please check it.";
+"registrationSuccessFull" = "Thank You! You are registered successfully";
+"passwordChangedSuccesfully" = "Password changed successfully, Please login now.";
+"notificationStatusChanged" = "Notification status changed successfully";
+"profileUpdatedSuccessfully" = "Profile updated successfully";
+"deleteNotification" = "Are you sure you want to delete selected notifications?";
+"logoutSuccessfully" = "You logout from app successfully";
+
+"Ok" = "Ok";
+"Yes" = "Yes";
+"No" = "No";
+
+
+//MARK: Login:
+"AuditorLogin" = "Auditor";
+"InspectorLogin" = "Inspector";
+"ForgotPassword" = "Forgot Password?";
+"Email" = "Email";
+"Password" = "Password";
+"SignIn" = "SIGN IN";
+"Submit" = "SUBMIT";
+
+//MARK: Forgot Password:
+"ForgotPasswordTitle" = "Forgot Your Password?";
+"ForgotPasswordMsg" = "Enter your email address to reset your password.";
+
+//MARK: Home:
+"TitleHome" = "ACCESS4MII";
+
+
+//MARK: Change PAssword
+"OldPassword" = "Old Password";
+"NewPassword" = "New Password";
+"ConfirmPassword" = "Confirm Password";
+"TitleChangePassword" = "Change Password";
+"MsgChangePassword" = "Please change your password here";
+
+//MARK: Menu View
+"MenuAccount" = "Account";
+"MenuHistory" = "History";
+"MenuReports" = "Reports";
+"MenuSetting" = "Setting";
+"MenuHelp" = "Help";
+"MenuLogout" = "Logout";
+
+//MARK: WebContent:
+"TermsConditions" = "TERM AND CONDITION";
+"ContactUs" = "CONTACT US";
+"AboutUs" = "ABOUT US";
+"StandardPractice" = "STANDARD AND GOOD PRACTICES";
+"ChangePassword" = "CHANGE PASSWORD";
+"PushNotification" = "PUSH NOTIFICATION";
+
+//MARK: ContaCTUS:
+"NAME" = "Name";
+"EMAIL" = "Email Address";
+"SUBJECT" = "Subject";
+"DESCRIPTION" = "Description";
+"CONTACTUS" = "CONTACT US";
+"SUGGESTION" = "Suggestions / Feedback";
+"Send" = "SEND";
+
+//MARK: Profile
+"UpdateDetails" = "Update Details";
+"ChatAdmin" = "Chat With Admin";
+"ShareApp" = "Share ACCESS4MII";
+"HowUse" = "How To Use";
+"TitleProfile" = "PROFILE";
+
+//MARK: Edit Profile
+"FirstName" = "First Name";
+"LastName" = "Last Name";
+"Email" = "Email";
+"ContactNumber" = "Contact Number";
+"Address" = "Address";
+"Update" = "Update";
+"TitleEdit" = "UPDATE PROFILE";
+
+//MARK: Settings
+"PushNotification1" = "Push Notification";
+"ContactUs1" = "Contact Us";
+"Pages" = "Pages";
+"AboutUs1" = "About Us";
+"TermsConditions1" = "Term and Condition";
+"StandardPractice1" = "Standard and Good Practices";
+"News1" = "News";
+"AssignAudit" = "Audit";
+"SyncAudit" = "Message";
+"NewAudit" = "Report";
+"ChangePassword1" = "Change Password";
+"Help" = "Help";
+"TitleSetting" = "SETTINGS";
+"Logout" = "Logout";
+
+//MARK: Audit OverView:
+
+"Accept" = "Accept";
+"Reject" = "Reject";
+"Date" = "Date";
+"DueDate" = "Due Date";
+"Time" = "Time";
+"Area" = "Area";
+"AgentDetails" = "Agent Details";
+"ClientDetails" = "Client Details";
+"Name" = "Name";
+"Email" = "Email";
+"Number" = "Number";
+"Address" = "Address";
+"Landmark" = "Landmark";
+"PinCode" = "PinCode";
+"AuditOverViewTitle" = "Audit Overview";
+
+//MARK: My Audit:
+
+"MYAUDIT" = "My AUDIT";
+"AssignDate" = "Assign Date";
+"Title" = "Title";
+"TargetDate" = "Target Date";
+"View" = "View";
+
+
+//MARK: File Manager:
+"Downloading...." = "Downloading....";
+"PhotoSaved" = "Photo saved successfully in your device, Please check your Photo Library";
+"FileSaved" = "File saved successfully in your device, Please check your FileApp -> App Folder -> Downloaded Files";
+//MARK: Report
+"AssignedOn" = "Assigned On";
+

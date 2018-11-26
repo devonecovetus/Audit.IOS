@@ -1,0 +1,131 @@
+/* 
+  Localizable.strings
+  Audit
+
+  Created by Rupesh Chhabra on 29/10/18.
+  Copyright © 2018 Mac. All rights reserved.
+*/
+
+//MARK: Validation Messages:
+
+"enterSubject" = "Please enter subject";
+"enterDescription" = "Please enter the description";
+"strEnterFirstName" = "strEnterFirstName";
+"strEnterLastName" = "Please enter last name";
+"strEnterEmail" = "يرجى إدخال البريد الإلكتروني";
+"strEnterValidEmail" = "الرجاء إدخال بريد إلكتروني صحيح";
+"strEnterMobile" = "Please enter mobile number";
+"strMobileLength" = "Mobile number at least contains 10 digits";
+"strValidMobile" = "Please enter valid mobile";
+"strOldPassword" = "يرجى إدخال كلمة المرور القديمة";
+"strNewPassword" = "يرجى إدخال كلمة المرور الجديدة";
+"strEnterPassword" = "يرجى إدخال كلمة المرور";
+"strEnterConfirmPassword" = "كلمات المرور غير متطابقة";
+"passwordNotMatch" = "Your password not match";
+"strPasswordLength" = "Password contains at least 6 character";
+"strEnterValidCredentials" = "Please enter valid email or password";
+"strInternalError" = "Internal error, Please try again";
+"strLogout" = "Are you sure you want to logout from app";
+"strServerError" = "Server communication error, Please try again";
+"strInternetIsNotAvailable" = "Internet is not available, Please establish network connection";
+"enterUserName" = "Please enter username";
+"forgotPasswordMessage" = "An email sent successfully on your email address. Please check it.";
+"registrationSuccessFull" = "Thank You! You are registered successfully";
+"passwordChangedSuccesfully" = "Password changed successfully, Please login now.";
+"notificationStatusChanged" = "Notification status changed successfully";
+"profileUpdatedSuccessfully" = "Profile updated successfully";
+"deleteNotification" = "Are you sure you want to delete selected notifications?";
+"logoutSuccessfully" = "You logout from app successfully";
+"enterFolderName" = "Please enter folder name";
+
+
+"Ok" = "حسنا";
+"Yes" = "نعم فعلا";
+"No" = "لا";
+
+
+//MARK: Login:
+"AuditorLogin" = "تسجيل الدخول";
+"InspectorLogin" = "دخول المفتش";
+"ForgotPassword" = "هل نسيت كلمة المرور؟";
+"Email" = "البريد الإلكتروني";
+"Password" = "كلمه السر";
+"SignIn" = "تسجيل الدخول";
+"Submit" = "خضع";
+
+//MARK: Forgot Password:
+"ForgotPasswordTitle" = "نسيت رقمك السري؟";
+"ForgotPasswordMsg" = "أدخل عنوان بريدك الإلكتروني لتلقي كلمة المرور الخاصة بك";
+
+//MARK: Home:
+"TitleHome" = "ACCESS4MII";
+
+//MARK: Change PAssword
+"OldPassword" = "كلمة المرور القديمة";
+"NewPassword" = "كلمة السر الجديدة";
+"ConfirmPassword" = "تأكيد كلمة المرور";
+"TitleChangePassword" = "غير كلمة السر";
+"MsgChangePassword" = "يرجى تغيير كلمة المرور الخاصة بك هنا";
+
+//MARK: Menu View
+"MenuAccount" = "الحساب";
+"MenuHistory" = "التاريخ";
+"MenuReports" = "تقارير";
+"MenuSetting" = "ضبط";
+"MenuHelp" = "مساعدة";
+"MenuLogout" = "الخروج";
+
+//MARK: WebContent
+"TermsConditions" = "الأحكام والشروط";
+"ContactUs" = "اتصل بنا";
+"AboutUs" = "معلومات عنا";
+"StandardPractice" = "الممارسة القياسية والسلع";
+"ChangePassword" = "غير كلمة السر";
+"PushNotification" = "دفع الإخطارات";
+
+//MARK: ContaCTUS:
+"NAME" = "اسم";
+"EMAIL" = "البريد الإلكتروني";
+"SUBJECT" = "موضوع";
+"DESCRIPTION" = "وصف";
+"CONTACTUS" = "اتصل بنا";
+"SUGGESTION" = "اقتراح / ردود الفعل";
+"Send" = "إرسال";
+
+//MARK: Profile
+"UpdateDetails" = "تحديث التفاصيل";
+"ChatAdmin" = "الدردشة مع المشرف";
+"ShareApp" = "SHARE ACCESS4MII";
+"HowUse" = "كيف تستعمل";
+"TitleProfile" = "الملف الشخصي";
+
+//MARK: Edit Profile
+"FirstName" = "الاسم الاول";
+"LastName" = "الكنية";
+"Email" = "البريد الإلكتروني";
+"ContactNumber" = "رقم الاتصال";
+"Address" = "عنوان";
+"Update" = "تحديث";
+"TitleEdit" = "تحديث الملف";
+
+//MARK: Settings
+"PushNotification1" = "دفع الإخطارات";
+"ContactUs1" = "اتصل بنا";
+"Pages" = "صفحات";
+"AboutUs1" = "معلومات عنا";
+"TermsConditions1" = "الأحكام والشروط";
+"StandardPractice1" = "الممارسة القياسية والسلع";
+"News1" = "أخبار";
+"AssignAudit" = "تعيين التدقيق";
+"SyncAudit" = "مراجعة المزامنة";
+"NewAudit" = "التدقيق الجديد";
+"Help" = "مساعدة";
+"ChangePassword1" = "غير كلمة السر";
+"TitleSetting" = "الإعدادات";
+"Logout" = "Logout";
+
+
+//MARK: File Manager:
+"Downloading...." = "جارى التحميل.....";
+"PhotoSaved" = "تم حفظ الصورة بنجاح في جهازك ، يرجى التحقق من مكتبة الصور الخاصة بك";
+"FileSaved" = "تم حفظ الملف بنجاح في جهازك ، يرجى التحقق من تطبيق الملف -> مجلد التطبيقات -> الملفات التي تم تنزيلها";
