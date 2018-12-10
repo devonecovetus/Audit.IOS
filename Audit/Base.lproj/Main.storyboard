@@ -36,7 +36,7 @@
         <!--LoginVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="Login_VC" id="BYZ-38-t0r" customClass="Login_VC" customModule="Audit" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Login_VC" id="BYZ-38-t0r" customClass="Login_VC" customModule="Access4MII" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -44,7 +44,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="wLe-xO-mDd">
                                 <rect key="frame" x="184" y="141" width="400" height="240"/>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IxK-XT-ZRl" customClass="DesignableView" customModule="Audit" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IxK-XT-ZRl" customClass="DesignableView" customModule="Access4MII" customModuleProvider="target">
                                 <rect key="frame" x="115" y="430" width="538" height="520"/>
                                 <subviews>
                                     <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="5v1-ph-Ps3">
@@ -64,7 +64,7 @@
                                                     <action selector="action_auditor_inspector:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lSU-3e-gtG"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Sb-5B-jrM" customClass="DesignableButton" customModule="Audit" customModuleProvider="target">
+                                            <button opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Sb-5B-jrM" customClass="DesignableButton" customModule="Access4MII" customModuleProvider="target">
                                                 <rect key="frame" x="229" y="0.0" width="229" height="70"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans" pointSize="23"/>
@@ -91,7 +91,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="XaO-Hi-bVW">
                                         <rect key="frame" x="40" y="145" width="458" height="150"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="l2h-pz-dnC" customClass="DesignableUITextField" customModule="Audit" customModuleProvider="target">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="l2h-pz-dnC" customClass="DesignableUITextField" customModule="Access4MII" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="458" height="65"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="19"/>
@@ -109,7 +109,7 @@
                                                     <outlet property="delegate" destination="BYZ-38-t0r" id="JCC-Fv-hxx"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Guz-CU-kxa" customClass="DesignableUITextField" customModule="Audit" customModuleProvider="target">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Guz-CU-kxa" customClass="DesignableUITextField" customModule="Access4MII" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="85" width="458" height="65"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="19"/>
@@ -220,7 +220,7 @@
         <!--Forgot PasswordVC-->
         <scene sceneID="Cxg-8W-iAo">
             <objects>
-                <viewController storyboardIdentifier="ForgotPassword_VC" id="5lv-jV-Fr4" customClass="ForgotPassword_VC" customModule="Audit" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ForgotPassword_VC" id="5lv-jV-Fr4" customClass="ForgotPassword_VC" customModule="Access4MII" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RC6-b8-To9">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -255,7 +255,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p06-O3-dWx" customClass="DesignableButton" customModule="Audit" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p06-O3-dWx" customClass="DesignableButton" customModule="Access4MII" customModuleProvider="target">
                                 <rect key="frame" x="284" y="850" width="200" height="60"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -282,7 +282,7 @@
                                     <action selector="action_submit:" destination="5lv-jV-Fr4" eventType="touchUpInside" id="uGi-Qs-zn6"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email Address" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fzb-Pm-6t7" customClass="DesignableUITextField" customModule="Audit" customModuleProvider="target">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email Address" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fzb-Pm-6t7" customClass="DesignableUITextField" customModule="Access4MII" customModuleProvider="target">
                                 <rect key="frame" x="169" y="590" width="430" height="60"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -354,7 +354,7 @@
         <!--Change Password View Controller-->
         <scene sceneID="uF8-pN-CSS">
             <objects>
-                <viewController storyboardIdentifier="ChangePasswordViewController" id="q3g-DX-gle" customClass="ChangePasswordViewController" customModule="Audit" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChangePasswordViewController" id="q3g-DX-gle" customClass="ChangePasswordViewController" customModule="Access4MII" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Qbu-PG-nAg">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -395,7 +395,7 @@
                                     <constraint firstAttribute="trailing" secondItem="ELZ-nz-lrW" secondAttribute="trailing" id="nPH-AC-g2I"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LVT-Ys-iXZ" customClass="DesignableView" customModule="Audit" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LVT-Ys-iXZ" customClass="DesignableView" customModule="Access4MII" customModuleProvider="target">
                                 <rect key="frame" x="115" y="430" width="538" height="450"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter your password here" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bCu-NE-AlB">
@@ -432,7 +432,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="cO0-sz-Sgj">
                                         <rect key="frame" x="40" y="92" width="458" height="220"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Old Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kQC-Ni-iUx" customClass="DesignableUITextField" customModule="Audit" customModuleProvider="target">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Old Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kQC-Ni-iUx" customClass="DesignableUITextField" customModule="Access4MII" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="458" height="60"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="19"/>
@@ -450,7 +450,7 @@
                                                     <outlet property="delegate" destination="q3g-DX-gle" id="HxF-uG-hvB"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="New Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="u1N-Ub-EhS" customClass="DesignableUITextField" customModule="Audit" customModuleProvider="target">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="New Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="u1N-Ub-EhS" customClass="DesignableUITextField" customModule="Access4MII" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="80" width="458" height="60"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="19"/>
@@ -468,7 +468,7 @@
                                                     <outlet property="delegate" destination="q3g-DX-gle" id="ZYC-Qw-xjp"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Confirm Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tsr-Fr-uhR" customClass="DesignableUITextField" customModule="Audit" customModuleProvider="target">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Confirm Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tsr-Fr-uhR" customClass="DesignableUITextField" customModule="Access4MII" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="160" width="458" height="60"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="19"/>
@@ -539,7 +539,7 @@
         <!--User Profile View Controller-->
         <scene sceneID="5bG-0F-7GU">
             <objects>
-                <viewController storyboardIdentifier="UserProfileViewController" id="Vgg-D1-QFT" customClass="UserProfileViewController" customModule="Audit" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UserProfileViewController" id="Vgg-D1-QFT" customClass="UserProfileViewController" customModule="Access4MII" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Fiu-J7-C84">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -655,7 +655,7 @@
                                 <rect key="frame" x="30" y="354" width="708" height="670"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ProfileViewCell" rowHeight="85" id="LPz-5N-0yS" customClass="ProfileViewCell" customModule="Audit" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ProfileViewCell" rowHeight="85" id="LPz-5N-0yS" customClass="ProfileViewCell" customModule="Access4MII" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="708" height="85"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LPz-5N-0yS" id="Val-KO-5ej">
@@ -743,7 +743,7 @@
         <!--Edit Profile View Controller-->
         <scene sceneID="L13-wm-C5j">
             <objects>
-                <viewController storyboardIdentifier="EditProfileViewController" id="pCK-dW-8AH" customClass="EditProfileViewController" customModule="Audit" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EditProfileViewController" id="pCK-dW-8AH" customClass="EditProfileViewController" customModule="Access4MII" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xuD-tV-3Ee">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -827,7 +827,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="i9B-0G-ZxA">
                                 <rect key="frame" x="30" y="409" width="708" height="290"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DQH-bd-uax" customClass="DesignableUITextField" customModule="Audit" customModuleProvider="target">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DQH-bd-uax" customClass="DesignableUITextField" customModule="Access4MII" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="708" height="65"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="20"/>
@@ -845,7 +845,7 @@
                                             <outlet property="delegate" destination="pCK-dW-8AH" id="ufV-cs-Syr"/>
                                         </connections>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1cV-M5-Fsk" customClass="DesignableUITextField" customModule="Audit" customModuleProvider="target">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1cV-M5-Fsk" customClass="DesignableUITextField" customModule="Access4MII" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="75" width="708" height="65"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="20"/>
@@ -863,7 +863,7 @@
                                             <outlet property="delegate" destination="pCK-dW-8AH" id="LqL-LH-A3p"/>
                                         </connections>
                                     </textField>
-                                    <textField opaque="NO" userInteractionEnabled="NO" alpha="0.75" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fxf-LK-b1k" customClass="DesignableUITextField" customModule="Audit" customModuleProvider="target">
+                                    <textField opaque="NO" userInteractionEnabled="NO" alpha="0.75" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fxf-LK-b1k" customClass="DesignableUITextField" customModule="Access4MII" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="150" width="708" height="65"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="20"/>
@@ -878,7 +878,7 @@
                                             <outlet property="delegate" destination="pCK-dW-8AH" id="aKw-5d-zdS"/>
                                         </connections>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Contact Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="f5Q-cs-xJc" customClass="DesignableUITextField" customModule="Audit" customModuleProvider="target">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Contact Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="f5Q-cs-xJc" customClass="DesignableUITextField" customModule="Access4MII" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="225" width="708" height="65"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="20"/>
@@ -898,7 +898,7 @@
                                     <constraint firstAttribute="height" constant="290" id="qlJ-tF-2Ds"/>
                                 </constraints>
                             </stackView>
-                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GwA-3w-fgs" customClass="DesignableButton" customModule="Audit" customModuleProvider="target">
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GwA-3w-fgs" customClass="DesignableButton" customModule="Access4MII" customModuleProvider="target">
                                 <rect key="frame" x="279" y="759" width="210" height="55"/>
                                 <color key="backgroundColor" red="0.17254901959999999" green="0.74117647060000003" blue="0.64705882349999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -951,7 +951,7 @@
         <!--Contact Us View Controller-->
         <scene sceneID="8aR-yX-4He">
             <objects>
-                <viewController storyboardIdentifier="ContactUsViewController" id="OLT-5X-QFc" customClass="ContactUsViewController" customModule="Audit" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ContactUsViewController" id="OLT-5X-QFc" customClass="ContactUsViewController" customModule="Access4MII" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oJr-gw-QVj">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1016,7 +1016,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ayE-nE-dEN">
                                 <rect key="frame" x="130" y="300" width="508" height="237"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8WC-sX-usI" customClass="DesignableUITextField" customModule="Audit" customModuleProvider="target">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8WC-sX-usI" customClass="DesignableUITextField" customModule="Access4MII" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="508" height="72.5"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="20"/>
@@ -1034,7 +1034,7 @@
                                             <outlet property="delegate" destination="OLT-5X-QFc" id="jwD-2u-ZBX"/>
                                         </connections>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NrR-lJ-ms6" customClass="DesignableUITextField" customModule="Audit" customModuleProvider="target">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NrR-lJ-ms6" customClass="DesignableUITextField" customModule="Access4MII" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="82.5" width="508" height="72"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="20"/>
@@ -1052,7 +1052,7 @@
                                             <outlet property="delegate" destination="OLT-5X-QFc" id="Ytm-U6-6tR"/>
                                         </connections>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Subject" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZG0-F7-T85" customClass="DesignableUITextField" customModule="Audit" customModuleProvider="target">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Subject" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZG0-F7-T85" customClass="DesignableUITextField" customModule="Access4MII" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="164.5" width="508" height="72.5"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="textColor"/>
@@ -1106,7 +1106,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MQr-6Q-yia" customClass="DesignableButton" customModule="Audit" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MQr-6Q-yia" customClass="DesignableButton" customModule="Access4MII" customModuleProvider="target">
                                 <rect key="frame" x="279" y="747" width="210" height="55"/>
                                 <color key="backgroundColor" red="0.18039215689999999" green="0.74117647060000003" blue="0.64705882349999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -1166,7 +1166,7 @@
         <!--Thank You View Controller-->
         <scene sceneID="pcj-LA-nDs">
             <objects>
-                <viewController storyboardIdentifier="ThankYouViewController" id="c5b-Jk-qbS" customClass="ThankYouViewController" customModule="Audit" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ThankYouViewController" id="c5b-Jk-qbS" customClass="ThankYouViewController" customModule="Access4MII" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2TO-sl-Dzi">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1253,6 +1253,173 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X3T-Nf-IyX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4002" y="36"/>
+        </scene>
+        <!--Chat With Admin View Controller-->
+        <scene sceneID="9Yk-6x-0TF">
+            <objects>
+                <viewController storyboardIdentifier="ChatWithAdminViewController" id="Aye-cm-JIx" customClass="ChatWithAdminViewController" customModule="Access4MII" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3o0-MU-McJ">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WB7-v8-IAZ">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="64"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CHAT WITH ADMIN" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NhO-SJ-UaA">
+                                        <rect key="frame" x="0.0" y="20" width="768" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="3ef-dM-m1d"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans" pointSize="22"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vZS-Sb-Ttt">
+                                        <rect key="frame" x="5" y="20" width="44" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="n7U-Bt-keq"/>
+                                            <constraint firstAttribute="width" constant="44" id="yOf-5I-LLJ"/>
+                                        </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <inset key="imageEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
+                                        <state key="normal" image="ic_back"/>
+                                        <connections>
+                                            <action selector="btn_Back:" destination="Aye-cm-JIx" eventType="touchUpInside" id="CeC-f2-6bR"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.17254901959999999" green="0.74117647060000003" blue="0.64705882349999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="IOn-K1-T9B"/>
+                                    <constraint firstItem="vZS-Sb-Ttt" firstAttribute="top" secondItem="WB7-v8-IAZ" secondAttribute="top" constant="20" id="Ig5-fZ-oPj"/>
+                                    <constraint firstItem="NhO-SJ-UaA" firstAttribute="top" secondItem="WB7-v8-IAZ" secondAttribute="top" constant="20" id="Krf-Ap-R9F"/>
+                                    <constraint firstItem="NhO-SJ-UaA" firstAttribute="leading" secondItem="WB7-v8-IAZ" secondAttribute="leading" id="Rju-4S-gK8"/>
+                                    <constraint firstItem="vZS-Sb-Ttt" firstAttribute="leading" secondItem="WB7-v8-IAZ" secondAttribute="leading" constant="5" id="gjQ-T4-G4a"/>
+                                    <constraint firstAttribute="trailing" secondItem="NhO-SJ-UaA" secondAttribute="trailing" id="hqy-5x-LFc"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uTA-yg-U3y">
+                                <rect key="frame" x="0.0" y="64" width="768" height="110"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Send chat request to start chat with admin" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F3W-kg-YqF">
+                                        <rect key="frame" x="20" y="23" width="728" height="65"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="65" id="PXZ-8F-clS"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans" pointSize="23"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.17254901959999999" green="0.74117647060000003" blue="0.64705882349999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="F3W-kg-YqF" firstAttribute="centerY" secondItem="uTA-yg-U3y" secondAttribute="centerY" id="0bh-fh-Psr"/>
+                                    <constraint firstAttribute="trailing" secondItem="F3W-kg-YqF" secondAttribute="trailing" constant="20" id="CTY-p1-rKI"/>
+                                    <constraint firstItem="F3W-kg-YqF" firstAttribute="leading" secondItem="uTA-yg-U3y" secondAttribute="leading" constant="20" id="fkZ-2m-Gvb"/>
+                                    <constraint firstAttribute="height" constant="110" id="sXg-4C-k7e"/>
+                                </constraints>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="b5a-kD-XVe">
+                                <rect key="frame" x="130" y="300" width="508" height="72.5"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bdp-SC-6Hh" customClass="DesignableUITextField" customModule="Access4MII" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="508" height="72.5"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="20"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="bottomBorderColor">
+                                                <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="user-green_icon"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="72.5" id="yfx-MJ-7UK"/>
+                                </constraints>
+                            </stackView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Hello, Admin i wolud like to chat with you." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="98S-Ac-ynF">
+                                <rect key="frame" x="168" y="392.5" width="470" height="145"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="145" id="YYu-zn-QZV"/>
+                                </constraints>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="description_icon" translatesAutoresizingMaskIntoConstraints="NO" id="kx9-1b-5Q9">
+                                <rect key="frame" x="141" y="402.5" width="25" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="MsX-B2-tSo"/>
+                                    <constraint firstAttribute="width" constant="25" id="YEk-lj-fmm"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5zN-cz-Wf9">
+                                <rect key="frame" x="130" y="537.5" width="508" height="1"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="xwN-8Y-s1e"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MJe-XY-eeS" customClass="DesignableButton" customModule="Access4MII" customModuleProvider="target">
+                                <rect key="frame" x="279" y="632.5" width="210" height="55"/>
+                                <color key="backgroundColor" red="0.18039215689999999" green="0.74117647060000003" blue="0.64705882349999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="Zro-La-3EG"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="210" id="qgT-4O-Q17"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="22"/>
+                                <state key="normal" title="SEND"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="27.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="btn_Send:" destination="Aye-cm-JIx" eventType="touchUpInside" id="f5U-A0-hQg"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="MJe-XY-eeS" firstAttribute="top" secondItem="98S-Ac-ynF" secondAttribute="bottom" constant="95" id="0wi-pK-hoK"/>
+                            <constraint firstItem="b5a-kD-XVe" firstAttribute="leading" secondItem="qfV-aj-Jvc" secondAttribute="leading" constant="130" id="14D-rp-s2K"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="5zN-cz-Wf9" secondAttribute="trailing" constant="110" id="5IX-R2-X0o"/>
+                            <constraint firstItem="qfV-aj-Jvc" firstAttribute="trailing" secondItem="98S-Ac-ynF" secondAttribute="trailing" constant="130" id="Ad0-o5-lq5"/>
+                            <constraint firstItem="uTA-yg-U3y" firstAttribute="trailing" secondItem="qfV-aj-Jvc" secondAttribute="trailing" id="BN2-lz-cfK"/>
+                            <constraint firstItem="WB7-v8-IAZ" firstAttribute="top" secondItem="3o0-MU-McJ" secondAttribute="top" id="D89-be-FoT"/>
+                            <constraint firstItem="WB7-v8-IAZ" firstAttribute="leading" secondItem="qfV-aj-Jvc" secondAttribute="leading" id="DtW-fO-Sub"/>
+                            <constraint firstItem="qfV-aj-Jvc" firstAttribute="trailing" secondItem="b5a-kD-XVe" secondAttribute="trailing" constant="130" id="ENY-Rd-wjB"/>
+                            <constraint firstItem="5zN-cz-Wf9" firstAttribute="top" secondItem="98S-Ac-ynF" secondAttribute="bottom" id="Ihe-Yk-153"/>
+                            <constraint firstItem="MJe-XY-eeS" firstAttribute="centerX" secondItem="3o0-MU-McJ" secondAttribute="centerX" id="KXH-SF-XuH"/>
+                            <constraint firstItem="kx9-1b-5Q9" firstAttribute="top" secondItem="b5a-kD-XVe" secondAttribute="bottom" constant="30" id="MjQ-jA-PjR"/>
+                            <constraint firstItem="98S-Ac-ynF" firstAttribute="leading" secondItem="kx9-1b-5Q9" secondAttribute="trailing" constant="2" id="UOb-T7-5pT"/>
+                            <constraint firstItem="5zN-cz-Wf9" firstAttribute="leading" secondItem="3o0-MU-McJ" secondAttribute="leadingMargin" constant="110" id="XCD-R1-lPg"/>
+                            <constraint firstItem="b5a-kD-XVe" firstAttribute="top" secondItem="uTA-yg-U3y" secondAttribute="bottom" constant="126" id="Y0m-XO-kHb"/>
+                            <constraint firstItem="uTA-yg-U3y" firstAttribute="top" secondItem="WB7-v8-IAZ" secondAttribute="bottom" id="fXq-h8-Is7"/>
+                            <constraint firstItem="98S-Ac-ynF" firstAttribute="top" secondItem="b5a-kD-XVe" secondAttribute="bottom" constant="20" id="jV5-Ib-jap"/>
+                            <constraint firstItem="WB7-v8-IAZ" firstAttribute="trailing" secondItem="qfV-aj-Jvc" secondAttribute="trailing" id="nSb-Nj-Hwo"/>
+                            <constraint firstItem="uTA-yg-U3y" firstAttribute="leading" secondItem="qfV-aj-Jvc" secondAttribute="leading" id="rIV-5Q-2Yi"/>
+                            <constraint firstItem="kx9-1b-5Q9" firstAttribute="leading" secondItem="qfV-aj-Jvc" secondAttribute="leading" constant="141" id="zXO-fE-NM9"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="qfV-aj-Jvc"/>
+                    </view>
+                    <connections>
+                        <outlet property="tf_name" destination="Bdp-SC-6Hh" id="OtN-f7-AzQ"/>
+                        <outlet property="tv_description" destination="98S-Ac-ynF" id="hUZ-W4-2UR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sU5-2W-8Ze" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4645" y="36"/>
         </scene>
     </scenes>
     <resources>

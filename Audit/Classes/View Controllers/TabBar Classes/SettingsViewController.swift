@@ -24,6 +24,11 @@ class SettingsViewController: UIViewController {
       //  lbl_Title.text = NSLocalizedString("TitleSetting", comment: "")
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(false)
+        tblView.reloadData()
+        kAppDelegate.currentViewController = self
+    }
 }
 
 extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
@@ -34,7 +39,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 65.0
+        return 70.0
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -49,9 +54,17 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
             lbl_Name.textAlignment = NSTextAlignment.right
         }
         let btn_Switch = UISwitch(frame: CGRect(x: tableView.bounds.width - 70, y: 10, width: 75.0, height: 45.0))
-        btn_Switch.isOn = true
+        
+        if UserProfile.allPush == 0 {
+            btn_Switch.isOn = false
+        } else {
+            btn_Switch.isOn = true
+        }
+        
         btn_Switch.onTintColor = CustomColors.themeColorGreen
         btn_Switch.offImage = UIImage(named: "toggle-black")
+        btn_Switch.addTarget(self, action: #selector(setAppNotificationStatus(sender:)), for: .valueChanged)
+        
         view_Header.addSubview(btn_Switch)
         view_Header.addSubview(lbl_Name)
         
@@ -60,7 +73,6 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         } else {
             btn_Switch.alpha = 0.0
         }
-        
         return view_Header
     }
     
@@ -74,12 +86,20 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 46.0
+        return 50.0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SettingsViewCell", for: indexPath) as! SettingsViewCell
+        cell.intIndex = indexPath.row
+        cell.delegate = self
         cell.cellIndex = indexPath
+        if indexPath.section == 0 {
+            let arrNotif = (MF.setUpSettingContent()[(0)] as! NSDictionary)
+            let notifStatus = (arrNotif["NotificationStatus"] as! NSMutableArray)[indexPath.row] as! Int
+            print("notif Status = \(notifStatus)")
+            cell.btn_Switch.setOn(Bool(truncating: notifStatus as NSNumber), animated: true)
+        }
         return cell
     }
     
@@ -112,7 +132,10 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
             let vc = MainStoryBoard.instantiateViewController(withIdentifier: "ContactUsViewController") as? ContactUsViewController
             self.navigationController?.pushViewController(vc!, animated: true)
         } else if strSettingContent == SettingContent.Logout {
-            logout()
+            self.executeUIProcess {
+                self.logout()
+            }
+            
         }
         
     }
@@ -164,5 +187,67 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
                 self.dismiss(animated: false, completion: nil)
             }
         }
+    }
+    
+    @objc func setAppNotificationStatus(sender: UISwitch) {
+        let dictP = MF.initializeDictWithUserId()
+        var token = ""
+        if UserProfile.allPush == 1 {
+            token = ""
+        } else {
+            token = kAppDelegate.strDeviceToken.count == 0 ? "sdjfgh43543kjsh47835" : kAppDelegate.strDeviceToken
+        }
+        dictP.setValue(token, forKey: "devicetoken")
+        
+        OB_WEBSERVICE.getWebApiData(webService: WebServiceName.SetNotifySetting, methodType: 1, forContent: 1, OnView: self, withParameters: dictP) { (dictJson) in
+            if dictJson["status"] as? Int == 1 {
+                UserProfile.auditPush = (dictJson["response"] as! NSDictionary)["audit_push"] as? Int
+                UserProfile.reportPush = (dictJson["response"] as! NSDictionary)["report_push"] as? Int
+                UserProfile.messagePush = (dictJson["response"] as! NSDictionary)["msg_push"] as? Int
+                UserProfile.allPush = (dictJson["response"] as! NSDictionary)["push_all"] as? Int
+                kAppDelegate.getAndSetUserDetailsInBackground()
+                
+                self.tblView.reloadSections(IndexSet(arrayLiteral: 0), with: UITableViewRowAnimation.automatic)
+            }
+        }
+        
+        
+    }
+    
+    @objc func setAuditNotificationStatus(sender: UISwitch) {
+        
+    }
+    
+    @objc func setReportNotificationStatus(sender: UISwitch) {
+        
+    }
+    
+    @objc func setMessageNotificationStatus(sender: UISwitch) {
+        
+    }
+    
+}
+
+extension SettingsViewController: SettingsDelegate {
+    func setNotificationOnOff(index: Int, status: Int) {
+        print("index \(index)")
+        
+        let dictP = MF.initializeDictWithUserId()
+        dictP.setValue(MF.setUpNotificationStatusArray()[0], forKey: "audit_push")
+        dictP.setValue(MF.setUpNotificationStatusArray()[1], forKey: "report_push")
+        dictP.setValue(MF.setUpNotificationStatusArray()[2], forKey: "msg_push")
+        
+        OB_WEBSERVICE.getWebApiData(webService: WebServiceName.SetNotificationStatusByType, methodType: 1, forContent: 1, OnView: self, withParameters: dictP) { (dictJson) in
+            if dictJson["status"] as? Int == 1 {
+                UserProfile.auditPush = (dictJson["response"] as! NSDictionary)["audit_push"] as? Int
+                UserProfile.reportPush = (dictJson["response"] as! NSDictionary)["report_push"] as? Int
+                UserProfile.messagePush = (dictJson["response"] as! NSDictionary)["msg_push"] as? Int
+                kAppDelegate.getAndSetUserDetailsInBackground()
+                self.tblView.reloadSections(IndexSet(arrayLiteral: 0), with: UITableViewRowAnimation.automatic)
+            }
+        }
+        
+        
+        
     }
 }

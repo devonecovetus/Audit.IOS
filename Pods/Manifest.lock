@@ -6,6 +6,9 @@ PODS:
   - SDWebImage (4.4.1):
     - SDWebImage/Core (= 4.4.1)
   - SDWebImage/Core (4.4.1)
+  - Socket.IO-Client-Swift (13.3.0):
+    - Starscream (~> 3.0.2)
+  - Starscream (3.0.5)
   - SVProgressHUD (2.2.5)
 
 DEPENDENCIES:
@@ -13,6 +16,7 @@ DEPENDENCIES:
   - Fabric
   - iOSPhotoEditor
   - SDWebImage
+  - Socket.IO-Client-Swift (~> 13.3.0)
   - SVProgressHUD
 
 SPEC REPOS:
@@ -21,6 +25,8 @@ SPEC REPOS:
     - Fabric
     - iOSPhotoEditor
     - SDWebImage
+    - Socket.IO-Client-Swift
+    - Starscream
     - SVProgressHUD
 
 SPEC CHECKSUMS:
@@ -28,8 +34,10 @@ SPEC CHECKSUMS:
   Fabric: fba4684a95df789565b0b27fc5b6e68f1755af32
   iOSPhotoEditor: 0ddc84bcef9fe73fe8cc45ac999b89e0aa207aea
   SDWebImage: 47e9b5b925cbce75946c23f0c42dd19464189af4
+  Socket.IO-Client-Swift: 0afb192a562db90d50e3f7f7421c06925a3f0179
+  Starscream: faf918b2f2eff7d5dd21180646bf015a669673bd
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: 2a01bc435db1e16d921e7f032145df2afeff373a
+PODFILE CHECKSUM: 220fbf5267eccac67e671924c01053d0b94baa5c
 
 COCOAPODS: 1.5.3

@@ -21,9 +21,16 @@ class FileDownloaderCell: UICollectionViewCell {
         
         let arrFP = file.components(separatedBy: "/")
         let strFileName = arrFP.last
-        lbl_Name.text = arrFP.last
         
         let arrExt = strFileName?.components(separatedBy: ".")
+        let str_name = arrExt![0]
+        
+        if str_name.count > 10{
+            lbl_Name.text = String(str_name.prefix(10))
+        } else {
+            lbl_Name.text = str_name
+        }
+        
         if (arrExt?.last)! == FileExtension.PDF {
             imgView_Item.image = UIImage(named: "pdf")
         } else if (arrExt?.last)! == FileExtension.PNG {

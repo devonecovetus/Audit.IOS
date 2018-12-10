@@ -221,12 +221,17 @@ class AuditOverViewController: UIViewController {
     @IBAction func btn_Back(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(false)
+        kAppDelegate.currentViewController = self
+    }
 }
 
 extension AuditOverViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 175 , height: 215)
+        return CGSize(width: 160 , height: 200)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

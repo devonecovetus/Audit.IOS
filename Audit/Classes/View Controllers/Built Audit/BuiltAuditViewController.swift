@@ -10,6 +10,7 @@ import UIKit
 
 class BuiltAuditViewController: UIViewController {
     
+    var intAuditId:Int? = Int()
     var counter: Int? = Int()
     var intSelectedIndexPath = Int()
     var flagIsAddedSelectedLocation: Bool? = Bool()
@@ -17,6 +18,8 @@ class BuiltAuditViewController: UIViewController {
     var arrSelectedLocation = [LocationModel]()
     let cell = BuiltLocationCell()
     var isShowDeleteBtn = false
+    ///This value hold the number for counts in folder list of a particular location
+    var intFolderListCounter = Int()
     
     /*
      This will work woit drop feature
@@ -34,6 +37,7 @@ class BuiltAuditViewController: UIViewController {
     }
     @IBAction func btn_Next(_ sender: Any) {
         let vc = BuiltAuditStoryBoard.instantiateViewController(withIdentifier: "LocationViewController") as? LocationViewController
+        vc?.intAuditId = intAuditId
         self.navigationController?.pushViewController(vc!, animated: true)
     }
     @IBOutlet weak var tv_Description: UITextView!
@@ -41,6 +45,8 @@ class BuiltAuditViewController: UIViewController {
     @IBOutlet weak var lbl_Information: UILabel!
     @IBOutlet weak var btn_Delete: UIButton!
     
+    var is_draft = false
+
     @IBAction func btn_Delete(_ sender: UIButton) {
         if sender.isSelected {
             isShowDeleteBtn = false
@@ -57,58 +63,155 @@ class BuiltAuditViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        let checkdraft = obSqlite.getAuditStatusInfoWithAuditID(auditId: intAuditId!)
+        if checkdraft != 0 {
+            is_draft = true
+        }
     }
     
-    /*
     override func viewWillAppear(_ animated: Bool) {
-        arrLocationList = obSqlite.getLocationList(isModified: AuditStatus.InComplete)
-        arrSelectedLocation = obSqlite.getLocationList(isModified: AuditStatus.Pending)
-        colView_LocationList.reloadData()
-        colView_SelectedLocation.reloadData()
+        kAppDelegate.currentViewController = self
+        self.getLocationList()
+        self.getSelectedLocationList()
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+    }
+    
+    func getLocationList() {
+        self.arrLocationList = obSqlite.getLocationList(isModified: AuditStatus.InComplete, auditId: intAuditId!)
+        self.colView_LocationList.reloadData()
+    }
+    
+    func getSelectedLocationList() {
+        self.arrSelectedLocation = obSqlite.getLocationList(isModified: AuditStatus.Pending, auditId: intAuditId!)
+        self.colView_SelectedLocation.reloadData()
     }
     
     func setUpLanguageSetting() {
         self.view.transform = CGAffineTransform(scaleX: kAppDelegate.intViewFlipStatus, y: 1)
     }
-    */
+   
 }
 
-/*
 extension BuiltAuditViewController: BuiltLocationDelegate {
     func increaseValue(index: Int) {
-        counter = arrSelectedLocation[index].locationCount
-        counter! += 1
         
-        _ = obSqlite.updateBuiltAuditLocationCount(count: counter!, locationId: arrSelectedLocation[index].locationId!, auditId: arrSelectedLocation[index].auditId!)
+        if arrSelectedLocation[index].isLocked == 0 { ///  This showing that currently the main work on this location is not done, user can operate all their stuff
+            counter = arrSelectedLocation[index].locationCount
+            counter! += 1
+            
+            _ = obSqlite.updateBuiltAuditLocationCount(count: counter!, locationId: arrSelectedLocation[index].locationId!, auditId: arrSelectedLocation[index].auditId!)
+            
+            arrSelectedLocation[index].locationCount = counter
+            colView_SelectedLocation.reloadData()
+        }
         
-        arrSelectedLocation = obSqlite.getLocationList(isModified: AuditStatus.Pending)
-        colView_SelectedLocation.reloadData()
     }
     
     func decreaseValue(index: Int) {
-        counter = arrSelectedLocation[index].locationCount
-
-        if counter! > 1 {
-            counter! -= 1
-            _ = obSqlite.updateBuiltAuditLocationCount(count: counter!, locationId: arrSelectedLocation[index].locationId!, auditId: arrSelectedLocation[index].auditId!)
+        
+         if arrSelectedLocation[index].isLocked == 0 { ///  This showing that currently the main work on this location is not done, user can operate all their stuff
+            intFolderListCounter = 0
+            counter = arrSelectedLocation[index].locationCount
             
-            arrSelectedLocation = obSqlite.getLocationList(isModified: AuditStatus.Pending)
-            colView_SelectedLocation.reloadData()
+            for i in 0..<arrSelectedLocation[index].arrFolders.count {
+                let obFolder = arrSelectedLocation[index].arrFolders[i]
+                intFolderListCounter = intFolderListCounter + obFolder.folderCount!
+            }
+            print("counter = \(counter) , intFolderListCounter = \(intFolderListCounter)")
+            /// This condition for checking, the location count and folder list count, if they are equalled during decreasing the counter, then if condition executes
+            if counter == intFolderListCounter {
+                /// Here we will show an alert,
+                showAlertOnDecreaseLocationCount(index: index)
+            } else {
+                if counter! > 1 {
+                    counter! -= 1
+                    _ = obSqlite.updateBuiltAuditLocationCount(count: counter!, locationId: arrSelectedLocation[index].locationId!, auditId: arrSelectedLocation[index].auditId!)
+                    arrSelectedLocation[index].locationCount = counter
+                    colView_SelectedLocation.reloadData()
+                }
+            }
         }
     }
     
+    /// delete the selected location
     func deleteItem(index: Int, indexPath: IndexPath) {
         
-        _ = obSqlite.updateBuiltAuditLocation(isModified: AuditStatus.InComplete, locationId: arrSelectedLocation[index].locationId!, auditId: arrSelectedLocation[index].auditId!)
-        _ = obSqlite.updateBuiltAuditLocationCount(count: 1, locationId: arrSelectedLocation[index].locationId!, auditId: arrSelectedLocation[index].auditId!)
+        deleteSelectedLocation(index: index, indexPath: indexPath)
         
-        obSqlite.deleteSubFoldersFromLoactionFolder(auditId: arrSelectedLocation[index].auditId!, locationId: arrSelectedLocation[index].locationId!)
-        
-        arrLocationList = obSqlite.getLocationList(isModified: AuditStatus.InComplete)
-        arrSelectedLocation = obSqlite.getLocationList(isModified: AuditStatus.Pending)
-        colView_LocationList.reloadData()
-        colView_SelectedLocation.reloadData()
+        /*if arrSelectedLocation[index].isLocked == 0 { ///  This showing that currently the main work on this location is not done, user can operate all their stuff
+        } else {
+        } */
     }
+    
+    /// This function calls only when location counter and folder list counter are same on decreasing the location count value
+    func showAlertOnDecreaseLocationCount(index: Int) {
+        ///** In future this will be replaced by a custom popup.
+        
+        let alert = UIAlertController(title: NSLocalizedString("warningTitle", comment: ""), message: "", preferredStyle: UIAlertControllerStyle.alert)
+        let messageFont = [NSAttributedStringKey.font: UIFont(name: "OpenSans-Regular", size: 16.0)!]
+        
+        let strMsg = NSLocalizedString("warning1", comment: "") + arrSelectedLocation[index].locationName!  + " " + NSLocalizedString("warning2", comment: "")
+        let messageAttrString = NSMutableAttributedString(string: strMsg, attributes: messageFont)
+        alert.setValue(messageAttrString, forKey: "attributedMessage")
+        
+        let okButton = UIAlertAction(title:"Yes", style: UIAlertActionStyle.default) { (UIAlertAction) in
+            //1. delete location subfolder list data on basis of folder id, location_id, auditid, userId
+            //2. delete location folder list data on basis of location id and then executes just after 2 seconds
+            obSqlite.deleteLocationSubFolders(auditId: self.arrSelectedLocation[index].auditId!, locationId: self.arrSelectedLocation[index].locationId!)
+            
+            let delay = 0.5 * Double(NSEC_PER_SEC)
+            let time = DispatchTime.now() + Double(Int64(delay)) / Double(NSEC_PER_SEC)
+            DispatchQueue.main.asyncAfter(deadline: time, execute: {
+                if self.counter! > 1 {
+                    self.counter! -= 1
+                    _ = obSqlite.updateBuiltAuditLocationCount(count: self.counter!, locationId: self.arrSelectedLocation[index].locationId!, auditId: self.arrSelectedLocation[index].auditId!)
+                    self.arrSelectedLocation[index].locationCount = self.counter
+                    self.colView_SelectedLocation.reloadData()
+                }
+            })
+        }
+        let cancelButton = UIAlertAction(title:"No", style: UIAlertActionStyle.default) { (UIAlertAction) in
+        }
+        alert.addAction(okButton)
+        alert.addAction(cancelButton)
+        self.present(alert, animated: true, completion: nil)
+        
+    }
+    
+    /// This function will delete the data from database related to seleced location
+    func deleteSelectedLocation(index: Int, indexPath: IndexPath) {
+        let alert = UIAlertController(title: "", message: "If you delete your selected location, your all related data and their contents also deleted. Woul you like to continue?", preferredStyle: UIAlertControllerStyle.alert)
+        let messageFont = [NSAttributedStringKey.font: UIFont(name: "OpenSans-Regular", size: 16.0)!]
+        let strMsg = NSLocalizedString("warning1", comment: "") + arrSelectedLocation[index].locationName!  + " " + NSLocalizedString("warning2", comment: "")
+        let messageAttrString = NSMutableAttributedString(string: strMsg, attributes: messageFont)
+        alert.setValue(messageAttrString, forKey: "attributedMessage")
+        
+        let okButton = UIAlertAction(title:"Yes", style: UIAlertActionStyle.default) { (UIAlertAction) in
+            /// This will set status and on that behalf both array will be updated
+            _ = obSqlite.updateBuiltAuditLocation(isModified: AuditStatus.InComplete, locationId: self.arrSelectedLocation[index].locationId!, auditId: self.arrSelectedLocation[index].auditId!)
+            _ = obSqlite.updateBuiltAuditLocationCount(count: 1, locationId: self.arrSelectedLocation[index].locationId!, auditId: self.arrSelectedLocation[index].auditId!)
+            
+            let isDeleted = obSqlite.deleteFoldersFromLoactionFolder(auditId: self.arrSelectedLocation[index].auditId!, locationId: self.arrSelectedLocation[index].locationId!)
+            if isDeleted {
+                /// This Will delete location Folders subfolder list
+                obSqlite.deleteLocationSubFolders(auditId: self.arrSelectedLocation[index].auditId!, locationId: self.arrSelectedLocation[index].locationId!)
+            }
+            
+            self.arrLocationList = obSqlite.getLocationList(isModified: AuditStatus.InComplete, auditId: self.intAuditId!)
+            self.arrSelectedLocation = obSqlite.getLocationList(isModified: AuditStatus.Pending, auditId: self.intAuditId!)
+            self.colView_LocationList.reloadData()
+            self.colView_SelectedLocation.reloadData()
+        }
+        let cancelButton = UIAlertAction(title:"No", style: UIAlertActionStyle.default) { (UIAlertAction) in
+        }
+        alert.addAction(okButton)
+        alert.addAction(cancelButton)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
 }
 
 extension BuiltAuditViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -150,6 +253,13 @@ extension BuiltAuditViewController: UICollectionViewDelegate, UICollectionViewDa
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if collectionView == colView_SelectedLocation {
+            tv_Description.text = arrSelectedLocation[indexPath.row].locationDescription!.htmlToString
+            lbl_Information.text =  String(format: "%@ %@", arrSelectedLocation[indexPath.row].locationName!, NSLocalizedString("Description:", comment: ""))
+        }
+    }
+    
 }
 
 extension BuiltAuditViewController: UICollectionViewDragDelegate {
@@ -168,15 +278,24 @@ extension BuiltAuditViewController: UICollectionViewDragDelegate {
         print("dragSessionDidEnd \(session)")
         if flagIsAddedSelectedLocation! {
             
+            tv_Description.text = arrLocationList[intSelectedIndexPath].locationDescription!.htmlToString
+            lbl_Information.text =  String(format: "%@ %@", arrLocationList[intSelectedIndexPath].locationName!, NSLocalizedString("Description:", comment: ""))
+            
+            if is_draft == false {
+                let arr = obSqlite.updateAuditWorkStatus(auditStatus: AuditStatus.Pending, auditId: intAuditId!)
+                if arr[0] as! Bool == true {
+                    is_draft = true
+                }
+            }
+            
             _ = obSqlite.updateBuiltAuditLocation(isModified: AuditStatus.Pending, locationId: arrLocationList[intSelectedIndexPath].locationId!, auditId: arrLocationList[intSelectedIndexPath].auditId!)
             
-            arrLocationList = obSqlite.getLocationList(isModified: AuditStatus.InComplete)
-            arrSelectedLocation = obSqlite.getLocationList(isModified: AuditStatus.Pending)
+            arrLocationList = obSqlite.getLocationList(isModified: AuditStatus.InComplete, auditId: intAuditId!)
+            arrSelectedLocation = obSqlite.getLocationList(isModified: AuditStatus.Pending, auditId: intAuditId!)
             colView_LocationList.reloadData()
             colView_SelectedLocation.reloadData()
             flagIsAddedSelectedLocation = false
         }
-
     }
     
     func collectionView(_ collectionView: UICollectionView, dragPreviewParametersForItemAt indexPath: IndexPath) -> UIDragPreviewParameters? {
@@ -215,6 +334,7 @@ extension BuiltAuditViewController: UICollectionViewDropDelegate {
             if collectionView == colView_LocationList {
                 // for getting index path
                 if let indexPath = coordinator.destinationIndexPath {
+                    print("indexpth in selected location =\(indexPath.row)")
                 }
             } else if collectionView == colView_SelectedLocation {
                 flagIsAddedSelectedLocation = true
@@ -291,5 +411,17 @@ extension BuiltAuditViewController: UITextViewDelegate {
     }
     
 }
- 
-*/
+
+extension String {
+    var htmlToAttributedString: NSAttributedString? {
+        guard let data = data(using: .utf8) else { return NSAttributedString() }
+        do {
+            return try NSAttributedString(data: data, options: [.documentType: NSAttributedString.DocumentType.html, .characterEncoding:String.Encoding.utf8.rawValue], documentAttributes: nil)
+        } catch {
+            return NSAttributedString()
+        }
+    }
+    var htmlToString: String {
+        return htmlToAttributedString?.string ?? ""
+    }
+}

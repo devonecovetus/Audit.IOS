@@ -160,3 +160,12 @@
 //MARK: Report
 "AssignedOn" = "Assigned On";
 
+
+//MARK: SubFolder Screen:
+"subFolderName" = "Please enter sub folder name";
+"subFolderDescription" = "Please enter sub folder description";
+
+
+"warning1" = "Warning: This will delete ";
+"warning2" = "Folders and SubFolders including associated questions, Do you want to proceed ?";
+"warningTitle" = "Warning!";

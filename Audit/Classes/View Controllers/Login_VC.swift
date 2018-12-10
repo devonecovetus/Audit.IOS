@@ -16,7 +16,6 @@ class Login_VC: UIViewController {
     var strUserType: String? = String()
     @IBOutlet weak var btn_auditor: UIButton!
     @IBOutlet weak var btn_inspector: UIButton!
-
     @IBOutlet weak var tf_name: DesignableUITextField!
     @IBOutlet weak var tf_password: DesignableUITextField!
     
@@ -29,6 +28,15 @@ class Login_VC: UIViewController {
         strUserType = UserRoles.Auditor
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        kAppDelegate.currentViewController = self
+
+        if Preferences.value(forKey: "email") != nil && Preferences.value(forKey: "password") != nil {
+            tf_name.text = Preferences.value(forKey: "email") as? String
+            tf_password.text = Preferences.value(forKey: "password") as? String
+        }
+    }
+  
     //MARK: Supporting Function
     private func resetButtonBorder() {
         btn_inspector.addBottomBorderWithColor(color: UIColor.white, height: CGFloat(2.0))
@@ -109,7 +117,9 @@ class Login_VC: UIViewController {
         
         OB_WEBSERVICE.getWebApiData(webService: WebServiceName.UserLogin, methodType: 1, forContent: 1, OnView: self, withParameters: dictP) { (dictJson) in
             if dictJson["status"] as? Int == 1 { // Means user logined
-                self.setFeaturesAfterLogin(dictJson: dictJson)
+                self.executeUIProcess({
+                    self.setFeaturesAfterLogin(dictJson: dictJson)
+                })
             }
         }
     }
@@ -118,6 +128,9 @@ class Login_VC: UIViewController {
         UserProfile.initWith(dict: dictJson["response"] as! NSDictionary)
         obSqlite.insertUserProfileData1(obUser: UserProfile)
         Preferences.set(true, forKey: "isLogin")
+        Preferences.set(tf_name.text, forKey: "email")
+        Preferences.set(tf_password.text, forKey: "password")
+        
         let archiveUserData = NSKeyedArchiver.archivedData(withRootObject: (dictJson["response"] as! NSDictionary).mutableCopy())
         Preferences.set(archiveUserData , forKey: "UserData")
         let navigationController = kAppDelegate.window?.rootViewController as! UINavigationController
@@ -135,6 +148,9 @@ class Login_VC: UIViewController {
 extension Login_VC: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if (tf_name.text?.count)! > 0 && (tf_password.text?.count)! > 0 {
+            submitUserLoginRequest()
+        }
         return textField.resignFirstResponder()
     }
     

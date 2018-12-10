@@ -21,10 +21,11 @@ class DraftsViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        kAppDelegate.currentViewController = self
         arrDraftAuditList = obSqlite.getAuditListWith(status: AuditStatus.Pending)
         tblView.reloadData()
     }
-    
+        
     func setUpLanguageSetting() {
         // self.view.transform = CGAffineTransform(scaleX: kAppDelegate.intViewFlipStatus, y: 1)
         // lbl_Title.transform = CGAffineTransform(scaleX: kAppDelegate.intViewFlipStatus, y: 1)
@@ -55,6 +56,7 @@ extension DraftsViewController: UITableViewDelegate, UITableViewDataSource {
 extension DraftsViewController: MyAuditDelegate {
     func viewAudit(index: Int) {
         let vc = BuiltAuditStoryBoard.instantiateViewController(withIdentifier: "BuiltAuditViewController") as! BuiltAuditViewController
+        vc.intAuditId = arrDraftAuditList[index].audit_id
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }

@@ -27,15 +27,20 @@ class ReportListViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        arrReport = NSMutableArray()
-        
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        arrReport = NSMutableArray()
+//        
+//    }
     
     // MARK: - Supporting Methods
     
     func getReportList() {
         ///API code here
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(false)
+        kAppDelegate.currentViewController = self
     }
 
 }

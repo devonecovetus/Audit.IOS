@@ -29,7 +29,8 @@ class UserProfileViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         
         print(UserProfile)
-        
+        kAppDelegate.currentViewController = self
+
         lbl_UserName.text = UserProfile.name
         lbl_Email.text =  UserProfile.email
         btn_UserType.setTitle(UserProfile.userRole!, for: UIControlState.normal)
@@ -48,6 +49,7 @@ class UserProfileViewController: UIViewController {
             lbl_Email.textAlignment = NSTextAlignment.right
         }
     }
+  
 }
 
 extension UserProfileViewController: UITableViewDelegate, UITableViewDataSource {
@@ -71,7 +73,7 @@ extension UserProfileViewController: UITableViewDelegate, UITableViewDataSource 
             let vc = MainStoryBoard.instantiateViewController(withIdentifier: "EditProfileViewController") as? EditProfileViewController
             self.navigationController?.pushViewController(vc!, animated: true)
         } else if (MF.setUpProfileContent()[indexPath.row] as! NSDictionary)["name"] as! String == ProfileContent.ChatAdmin {
-            let vc = MainStoryBoard.instantiateViewController(withIdentifier: "ContactUsViewController") as? ContactUsViewController
+            let vc = MainStoryBoard.instantiateViewController(withIdentifier: "ChatWithAdminViewController") as? ChatWithAdminViewController
             self.navigationController?.pushViewController(vc!, animated: true)
         } else if (MF.setUpProfileContent()[indexPath.row] as! NSDictionary)["name"] as! String == ProfileContent.ShareApp {
             let strMsg = String(format: "Let me recommend you this application for managing your audit task. You can download the Access4Mii app for: \nAndroid version:\n%@\n\n and For: iOS version\n%@", AppLinks.GoogleAppStoreLink, AppLinks.AppleAppStoreLink)

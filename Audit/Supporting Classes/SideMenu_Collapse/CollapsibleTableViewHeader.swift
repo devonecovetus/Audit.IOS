@@ -70,7 +70,13 @@ class CollapsibleTableViewHeader: UITableViewHeaderFooterView {
         //addBtn.backgroundColor = .red
         //    titleLabel.translatesAutoresizingMaskIntoConstraints = false
         addBtn.frame = CGRect(x: 290, y: 10, width: 40, height: 40)
+        
         addBtn.setImage(UIImage.init(named: "ic_plus"), for: .normal)
+        addBtn.tintColor = UIColor(red: 249/255.0,
+                                   green: 95/255.0,
+                                   blue: 98/255.0,
+                                   alpha: 1.0)
+
         addBtn.addTarget(self, action: #selector(btn_add), for: .touchUpInside)
 
        // addBtn.addTarget(self, action: btn_add, for: .ui)

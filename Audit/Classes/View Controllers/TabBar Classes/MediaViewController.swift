@@ -16,6 +16,11 @@ class MediaViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(false)
+        kAppDelegate.currentViewController = self
+    }
+    
 
     /*
     // MARK: - Navigation

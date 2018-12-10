@@ -23,6 +23,9 @@ struct Server {
     enum API {
         static let TestUrl = String(format: "%@%@", Server.HostName.Testing, Server.Path.Test)
     }
+    enum ImagePath {
+        static let TestUrl = String(format: "%@storage/app/public/profilePic/chatfile/", imgBaseUrl)
+    }
     static let imgBaseUrl = Server.HostName.Testing
     static let BaseURL = Server.API.TestUrl
 }
@@ -46,6 +49,13 @@ struct WebServiceName {
     static let NotifyCount = "notifyCount"
     static let NotifyBellCount = "notifyBellCount"
     static let GetCountryStandard = "getCountryStandard"
-    
+    static let GetAgentAuditId = "getAgentByAuditorId"
+    static let GetChatUsersList = "getChatUsersList"
+    static let RequesttoAdminforChat = "request-to-admin-for-chat"
+    static let ChatUploadMedia = "uploadChatFileAuditor"
+    static let GetauditHistory = "getauditHistory"
+    static let SetNotifySetting = "setNotifySetting"
+    static let SetNotificationStatusByType = "setNotifyByType"
+
 }
 

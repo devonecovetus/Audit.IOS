@@ -25,7 +25,10 @@ class UserProfileModel: NSObject {
     var photo: String? = String()
     var userRole: String? = String()
     var authToken:String? = String()
-    
+    var auditPush:Int? = Int()
+    var reportPush:Int? = Int()
+    var messagePush:Int? = Int()
+    var allPush:Int? = Int()
     override init() {}
     
     func initWith(dict: NSDictionary) {
@@ -66,6 +69,12 @@ class UserProfileModel: NSObject {
         
         self.authToken = dict["auth_token"] as? String
         self.language = dict["lang"] as? String
+        
+        self.auditPush = dict["audit_push"] as? Int
+        self.reportPush = dict["report_push"] as? Int
+        self.messagePush = dict["msg_push"] as? Int
+        self.allPush = dict["push_all"] as? Int
+        
     }
     
     private static var userProfile: UserProfileModel?

@@ -21,7 +21,6 @@ class WebServiceClass: NSObject {
             }
             
             let strUrl = NSString(format: "%@%@", Server.BaseURL, name) as String
-         
             print("Url = \(strUrl)\n\nParams = \(dictParams)")
             
             let url = NSURL(string: strUrl as String)
@@ -41,7 +40,6 @@ class WebServiceClass: NSObject {
                     }
                 }
                 
-                
                 /**
                  If single file data, then this condition executes
                  */
@@ -58,7 +56,6 @@ class WebServiceClass: NSObject {
                         body.appendString(string: "\r\n")
                         body.appendString(string: "--\(boundary)--\r\n")
                     }
-                    
                 } else if let arrFiles =  dictParams["multiFiles"] as? NSMutableArray {
                     /// And if multiple then this.
                     for i in 0..<arrFiles.count {
@@ -117,10 +114,11 @@ class WebServiceClass: NSObject {
              Here I am creating session data task object to fulfil the API request
              */
             let dataTask = SESSION.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) in
+                
                 if response == nil { /// Response fail to get
                     DispatchQueue.main.async(execute: {
                         print("error = \(error.debugDescription)")
-                    //    SVProgressHUD.dismiss()
+                        SVProgressHUD.dismiss()
                         let alert = UIAlertController(title : "Network Error: Could not connect to server.", message : "Oops! Network was failed to process your request. Do you want to try again?", preferredStyle: UIAlertControllerStyle.alert)
                         alert.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.default ,handler:nil))
                         alert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.default ,handler:
@@ -129,7 +127,9 @@ class WebServiceClass: NSObject {
                                     callBack(dict)
                                 })
                         }))
-                       // vc.showAlertViewWithDuration(ValidationMessages.strInternalError, vc: vc)
+                      //  vc.showAlertViewWithDuration(ValidationMessages.strInternalError, vc: vc)
+                       
+                        vc.present(alert, animated: true, completion: nil)
                     })
                 } else { /// Response made to get
                     if error != nil {
@@ -148,10 +148,6 @@ class WebServiceClass: NSObject {
                                 if (jsonObject as NSDictionary)["status"] as? Int == 1 {
                                     callBack(jsonObject as NSDictionary)
                                 } else if (jsonObject as NSDictionary)["status"] as? Int == 2 {
-                                    SHOWALERT.showAlertViewWithDuration("Your account is already logged in on another device, Try logging in again!")
-                                    MF.logoutAndClearAllSessionData()
-                                } else if (jsonObject as NSDictionary)["message"] as! String == "auth token is invalid!" {
-                                    //vc.showAlertViewWithDuration("Your account is already logged in on another device, Try logging in again!", vc: vc)
                                     SHOWALERT.showAlertViewWithDuration("Your account is already logged in on another device, Try logging in again!")
                                     MF.logoutAndClearAllSessionData()
                                 } else {

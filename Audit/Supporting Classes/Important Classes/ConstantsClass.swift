@@ -27,16 +27,19 @@ var obSqlite = SqliteDB.sharedInstance()
 
 
 let dateFormatCustom = DateFormatter()
-let DateFormat_DMY = "dd MMM YYYY"
 let DateFormat_DMMY = "dd MMMM YYYY"
 let DateFormat_YMD = "YYYY-MM-dd"
 let DateFormat_YMD_HM = "YYYY-MM-dd hh:mm a"
 let DateFormat_YMD_HMS = "YYYY-MM-dd hh:mm:ss"
 let DateFormat_DMYE = "dd MMM YYYY, EEEE"
+let DateFormat_YMD_HMS1 = "YYYYMMddhhmmss"
 let DateFormat_MD = "MM-dd"
 let DateFormat_12HM = "hh:mm a"
 let DateFormat_24HM = "HH:mm"
+let DateFormat_DMY = "dd, MMM YYYY"
+let DateFormat_YMD_HMS2 = "YYYY-MM-dd HH:mm:ss"
 
+let AnswerSeperator = "|*|"
    
    var SESSION = URLSession.shared   /// Its a singleton of session that creates a default session
 let SelectedLanguage = "SelectedLanguage"
@@ -162,16 +165,40 @@ struct Version {
     static let iOS8 = (Version.SYS_VERSION >= 8.0 && Version.SYS_VERSION < 9.0)
     static let iOS9 = (Version.SYS_VERSION >= 9.0 && Version.SYS_VERSION < 10.0)
     static let iOS10 = (Version.SYS_VERSION >= 10.0 && Version.SYS_VERSION < 11.0)
-    static let iOS11 = (Version.SYS_VERSION >= 11.0 && Version.SYS_VERSION < 11.0)
+    static let iOS11 = (Version.SYS_VERSION >= 11.0 && Version.SYS_VERSION < 12.0)
     static let iOS12 = (Version.SYS_VERSION >= 12.0 && Version.SYS_VERSION < 12.0)
 }
 
 struct NotificationType {
-    static let Event = 1
-    static let DailyTask = 2
-    static let WeeklyTask = 3
-    static let Monthly = 4
+   static let Audit = "Audit"
+   static let Chat = "Chat"
 }
+
+/*
+ to check and manage question type
+ */
+enum QuestionType {
+    static let CheckBox = 3
+    static let Radio = 2
+    static let Text = 1
+    static let DropDown = 4
+    static let PopUp = 5
+}
+
+/*
+ Help to manage question priority
+ */
+enum QuestionPriority {
+    static let Low = 1
+    static let Medium = 2
+    static let High = 3
+}
+
+enum QuestionCategory {
+    static let Normal = 1
+    static let Measurement = 2
+}
+
 
 enum MethodType {
     static let Get =    "GET"

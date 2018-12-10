@@ -19,8 +19,10 @@ enum FileExtension {
     static let XLSX = "xlsx"
 }
 
-class FileDownloaderManager: NSObject {
+let ChatFolder = "ChatFiles"
 
+class FileDownloaderManager: NSObject {
+    
     func downloadFileDataInBackground(arrParam: [String]) {
         let path = arrParam[0]
         let name = arrParam[1]
@@ -38,6 +40,7 @@ class FileDownloaderManager: NSObject {
 //            print("check file exit = \(checkFileExistOrNot(path: path2, AndName: name, AndFileExtension: fExtension))")
             
             let actualPath = resourceDocPath.appendingPathComponent(pdfNameFromUrl)
+            print("actualPath = \(actualPath)")
             do {
                 try fileData?.write(to: actualPath, options: .atomic)
                 DispatchQueue.main.async {
@@ -121,4 +124,72 @@ class FileDownloaderManager: NSObject {
         }
         SHOWALERT.showAlertViewWithMessage(strMsg)
     }
+    
+    /// This function checks the file path, if it is exist it returns true and path else false
+    func downloadChatFileDataInBackground(arrParam: [String], callBack: @escaping ((_ isExist:Bool, _ filePath: String) -> Void))  {
+        
+        let path = arrParam[0]
+        let name = arrParam[1]
+        let fExtension = arrParam[2]
+        
+        let  path2 = path.replacingOccurrences(of: " ", with: "_")
+        let url = URL(string: path2)
+        
+        let fileNameFromUrl = String(format: "%@.%@", name, fExtension)
+        
+        let actualPath = getMediaDirectoryIfNotExist().appendingPathComponent(fileNameFromUrl)
+        print("actualPath = \(actualPath)")
+
+        let fileData = try? Data.init(contentsOf: url!)
+        do {
+            try fileData?.write(to: actualPath, options: .atomic)
+            DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+                self.showAlertMessage(strFileType: "File")
+            }
+             print("File saved successfully")
+             callBack(true, actualPath.absoluteString)
+        } catch {
+            print("file could not be saved")
+            DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+            }
+        }
+     
+        DispatchQueue.main.async {
+            SVProgressHUD.dismiss()
+        }
+      
+    }
+    
+    func getMediaDirectoryIfNotExist() -> URL {
+        let documentsDirectory = (FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)).last! as URL
+        let dataPath = documentsDirectory.appendingPathComponent(ChatFolder)
+        if FileManager.default.fileExists(atPath: dataPath.path) == false {
+            do {
+                try FileManager.default.createDirectory(at: dataPath, withIntermediateDirectories: false, attributes: nil)
+                return dataPath
+            } catch let error as NSError {
+                print(error.localizedDescription);
+            }
+        }
+        return dataPath
+    }
+    
+    func checkMediaFileExistOrNot(arrParam: [String]) -> Bool {
+      
+        let path = arrParam[0]
+        let name = arrParam[1]
+        let fExtension = arrParam[2]
+
+        let fileNameFromUrl = String(format: "%@.%@", name, fExtension)
+        
+        let actualPath = getMediaDirectoryIfNotExist().appendingPathComponent(fileNameFromUrl)
+        
+        if FileManager.default.fileExists(atPath: actualPath.absoluteString) {
+          return true
+        }
+        return false
+    }
+    
 }

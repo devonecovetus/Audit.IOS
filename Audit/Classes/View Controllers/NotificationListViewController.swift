@@ -27,6 +27,7 @@ class NotificationListViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        kAppDelegate.currentViewController = self
         self.notificationList.removeAll()
         self.tblView.reloadData()
         getNotificationList()
@@ -55,7 +56,7 @@ class NotificationListViewController: UIViewController {
             }
         }
     }
-
+ 
 }
 
 extension NotificationListViewController: UITableViewDelegate, UITableViewDataSource {
@@ -76,7 +77,7 @@ extension NotificationListViewController: UITableViewDelegate, UITableViewDataSo
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if notificationList[indexPath.row].type == "Audit" {
+        if notificationList[indexPath.row].type == NotificationType.Audit {
             let vc = HomeStoryBoard.instantiateViewController(withIdentifier: "AuditOverViewController") as! AuditOverViewController
             vc.str_notify_id = notificationList[indexPath.row].notify_id!
             self.navigationController?.pushViewController(vc, animated: true)

@@ -43,6 +43,12 @@ struct ValidationMessages {
     static let enterSubject = NSLocalizedString("enterSubject", comment: "")
     
     static let enterFolderName = NSLocalizedString("enterFolderName", comment: "")
+    static let selectAuditId = NSLocalizedString("selectAuditId", comment: "")
+    static let selectCountry = NSLocalizedString("selectCountry", comment: "")
+    static let selectLanguage = NSLocalizedString("selectlanguage", comment: "")
+    
+    static let subFolderName = NSLocalizedString("subFolderName", comment: "")
+    static let subFolderDescription = NSLocalizedString("subFolderDescription", comment: "")
 
 }
 

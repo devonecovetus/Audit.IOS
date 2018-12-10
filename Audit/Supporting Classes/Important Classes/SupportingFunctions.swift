@@ -48,6 +48,17 @@ class SupportingFunctions: NSObject {
         return ""
     }
     
+    //MARK: Navigations:
+    
+    func navigateToBuiltAudit(vc: UIViewController) {
+        for controller in vc.navigationController!.viewControllers as Array {
+            if controller.isKind(of: BuiltAuditViewController.self) {
+                vc.navigationController!.popToViewController(controller, animated: true)
+                break
+            }
+        }
+    }
+    
     func animateViewNavigation(navigationController: UINavigationController) {
         let transition: CATransition = CATransition()
         let timeFunc : CAMediaTimingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
@@ -138,6 +149,47 @@ class SupportingFunctions: NSObject {
             viewController.present(modalViewController, animated: false, completion: nil)
         })
     }
+    
+    //MARK: Image Picker
+    func openActionSheetForChat(with imagePicker: UIImagePickerController, with documentPicker: UIDocumentPickerViewController, and delegate: UIViewController)  {
+        let optionMenu = UIAlertController(title: nil, message: "Choose Media", preferredStyle: .actionSheet)
+        let openCapturePhotoAction = UIAlertAction(title: "Take Photo", style: .default, handler: {
+            (alert: UIAlertAction!) -> Void in
+            imagePicker.delegate = delegate as? UIImagePickerControllerDelegate & UINavigationControllerDelegate
+            imagePicker.allowsEditing = false
+            imagePicker.sourceType = .camera
+            delegate.present(imagePicker, animated: true, completion: nil)
+        })
+        
+        let openGalleryPhotoAction = UIAlertAction(title: "Choose from Library", style: .default, handler: {
+            (alert: UIAlertAction!) -> Void in
+            imagePicker.delegate = delegate as? UIImagePickerControllerDelegate & UINavigationControllerDelegate
+            imagePicker.allowsEditing = false
+            imagePicker.sourceType = .photoLibrary
+            imagePicker.mediaTypes = ["public.image","public.movie"]
+            delegate.present(imagePicker, animated: true, completion: nil)
+        })
+        
+        let openDocummentAction = UIAlertAction(title: "Document", style: .default, handler: {
+            (alert: UIAlertAction!) -> Void in
+            documentPicker.delegate = delegate as? UIDocumentPickerDelegate & UINavigationControllerDelegate
+            delegate.present(documentPicker, animated: true, completion: nil)
+        })
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: {
+            (alert: UIAlertAction!) -> Void in
+        })
+        
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera) {
+            optionMenu.addAction(openCapturePhotoAction)
+        }
+        optionMenu.addAction(openGalleryPhotoAction)
+        optionMenu.addAction(openDocummentAction)
+        optionMenu.addAction(cancelAction)
+        optionMenu.popoverPresentationController?.sourceView = delegate.view
+        delegate.present(optionMenu, animated: true, completion: nil)
+    }
+    
     
     //MARK: Set TabBar View:
     func setUpTabBarView() -> UITabBarController {
@@ -253,19 +305,20 @@ class SupportingFunctions: NSObject {
     }
     
     func logoutAndClearAllSessionData() {
-        var isRemember = false
-        var email = ""
-        var password = ""
+        let email = Preferences.value(forKey: "email")
+        let password = Preferences.value(forKey: "password")
         
         for key in UserDefaults.standard.dictionaryRepresentation().keys {
             UserDefaults.standard.removeObject(forKey: key.description)
         }
+        Preferences.setValue(email, forKey: "email")
+        Preferences.setValue(password, forKey: "password")
+        
         UserProfile = UserProfileModel.sharedInstance()
-      
+        
         let vc1 = MainStoryBoard.instantiateViewController(withIdentifier: "Login_VC") as! Login_VC
         let navigationController = kAppDelegate.window?.rootViewController as! UINavigationController
         navigationController.viewControllers = [vc1]
-       // navigationController.isNavigationBarHidden = true
         kAppDelegate.window?.rootViewController = navigationController
     }
     
@@ -309,6 +362,14 @@ class SupportingFunctions: NSObject {
         return arr
     }
     
+    func setUpNotificationStatusArray() -> NSMutableArray {
+        let arr = NSMutableArray()
+        arr.add(UserProfile.auditPush as Any)
+        arr.add(UserProfile.reportPush  as Any)
+        arr.add(UserProfile.messagePush  as Any)
+        return arr
+    }
+    
     func setUpPageArray() -> NSMutableArray {
         let arr = NSMutableArray()
         arr.add(SettingContent.AboutUs)
@@ -327,12 +388,37 @@ class SupportingFunctions: NSObject {
         return arr
     }
     
+    func setUpQuestionPriority() -> NSMutableArray {
+        let arrQP = NSMutableArray()
+        
+        let d1 = NSMutableDictionary()
+        d1.setValue(QuestionPriority.Low, forKey: "Value")
+        d1.setValue(UIColor.yellow, forKey: "Color")
+        d1.setValue(NSLocalizedString("Low", comment: ""), forKey: "Name")
+        arrQP.add(d1)
+        
+        let d2 = NSMutableDictionary()
+        d2.setValue(QuestionPriority.Medium, forKey: "Value")
+        d2.setValue(UIColor.purple, forKey: "Color")
+        d2.setValue(NSLocalizedString("Medium", comment: ""), forKey: "Name")
+        arrQP.add(d2)
+        
+        let d3 = NSMutableDictionary()
+        d3.setValue(QuestionPriority.High, forKey: "Value")
+        d3.setValue(UIColor.red, forKey: "Color")
+        d3.setValue(NSLocalizedString("High", comment: ""), forKey: "Name")
+        arrQP.add(d3)
+        
+        return arrQP
+    }
+    
     func setUpSettingContent() -> NSMutableArray {
         let arrSetting = NSMutableArray()
         
         let d1 = NSMutableDictionary()
         d1.setValue(SettingContent.Sections.PushNotification, forKey: "SectionName")
         d1.setValue(setUpNotificationArray(), forKey: "SectionArray")
+        d1.setValue(setUpNotificationStatusArray(), forKey: "NotificationStatus")
         
         let d2 = NSMutableDictionary()
         d2.setValue(SettingContent.Sections.Pages, forKey: "SectionName")

@@ -25,7 +25,7 @@ class BuiltLocationCell: UICollectionViewCell {
     
     //MARK: Button Actions:
     @IBAction func btn_Up(_ sender: Any) {
-        print("self tag = \(self.tag)")
+       
         delegate?.increaseValue(index: index)
     }
     

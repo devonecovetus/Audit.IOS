@@ -98,6 +98,11 @@ class ChangePasswordViewController: UIViewController {
             }
         }
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(false)
+        kAppDelegate.currentViewController = self
+    }
 }
 
 extension ChangePasswordViewController: UITextFieldDelegate {

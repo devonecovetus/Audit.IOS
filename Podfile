@@ -11,4 +11,5 @@ target 'Audit' do
   pod 'SDWebImage'
   pod 'Fabric'
   pod 'Crashlytics'
+  pod 'Socket.IO-Client-Swift', '~> 13.3.0'
 end

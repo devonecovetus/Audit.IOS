@@ -10,7 +10,6 @@ import UIKit
 
 class ThankYouViewController: UIViewController {
 
-    
     //MARK: Outlets & Variables:
     @IBOutlet weak var btn_Home: UIButton!
     @IBOutlet weak var lbl_Messsage: UILabel!
@@ -21,7 +20,6 @@ class ThankYouViewController: UIViewController {
     //MARK: View Life Cycle:
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
     }
     
@@ -40,6 +38,11 @@ class ThankYouViewController: UIViewController {
         imgView_Thank.transform = CGAffineTransform(scaleX: kAppDelegate.intViewFlipStatus, y: 1)
         
         btn_Home.setTitle(NSLocalizedString("HOME", comment: ""), for: UIControlState.normal)
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(false)
+        kAppDelegate.currentViewController = self
     }
     
 }

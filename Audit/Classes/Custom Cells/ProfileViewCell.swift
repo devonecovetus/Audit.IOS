@@ -29,7 +29,6 @@ class ProfileViewCell: UITableViewCell {
         didSet {
             lbl_Name.text = (MF.setUpProfileContent()[(cellIndex?.row)!] as! NSDictionary)["name"] as? String
             let imgName = (MF.setUpProfileContent()[(cellIndex?.row)!] as! NSDictionary)["icon"] as? String
-            print("imgName = \(imgName)")
             imgView_Item.image = UIImage(named: imgName!)
         }
     }

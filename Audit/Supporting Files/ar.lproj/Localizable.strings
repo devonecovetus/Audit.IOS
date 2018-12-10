@@ -10,7 +10,7 @@
 
 "enterSubject" = "Please enter subject";
 "enterDescription" = "Please enter the description";
-"strEnterFirstName" = "strEnterFirstName";
+"strEnterFirstName" = "Please enter first name";
 "strEnterLastName" = "Please enter last name";
 "strEnterEmail" = "يرجى إدخال البريد الإلكتروني";
 "strEnterValidEmail" = "الرجاء إدخال بريد إلكتروني صحيح";
@@ -37,6 +37,9 @@
 "deleteNotification" = "Are you sure you want to delete selected notifications?";
 "logoutSuccessfully" = "You logout from app successfully";
 "enterFolderName" = "Please enter folder name";
+"selectAuditId" = "Please select audit Id";
+"selectCountry" = "Please select country";
+"selectLanguage" = "Please select language";
 
 
 "Ok" = "حسنا";

@@ -97,6 +97,11 @@ class ContactUsViewController: UIViewController {
             }
         }
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(false)
+        kAppDelegate.currentViewController = self
+    }
 }
 
 extension ContactUsViewController: UITextFieldDelegate {

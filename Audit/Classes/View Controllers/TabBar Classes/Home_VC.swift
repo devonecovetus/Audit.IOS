@@ -20,24 +20,21 @@ class Home_VC: UIViewController {
         setUpLanguageSetting()
         // Do any additional setup after loading the view.
         self.lbl_notifycount.isHidden = true
-        getNotificationCount()
-        
+       // getNotificationCount()
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        kAppDelegate.currentViewController = self
         self.lbl_notifycount.isHidden = true
         getNotificationCount()
     }
-    
+        
     func getNotificationCount() {
         /// API code here
-        let dictP = NSMutableDictionary()
-        dictP.setValue(UserProfile.id, forKey: "id")
-        dictP.setValue(UserProfile.authToken, forKey: "auth_token")
         
-        OB_WEBSERVICE.getWebApiData(webService: WebServiceName.NotifyCount, methodType: 1, forContent: 1, OnView: self, withParameters: dictP, IsShowLoader: false) { (dictJson) in
+        OB_WEBSERVICE.getWebApiData(webService: WebServiceName.NotifyCount, methodType: 1, forContent: 1, OnView: self, withParameters: MF.initializeDictWithUserId(), IsShowLoader: false) { (dictJson) in
             if dictJson["status"] as? Int == 1 { // Means user logined
-                if (dictJson["response"] as! NSDictionary)["count"] as? Int != 0{
+                if (dictJson["response"] as! NSDictionary)["count"] as? Int != 0 {
                     self.lbl_notifycount.isHidden = false
                     self.lbl_notifycount.text =  String((dictJson["response"] as! NSDictionary)["count"] as! Int)
                 }
@@ -57,11 +54,8 @@ class Home_VC: UIViewController {
     
     func NotificationBellCount() {
         /// API code here
-        let dictP = NSMutableDictionary()
-        dictP.setValue(UserProfile.id, forKey: "id")
-        dictP.setValue(UserProfile.authToken, forKey: "auth_token")
         
-        OB_WEBSERVICE.getWebApiData(webService: WebServiceName.NotifyBellCount, methodType: 1, forContent: 1, OnView: self, withParameters: dictP, IsShowLoader: false) { (dictJson) in
+        OB_WEBSERVICE.getWebApiData(webService: WebServiceName.NotifyBellCount, methodType: 1, forContent: 1, OnView: self, withParameters: MF.initializeDictWithUserId(), IsShowLoader: false) { (dictJson) in
             if dictJson["status"] as? Int == 1 { // Means user logined
                 self.lbl_notifycount.isHidden = true
             }
@@ -110,25 +104,12 @@ extension Home_VC: UIImagePickerControllerDelegate, UINavigationControllerDelega
         }
         picker.dismiss(animated: true, completion: nil)
 
-
         let photoEditor = PhotoEditorViewController(nibName:"PhotoEditorViewController",bundle: Bundle(for: PhotoEditorViewController.self))
 
         photoEditor.photoEditorDelegate = self
 
         photoEditor.image = image
-
-        //Colors for drawing and Text, If not set default values will be used
-        //        photoEditor.colors = [.red,.blue,.green]
-
-        //Stickers that the user will choose from to add on the image
-//        for i in 0...10 {
-//            photoEditor.stickers.append(UIImage(named: i.description )!)
-//        }
-
-        //To hide controls - array of enum control
-        //  photoEditor.hiddenControls = [.crop, .draw, .share]
         photoEditor.hiddenControls = [.share, .save, .sticker]
-
         present(photoEditor, animated: true, completion: nil)
     }
 

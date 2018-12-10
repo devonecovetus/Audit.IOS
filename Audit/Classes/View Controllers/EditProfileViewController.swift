@@ -30,6 +30,8 @@ class EditProfileViewController: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(false)
+        kAppDelegate.currentViewController = self
         if !flagIsUploadPic {
             setUserProfileData()
         }
@@ -206,7 +208,7 @@ extension EditProfileViewController: UIImagePickerControllerDelegate, UINavigati
         photoEditor.photoEditorDelegate = self
         self.flagIsUploadPic = true
         photoEditor.image = image
-        
+        imgView_User.image = image
         //Colors for drawing and Text, If not set default values will be used
         //        photoEditor.colors = [.red,.blue,.green]
         

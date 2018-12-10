@@ -41,6 +41,11 @@ class DateClassFunctions: NSObject {
     
     func getTimeDifferenceBetweenTwoDates(strMsgDate: String) -> String  {
         
+        if strMsgDate == "NaN-NaN-NaN aN:aN:NaN" {
+            print("Function return")
+            return ""
+        }
+        
         var strTimeMessage = ""
         if(strMsgDate.count > 0){
             let df1 = DateFormatter()
@@ -54,16 +59,23 @@ class DateClassFunctions: NSObject {
             df.timeZone = TimeZone.init(identifier: "GMT")
             let strdate = df.string(from: todaysDate as Date)
             let date2 = df.date(from: strdate)
+            print(" case date2 = \(date2)")
+
             //
             var date1 = df.date(from: strMsgDate)
+            print ("str date1 \(date1)")
             if(date1 == nil) {
-                df.dateFormat = "YYYY-MM-dd HH:mm:ss"
-                df.timeZone = TimeZone.init(identifier: "GMT")
-                date1 = df.date(from: strMsgDate)
-                //       print(" case date1 = \(date1)")
+                let dateFormatter = DateFormatter()
+                dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+                dateFormatter.timeZone = TimeZone.autoupdatingCurrent
+                dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+             //   df.dateFormat = "yyyy-MM-dd'T'HH:mm:ss Z"
+              //  df.timeZone = TimeZone.init(identifier: "GMT")
+                date1 = dateFormatter.date(from: strMsgDate)
+                print(" case date1 = \(date1)")
             }
             
-            let interval = date1!.timeIntervalSince(date2!) + 47
+            let interval = date2!.timeIntervalSince(date1!) + 47
             let hours = Int(interval) / 3600
             let minutes = (Int(interval) - (hours * 3600)) / 60
             let seconds = (Int(interval) - (hours * 3600))
@@ -78,8 +90,9 @@ class DateClassFunctions: NSObject {
             let strDateS1 = df5.string(from: date1!)
             let strDateS2 = df5.string(from: date2!)
             
+            print("seconds = \(seconds), hours = \(hours), minutes = \(minutes)")
+
             if strDateS1 == strDateS2 {
-             print("seconds = \(seconds), hours = \(hours), minutes = \(minutes)")
           //  if comparedates == true {
                 
                 let df6 = DateFormatter()
@@ -182,7 +195,7 @@ class DateClassFunctions: NSObject {
     }
     
     func getCurrentDateTime_YMD_HMS() -> String {
-        dateFormatCustom.dateFormat = DateFormat_YMD_HMS
+        dateFormatCustom.dateFormat = DateFormat_YMD_HMS1
         let date = dateFormatCustom.string(from: Date())
         return date
     }

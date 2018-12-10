@@ -84,6 +84,11 @@ class ForgotPassword_VC: UIViewController {
             }
         }
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(false)
+        kAppDelegate.currentViewController = self
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

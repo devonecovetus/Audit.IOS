@@ -23,6 +23,8 @@ class WebContentViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        kAppDelegate.currentViewController = self
+
         lbl_Title.text = strTitle
         if (strLinkType?.count)! > 0 {
             // webView_Content.loadHTMLString(strLinkType!, baseURL: nil)

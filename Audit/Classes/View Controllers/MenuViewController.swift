@@ -22,6 +22,8 @@ class MenuViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        kAppDelegate.currentViewController = self
+
         let strName = String(format: "%@", UserProfile.name!)
         lbl_FullName.text = strName
         let imgUrl = UserProfile.photo!
@@ -70,6 +72,7 @@ class MenuViewController: UIViewController {
             }
         }
     }
+    
 }
 
 extension MenuViewController: UITableViewDataSource, UITableViewDelegate {
@@ -104,7 +107,9 @@ extension MenuViewController: UITableViewDataSource, UITableViewDelegate {
             navigationController.viewControllers.append(vc!)
             MF.animateViewNavigation(navigationController: navigationController)
         } else if (MF.setUpMenuContent()[indexPath.row] as! NSDictionary)["name"] as! String == MenuContent.Logout {
-            logout()
+            self.executeUIProcess {
+                self.logout()
+            }
         }
         
         /// This code manage the condition for logout feature, if we click logout then menu view will not dismissed

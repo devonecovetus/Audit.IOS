@@ -22,11 +22,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var strLanguageName: String = String()
     var flagIsInBackground = false
     
+    var intTotalLocationCount = Int()
+    var intTotalFolderCount = Int()
+    //THis variable is used to check the lock status in the location, if lock is 1 then no updation will be done
+    var intLockStatus = Int()
+    
+    var currentViewController = UIViewController()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
         obSqlite.createDataBaseIfNotExist()
+       // obSqlite.createTableIfNotExist(DBTables.UserChating, andFieldNames: SQLQuery.CreateTable.UserChating)
+ //      obSqlite.createTableIfNotExist(DBTables.LocationSubFolderList, andFieldNames: SQLQuery.CreateTable.LocationSubFolderList)
+    
         setDefaultLangaueSettings()
         IQKeyboardManager.sharedManager().enable = true
         self.window = UIWindow(frame: UIScreen.main.bounds)
@@ -70,8 +79,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if defaults.object(forKey: "isLogin") != nil {
             if defaults.bool(forKey: "isLogin") {
                 let unarchiveUserData : NSMutableDictionary = NSKeyedUnarchiver.unarchiveObject(with: (defaults.object(forKey: "UserData") as! NSData) as Data) as! NSMutableDictionary
-                print("UserData = \(unarchiveUserData.mutableCopy() as! NSMutableDictionary)")
-                
+            //    print("UserData = \(unarchiveUserData.mutableCopy() as! NSMutableDictionary)")
                 UserProfile.initWith(dict: unarchiveUserData.mutableCopy() as! NSMutableDictionary)
                
                 let vc1 = HomeStoryBoard.instantiateViewController(withIdentifier: "Home_VC") as! Home_VC
@@ -92,7 +100,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     vcTabBarViewController?.selectedIndex = 5
                 }
                 let vcTest = BuiltAuditStoryBoard.instantiateViewController(withIdentifier: "BuiltAuditViewController") as! BuiltAuditViewController
-               // self.navigationController.viewControllers = [vcTest]
+              //  self.navigationController.viewControllers = [vcTest]
                 self.navigationController.viewControllers = [vcTabBarViewController!]
             } else {
                 let vc = MainStoryBoard.instantiateViewController(withIdentifier: "Login_VC") as? Login_VC
@@ -124,6 +132,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
              //UIView.appearance().semanticContentAttribute = .forceRightToLeft
         }
     }
+    
+    func getAndSetUserDetailsInBackground() {
+        OB_WEBSERVICE.getWebApiData(webService: WebServiceName.GetUserDetail, methodType: 1, forContent: 1, OnView: (kAppDelegate.window?.rootViewController)!
+        , withParameters: MF.initializeDictWithUserId(), IsShowLoader: false) { (dictJson) in
+            if dictJson["status"] as? Int == 1 {
+                let archiveUserData = NSKeyedArchiver.archivedData(withRootObject: (dictJson["response"] as! NSDictionary).mutableCopy())
+                Preferences.set(archiveUserData , forKey: "UserData")
+                
+            }
+        }
+        
+    }
+    
 }
 
 extension AppDelegate: UNUserNotificationCenterDelegate {
@@ -167,7 +188,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     /// This method will work when the app is in background and receives push notification
     func application( _ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any],
                       fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        showNotificationMessage(strMsg: String(format: "%@", userInfo))
+        showNotificationMessage(dictND:  userInfo as NSDictionary)
         completionHandler(.newData)
     }
     
@@ -178,16 +199,15 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         //Handle the notification
         print("userInfo = \(notification.request.content.userInfo)")
-        if flagIsInBackground {
+     //   if flagIsInBackground {
             if Version.iOS10 {
                 completionHandler(UNNotificationPresentationOptions.alert)
             } else if Version.iOS11 {
                 completionHandler([.sound, .alert])
             }
-        } else {
-            /// Show alert here
-            showNotificationMessage(strMsg: String(format: "%@", (notification.request.content.userInfo["aps"] as! NSDictionary)["alert"] as! String))
-        }
+      /*  } else {
+            showNotificationMessage(dictND: (notification.request.content.userInfo["aps"] as! NSDictionary)["alert"] as! NSDictionary)
+       } */
     }
     
     @available(iOS 10.0, *)
@@ -195,16 +215,37 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         //Handle the notification
         print("userInfo = \(response.notification.debugDescription)")
         /// SHow Alert here
-        showNotificationMessage(strMsg: String(format: "%@", (response.notification.request.content.userInfo["aps"] as! NSDictionary)["alert"] as! String))
+        showNotificationMessage(dictND: (response.notification.request.content.userInfo["aps"] as! NSDictionary)["alert"] as! NSDictionary)
     }
     
-    func showNotificationMessage(strMsg: String) {
-        let alert = UIAlertController(title: "Alert", message: strMsg , preferredStyle: UIAlertControllerStyle.alert)
-        let okButton = UIAlertAction(title: NSLocalizedString("Ok", comment: ""), style: UIAlertActionStyle.default, handler: { (UIAlertAction) in
+    /// This is the common function to manage the notification alert view, where the notification methods invokes it calls from there.
+    func showNotificationMessage(dictND: NSDictionary) {
+        
+  //      let strTitle = dictND["title"] as! String
+   //     let strMsg = dictND["body"] as! String
+        let type = dictND["type"] as! String
+        
+        if type == NotificationType.Audit {
+            let vc = HomeStoryBoard.instantiateViewController(withIdentifier: "AuditOverViewController") as! AuditOverViewController
+            if let str_id = dictND["notification_id"] as? String{
+                vc.str_notify_id =  str_id
+            } else if let id = dictND["notification_id"] as? Int{
+                vc.str_notify_id =  String(id)
+            }
+            self.navigationController.pushViewController(vc, animated: true)
+        } else if type == NotificationType.Chat {
             
-        })
-        alert.addAction(okButton)
-        self.window?.rootViewController?.present(alert, animated: true, completion: nil)
+            if Preferences.bool(forKey: "isLogin") {
+                
+                if (kAppDelegate.currentViewController is ChatListViewController) || (kAppDelegate.currentViewController is ChatViewController){ return } else {
+                    let navigationController = kAppDelegate.window?.rootViewController as! UINavigationController
+                    navigationController.viewControllers = [MF.setUpTabBarView(selectedIndex:1)]
+                    MF.animateViewNavigation(navigationController: navigationController)
+                    kAppDelegate.window?.rootViewController = navigationController
+                }
+            }
+            
+        } else {}
     }
     
 }
