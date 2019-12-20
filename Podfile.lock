@@ -2,7 +2,8 @@ PODS:
   - Crashlytics (3.10.3):
     - Fabric (~> 1.7.8)
   - Fabric (1.7.8)
-  - iOSPhotoEditor (0.5)
+  - iOSPhotoEditor (0.6)
+  - MBCircularProgressBar (0.3.5)
   - SDWebImage (4.4.1):
     - SDWebImage/Core (= 4.4.1)
   - SDWebImage/Core (4.4.1)
@@ -15,6 +16,7 @@ DEPENDENCIES:
   - Crashlytics
   - Fabric
   - iOSPhotoEditor
+  - MBCircularProgressBar
   - SDWebImage
   - Socket.IO-Client-Swift (~> 13.3.0)
   - SVProgressHUD
@@ -24,6 +26,7 @@ SPEC REPOS:
     - Crashlytics
     - Fabric
     - iOSPhotoEditor
+    - MBCircularProgressBar
     - SDWebImage
     - Socket.IO-Client-Swift
     - Starscream
@@ -32,12 +35,13 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Crashlytics: 2aea305161a2122492698c75af27f2b98aa49a25
   Fabric: fba4684a95df789565b0b27fc5b6e68f1755af32
-  iOSPhotoEditor: 0ddc84bcef9fe73fe8cc45ac999b89e0aa207aea
+  iOSPhotoEditor: d597c2797033bb06e2a705560ae748136c8ac2ea
+  MBCircularProgressBar: 0b795b722a5eb5b0923822f90474e2576a1a7855
   SDWebImage: 47e9b5b925cbce75946c23f0c42dd19464189af4
   Socket.IO-Client-Swift: 0afb192a562db90d50e3f7f7421c06925a3f0179
   Starscream: faf918b2f2eff7d5dd21180646bf015a669673bd
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: 220fbf5267eccac67e671924c01053d0b94baa5c
+PODFILE CHECKSUM: e15e21fe53f1c055ee0eeab1025ad5eef1d1a593
 
 COCOAPODS: 1.5.3

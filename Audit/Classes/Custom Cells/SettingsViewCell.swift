@@ -14,7 +14,6 @@ protocol SettingsDelegate {
 
 class SettingsViewCell: UITableViewCell {
 
-    
     var delegate: SettingsDelegate?
     var intIndex = Int()
     @IBAction func btn_Logout(_ sender: Any) {
@@ -27,7 +26,6 @@ class SettingsViewCell: UITableViewCell {
     
     @IBAction func btn_Switch(_ sender: Any) {
         var status = 0
-        
         
         if UserProfile.allPush == 1 { /// means main push notifications are enable so wuser can manipulate other notifications
             if MF.setUpNotificationStatusArray()[intIndex] as! Int == 1 {
@@ -50,20 +48,18 @@ class SettingsViewCell: UITableViewCell {
             btn_Switch.isOn = false
             SHOWALERT.showAlertViewWithMessage("Please enable the push notification from setting section")
         }
-        
-        
     }
+    
     @IBOutlet weak var btn_Switch: UISwitch!
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.selectionStyle = .none
+        selectionStyle = .none
         setUpLanguageSetting()
         // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
     }
 
@@ -90,34 +86,21 @@ class SettingsViewCell: UITableViewCell {
       //  btn_Logout.alpha = 0.0
         if strSectionName == SettingContent.Sections.PushNotification {
             btn_Switch.alpha = 1.0
-            
         } else if strSectionName == SettingContent.Sections.Pages {
             imgView_Arrow.alpha = 1.0
         } else if strSectionName == SettingContent.Sections.ContactUs {
-            
         }
     }
     
     func setNotifcationSetting() {
-        let arrNotif = (MF.setUpSettingContent()[(0)] as! NSDictionary)
-       
-        
-        
-        
-        
-        
-        
-        
-        
+       // let arrNotif = (MF.setUpSettingContent()[(0)] as! NSDictionary)
     }
     
    private func setUpLanguageSetting() {
-        //self.contentView.transform = CGAffineTransform(scaleX: kAppDelegate.intViewFlipStatus, y: 1)
         lbl_Name.transform = CGAffineTransform(scaleX: kAppDelegate.intViewFlipStatus, y: 1)
         btn_Switch.transform = CGAffineTransform(scaleX: kAppDelegate.intViewFlipStatus, y: 1)
         if kAppDelegate.strLanguageName == LanguageType.Arabic {
              lbl_Name.textAlignment = NSTextAlignment.right
         }        
     }
-    
 }

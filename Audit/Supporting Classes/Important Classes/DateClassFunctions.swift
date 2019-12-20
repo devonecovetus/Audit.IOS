@@ -11,13 +11,27 @@ import UIKit
 class DateClassFunctions: NSObject {
     //MARK: Date Functions:
     func change(date inputDate:String , format inputFormat:String, to outputFormat:String) -> String {
+       
         let inputDateFormatter = DateFormatter()
         inputDateFormatter.dateFormat = inputFormat
         inputDateFormatter.timeZone = TimeZone.init(identifier: TimeZone.current.identifier)
-        let inDate = inputDateFormatter.date(from: inputDate)
+        var inDate = inputDateFormatter.date(from: inputDate)
+        if inDate == nil {
+            let inputDateFormatter = DateFormatter()
+            inputDateFormatter.dateFormat = "YYYY-MM-dd"
+            inputDateFormatter.timeZone = TimeZone.init(identifier: TimeZone.current.identifier)
+            inDate = inputDateFormatter.date(from: inputDate)
+            if inDate == nil {
+                let inputDateFormatter = DateFormatter()
+                inputDateFormatter.dateFormat = "YYYY-MM-dd HH:mm:ss"
+                inputDateFormatter.timeZone = TimeZone.init(identifier: TimeZone.current.identifier)
+                inDate = inputDateFormatter.date(from: inputDate)
+            }
+        }
         
         let outputDateFormatter = DateFormatter()
         outputDateFormatter.dateFormat = outputFormat
+        outputDateFormatter.locale = Locale.current //NSLocale(localeIdentifier: "ar_AI") as Locale//
         outputDateFormatter.timeZone = TimeZone.init(identifier: TimeZone.current.identifier)
         return outputDateFormatter.string(from: inDate!)
     }
@@ -40,9 +54,9 @@ class DateClassFunctions: NSObject {
     }
     
     func getTimeDifferenceBetweenTwoDates(strMsgDate: String) -> String  {
-        
+    //    //print("strMsgDate = \(strMsgDate)")
         if strMsgDate == "NaN-NaN-NaN aN:aN:NaN" {
-            print("Function return")
+            //print("Function return")
             return ""
         }
         
@@ -51,7 +65,7 @@ class DateClassFunctions: NSObject {
             let df1 = DateFormatter()
             df1.dateFormat = "YYYY-MM-dd HH:mm:ss"
             df1.timeZone = TimeZone.init(identifier: "GMT")
-            let dateMsg = df1.date(from: strMsgDate)
+            var dateMsg = df1.date(from: strMsgDate)
             let todaysDate = NSDate()
             
             let df = DateFormatter()
@@ -59,39 +73,35 @@ class DateClassFunctions: NSObject {
             df.timeZone = TimeZone.init(identifier: "GMT")
             let strdate = df.string(from: todaysDate as Date)
             let date2 = df.date(from: strdate)
-            print(" case date2 = \(date2)")
-
-            //
+         
             var date1 = df.date(from: strMsgDate)
-            print ("str date1 \(date1)")
+       //    //print ("str date1 \(date1)")
             if(date1 == nil) {
                 let dateFormatter = DateFormatter()
-                dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+                //dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+                dateFormatter.locale = Locale(identifier: "en_UAE")
                 dateFormatter.timeZone = TimeZone.autoupdatingCurrent
                 dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-             //   df.dateFormat = "yyyy-MM-dd'T'HH:mm:ss Z"
-              //  df.timeZone = TimeZone.init(identifier: "GMT")
+             
                 date1 = dateFormatter.date(from: strMsgDate)
-                print(" case date1 = \(date1)")
+           //     //print(" case date1 = \(date1)")
             }
             
             let interval = date2!.timeIntervalSince(date1!) + 47
             let hours = Int(interval) / 3600
             let minutes = (Int(interval) - (hours * 3600)) / 60
             let seconds = (Int(interval) - (hours * 3600))
-            // print("seconds = \(seconds), hours = \(hours), minutes = \(minutes)")
+            // //print("seconds = \(seconds), hours = \(hours), minutes = \(minutes)")
             // interval minus hours part (in seconds) divided by 60 yields minutes
             
             let df5 = DateFormatter()
             df5.dateFormat = "YYYY-MM-dd"
             df5.timeZone = TimeZone.init(identifier: "GMT")
-            print("df5 date = \(df5.string(from: date1!))")
+        //    //print("df5 date = \(df5.string(from: date1!))")
             
             let strDateS1 = df5.string(from: date1!)
             let strDateS2 = df5.string(from: date2!)
-            
-            print("seconds = \(seconds), hours = \(hours), minutes = \(minutes)")
-
+      
             if strDateS1 == strDateS2 {
           //  if comparedates == true {
                 
@@ -123,10 +133,38 @@ class DateClassFunctions: NSObject {
             }
             else {
                 if (hours < 48) {
+                    
+                    if dateMsg == nil {
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+                        dateFormatter.timeZone = TimeZone.autoupdatingCurrent
+                        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+                        
+                        dateMsg = dateFormatter.date(from: strMsgDate)
+                    }
+                    
                     df1.dateFormat = "hh:mm a"//DataBaseConstants.ChatDateFormatAlter
-                    let strdate = df1.string(from: dateMsg!)
-                    strTimeMessage = String(format:"Yesterday,%@", strdate)
+                 //   //print("dateMsg = \(dateMsg)")
+                    
+                    if dateMsg ==  nil {
+                        let strdate = df1.string(from: date1!)
+                        strTimeMessage = String(format:"Yesterday,%@", strdate)
+                    } else {
+                        let strdate = df1.string(from: dateMsg!)
+                        strTimeMessage = String(format:"Yesterday,%@", strdate)
+                    }
+                    
                 } else if (hours > 48) {
+                    
+                    if dateMsg == nil {
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+                        dateFormatter.timeZone = TimeZone.autoupdatingCurrent
+                        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+                        
+                        dateMsg = dateFormatter.date(from: strMsgDate)
+                    }
+
                     df1.dateFormat = "dd MMM yyyy"//DataBaseConstants.ChatDateFormatAlter
                     let strdate = df1.string(from: dateMsg!)
                     df1.dateFormat = "HH:mm a"//DataBaseConstants.ChatDateFormatAlter
@@ -143,7 +181,7 @@ class DateClassFunctions: NSObject {
         dateFormatCustom.locale = NSLocale(localeIdentifier: "en") as Locale?
         dateFormatCustom.dateFormat = "YYYY-MM-dd HH:mm:ss"
         guard let cDate = dateFormatCustom.date(from: date) else {
-            print("no date from string")
+            //print("no date from string")
             return ""
         }
         dateFormatCustom.dateFormat = "YYYY-MM-dd hh:mm a"
@@ -229,7 +267,6 @@ class DateClassFunctions: NSObject {
         let date = dateFormatCustom.string(from: Date().endOfMonth())
         return date
     }
-    
 }
 
 extension Date{
@@ -241,7 +278,6 @@ extension Date{
         if self.compare(dateToCompare as Date) == ComparisonResult.orderedDescending {
             isGreater = true
         }
-        
         //Return Result
         return isGreater
     }

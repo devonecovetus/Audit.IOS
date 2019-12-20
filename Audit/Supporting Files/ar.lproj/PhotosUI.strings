@@ -1,0 +1,12 @@
+/* 
+  PhotosUI.strings
+  Audit
+
+  Created by Rupesh Chhabra on 25/01/19.
+  Copyright © 2019 Mac. All rights reserved.
+*/
+"ALL_PHOTOS_IN_LIBRARY" = "لحظات";
+"PXUserCollectionsSectionTitle" = "ألبوماتى";
+"FULL_PHOTOS_GRID_ZOOM_LEVEL_TITLE" = "لحظات";
+"NO_PHOTOS_OR_VIDEOS" = "لا صور أو فيديو";
+"EMPTY_ALBUM_LIST_MESSAGE_iPhone" = "يمكنك التقاط الصور ومقاطع الفيديو باستخدام الكاميرا ، أو مزامنة الصور ومقاطع الفيديو على iPhone باستخدام iTunes";

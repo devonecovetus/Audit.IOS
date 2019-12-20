@@ -1,0 +1,10 @@
+/* 
+  PhotoLibraryServices.strings
+  Audit
+
+  Created by Rupesh Chhabra on 25/01/19.
+  Copyright © 2019 Mac. All rights reserved.
+*/
+"PHOTOS" = "الصور";
+"CAMERA_ROLL" = "فلم الة التصوير";
+"ALL_SCREENSHOTS" = "لقطات";

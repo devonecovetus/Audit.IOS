@@ -38,7 +38,7 @@ class UserProfileModel: NSObject {
         if let dToken = dict["devicetoken"] as? String {
             self.deviceToken = dToken
         } else {
-            self.deviceToken = "786re8768er678er87e6r868e6r868e6r868e"
+            self.deviceToken = "786re8768er6ds765f8sd78er87e6r868e6r868e6r868e"
         }
         
         self.email = dict["email"] as? String
@@ -54,9 +54,14 @@ class UserProfileModel: NSObject {
         self.name = (dict["name"] as? String)?.capitalized  
         self.phone = dict["phone"] as? String
         if let imgUrl1 = dict["photo"] as? String {
-            let imgUrl = String(format: "%@%@", Server.imgBaseUrl, imgUrl1)
-            print("imgUrl = \(imgUrl)")
-            self.photo = imgUrl
+            if imgUrl1.count > 0 {
+                let imgUrl = String(format: "%@%@", Server.imgBaseUrl, imgUrl1)
+                //print("imgUrl = \(imgUrl)")
+                self.photo = imgUrl
+                self.photo = self.photo?.replacingOccurrences(of: " ", with: "%20")
+            } else {
+                self.photo = ""
+            }
         } else {
             self.photo = ""
         }
@@ -73,20 +78,23 @@ class UserProfileModel: NSObject {
         self.auditPush = dict["audit_push"] as? Int
         self.reportPush = dict["report_push"] as? Int
         self.messagePush = dict["msg_push"] as? Int
-        self.allPush = dict["push_all"] as? Int
         
+        if self.auditPush == 0 && self.reportPush == 0 && self.messagePush == 0 {
+            self.allPush = 0
+        } else {
+            self.allPush = dict["push_all"] as? Int
+        }
     }
     
     private static var userProfile: UserProfileModel?
     
     class func sharedInstance() -> UserProfileModel {
         if self.userProfile == nil {
-            print("user object nil and initiates")
+            //print("user object nil and initiates")
             self.userProfile = UserProfileModel()
             // Here user profile data will be inserted.
-
         } else {
-            print("user object not nil")
+            //print("user object not nil")
         }
         return self.userProfile!
     }

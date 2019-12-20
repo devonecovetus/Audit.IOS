@@ -23,9 +23,18 @@ class BuiltLocationCell: UICollectionViewCell {
     @IBOutlet weak var btn_DeleteItem: UIButton!
     @IBOutlet weak var lbl_Name: UILabel!
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+        setUpLanguageSetting() 
+    }
+    
+    func setUpLanguageSetting() {
+        lbl_Name.transform = CGAffineTransform(scaleX: kAppDelegate.intViewFlipStatus, y: 1)
+    }
+    
     //MARK: Button Actions:
     @IBAction func btn_Up(_ sender: Any) {
-       
         delegate?.increaseValue(index: index)
     }
     

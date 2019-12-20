@@ -20,4 +20,6 @@
 #import "VideoView.h"
 #import "SJAvatarBrowser.h"
 
+#import <MBCircularProgressBar/MBCircularProgressBarView.h>
+
 #endif /* Audit_Bridging_Header_h */

@@ -27,11 +27,11 @@ chat login event     =>  load id  ----> param id = user_id \
 \b0 \
 Event for send msg=>  \
 \
- socket.emit("chat auditor message", id, \{\
+ socket.emit(chat auditor message, id, \{\
                             yname: 'sender_id',\
                             msg: messgae,\
-                            from_name: "sender name",\
-                            to_name: "receiver name"\
+                            from_name: sender name,\
+                            to_name: receiver name\
                         \});\
 \
 \
@@ -56,7 +56,7 @@ Event for send msg=>  \
 \b # for getting chat (Event should be):- 
 \b0 \ul get auditor past chats\ulnone \
 get auditor past chats\
-"get auditor past chats", receiver_id, 'sender_id', 1\
+get auditor past chats, receiver_id, 'sender_id', 1\
 \
 
 \b receiver_id
@@ -108,9 +108,8 @@ get auditor past chats\
 \
 \
 /////// --------- XXXXX -------- ///////  --------- XXXXX --------  ///////  --------- XXXXX --------  ///////  --------- XXXXX --------  /////// \
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
 
-\b \cf0 type = 1 for text\
+\b type = 1 for text\
 type = 2 for image\
 type = 3 for video\
 type = 4 for document
@@ -129,6 +128,9 @@ type = 4 for document
      5. Update unread messages of user and withUser Id\
      6. Get unread message Of user\
      **/\
+\
+\
+ (inc_id	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, user_id	INTEGER NOT NULL,	audit_id	INTEGER NOT NULL,	location_id	INTEGER NOT NULL,	sublocation_id	INTEGER NOT NULL,	folder_id	INTEGER NOT NULL,	subfolder_id	INTEGER NOT NULL,	is_archive	INTEGER NOT NULL,	work_status	INTEGER NOT NULL,	is_locked	INTEGER NOT NULL,	subfolder_name	TEXT NOT NULL,	subfolder_description	TEXT NOT NULL)\
 \
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
 

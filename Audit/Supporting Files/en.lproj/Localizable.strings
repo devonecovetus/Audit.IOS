@@ -11,7 +11,22 @@
  */
 //MARK: Validation Messages:
 
-"enterSubject" = "Please enter subject";
+"ValidationEmail" = "Please enter email";
+"ValidationValidEmail" = "Please enter valid email";
+"ValidationPassword" = "Please enter password";
+"ValidationOldPassword" = "Please enter your old password";
+"ValidationNewPassword" = "Please enter your new password";
+"ValidationPasswordLength" = "Password contains at least 6 character";
+"ValidationConfirmPassword" = "Please enter confirm password";
+"ValidationPasswordMatch" = "Confirm password does not match with new password";
+"ValidationFirstName" = "Please enter first name";
+"ValidationLastName" = "Please enter last name";
+"ValidationMobileNo" = "Please enter mobile number";
+"ValidationMobileNoLength" = "Mobile number at least contains 10 digits";
+"ValidationUserName" = "Please enter username";
+"ValidationSubject" = "Please enter subject";
+"ValidationDescription" = "Please enter the description";
+"ValidationSyncAudit" = "Would you like to sync your data on server. Once you start or synced data, would not be able to make any changes further. Do you want to continue?";
 "enterDescription" = "Please enter the description";
 "strEnterFirstName" = "Please enter first name";
 "strEnterLastName" = "Please enter last name";
@@ -19,7 +34,7 @@
 "strEnterValidEmail" = "Please enter valid email";
 "strEnterMobile" = "Please enter mobile number";
 "strMobileLength" = "Mobile number at least contains 10 digits";
- "strValidMobile" = "Please enter valid mobile";
+"strValidMobile" = "Please enter valid mobile";
 "strOldPassword" = "Please enter your old password";
 "strNewPassword" = "Please enter your new password";
 "strEnterPassword" = "Please enter password";
@@ -39,35 +54,28 @@
 "profileUpdatedSuccessfully" = "Profile updated successfully";
 "deleteNotification" = "Are you sure you want to delete selected notifications?";
 "logoutSuccessfully" = "You logout from app successfully";
+"selectCountryStandard" = "Please select country standard first";
+"noCountryList" = "No country list were found.";
+"cannotDownloadAudit" = "You cannot download another audit data until you sync previous one";
+"cannotDownloadNewAudit" = "Please do final sync before accepting the new Audit, go to History and click on Final Sync.";
+"noAuditInfo" = "No Audit information avaliable so you cannot be proceed any more";
+"rejectAudit" = "Are you sure to reject this audit?";
+"AuditRejectedSuccessfully" = "Audit Rejected Successfully";
+"AuditAlert" = "By clicking you are confirm your audit start date will be today's date. So would you like to continue";
+"TextMessageAlert" = "Do you really really want to show the description message?";
+"FinallySyncedAlert" = "Are you sure want to finalize this audit and request for final audit report?";
+"ReauditAlert" = "Are you sure want to re-edit this audit?";
+"cannotReeditAuditAlert" = "You cannot re-edit audit and their contents until you submit final report of previous one";
+"SyncAuditAlert" = "You have an audit in the drafts section. In order to re-edit any audit, You must have to sync the draft audit";
+"UrlNotSupportive" = "This url is not supportive or may be in improper";
+"emptyAudit" = "This Audit is empty,Please answer atleast 1 question before sync this audit.";
+"Alert" = "Alert!";
 
-"Ok" = "Ok";
-"Yes" = "Yes";
-"No" = "No";
-
-
-//MARK: Login:
-"AuditorLogin" = "Auditor";
-"InspectorLogin" = "Inspector";
-"ForgotPassword" = "Forgot Password?";
-"Email" = "Email";
-"Password" = "Password";
-"SignIn" = "SIGN IN";
-"Submit" = "SUBMIT";
-
-//MARK: Forgot Password:
-"ForgotPasswordTitle" = "Forgot Your Password?";
-"ForgotPasswordMsg" = "Enter your email address to reset your password.";
-
-//MARK: Home:
-"TitleHome" = "ACCESS4MII";
-
-
-//MARK: Change PAssword
-"OldPassword" = "Old Password";
-"NewPassword" = "New Password";
-"ConfirmPassword" = "Confirm Password";
-"TitleChangePassword" = "Change Password";
-"MsgChangePassword" = "Please change your password here";
+//MARK: Profile
+"UpdateDetails" = "Update Details";
+"ChatAdmin" = "Chat With Admin";
+"ShareApp" = "Share ACCESS4MII";
+"HowUse" = "How To Use";
 
 //MARK: Menu View
 "MenuAccount" = "Account";
@@ -76,39 +84,6 @@
 "MenuSetting" = "Setting";
 "MenuHelp" = "Help";
 "MenuLogout" = "Logout";
-
-//MARK: WebContent:
-"TermsConditions" = "TERM AND CONDITION";
-"ContactUs" = "CONTACT US";
-"AboutUs" = "ABOUT US";
-"StandardPractice" = "STANDARD AND GOOD PRACTICES";
-"ChangePassword" = "CHANGE PASSWORD";
-"PushNotification" = "PUSH NOTIFICATION";
-
-//MARK: ContaCTUS:
-"NAME" = "Name";
-"EMAIL" = "Email Address";
-"SUBJECT" = "Subject";
-"DESCRIPTION" = "Description";
-"CONTACTUS" = "CONTACT US";
-"SUGGESTION" = "Suggestions / Feedback";
-"Send" = "SEND";
-
-//MARK: Profile
-"UpdateDetails" = "Update Details";
-"ChatAdmin" = "Chat With Admin";
-"ShareApp" = "Share ACCESS4MII";
-"HowUse" = "How To Use";
-"TitleProfile" = "PROFILE";
-
-//MARK: Edit Profile
-"FirstName" = "First Name";
-"LastName" = "Last Name";
-"Email" = "Email";
-"ContactNumber" = "Contact Number";
-"Address" = "Address";
-"Update" = "Update";
-"TitleEdit" = "UPDATE PROFILE";
 
 //MARK: Settings
 "PushNotification1" = "Push Notification";
@@ -123,49 +98,185 @@
 "NewAudit" = "Report";
 "ChangePassword1" = "Change Password";
 "Help" = "Help";
-"TitleSetting" = "SETTINGS";
 "Logout" = "Logout";
+"AppLogout" = "App Logout!";
 
 //MARK: Audit OverView:
-
-"Accept" = "Accept";
-"Reject" = "Reject";
 "Date" = "Date";
 "DueDate" = "Due Date";
 "Time" = "Time";
 "Area" = "Area";
-"AgentDetails" = "Agent Details";
-"ClientDetails" = "Client Details";
 "Name" = "Name";
 "Email" = "Email";
 "Number" = "Number";
 "Address" = "Address";
 "Landmark" = "Landmark";
 "PinCode" = "PinCode";
-"AuditOverViewTitle" = "Audit Overview";
+
+//MARK: BUiltAudit:
+
+"BuiltAudit" = "BUILD AUDIT";
+"Delete" = "Delete";
+"Next" = "Next";
+"InformationBox" = "Information Box";
+"Location" = "Location";
+"warning1" = "Warning: This will delete ";
+"warning2" = "Folders and SubFolders including associated questions, Do you want to proceed ?";
+"warningTitle" = "Warning!";
+"warning3" = "SubFolders data including associated questions, Do you want to proceed ?";
+
+//MARK: Location View:
+"LocationMessage" = "Location selected for this audit/inspection";
+"ContentMessage" = "Content selected for this audit/inspection";
+"Add" = "Add";
+"Cancel" = "Cancel";
+"AddSubFolder" = "Add a sub folder ?";
+
+//MARK: Location Folder List:
+"Done" = "Done";
+"View" = "View";
+"Archive" = "Archive";
+"ReInitiate" = "Re-initiate";
+"FolderName1" = "Folder Name";
+"FolderDescription" = "Folder Description";
+
+//MARK: BuiltAuditSubLocation
+"SelectSubLocation" = "In order to proceed you need to select at least one sub location.";
+"BuiltUnit" = "Built Unit";
+"AddPhoto" = "Add Photo";
+"EditPhoto" = "Edit Photo";
+"Content" = "Content";
+"Ok" = "Ok";
+"Yes" = "Yes";
+"No" = "No";
+
+//MARK: Login:
+"AuditorLogin" = "Auditor";
+"InspectorLogin" = "Inspector";
+"ForgotPassword" = "Forgot Password?";
+"Email" = "Email";
+"Password" = "Password";
+"SignIn" = "Sign In";
+"Submit" = "SUBMIT";
+
+
+"ClearAllNotification" = "Would you like to delete all notifications";
+
+//MARK: Forgot Password:
+"ForgotPasswordTitle" = "Forgot Your Password?";
+"ForgotPasswordMsg" = "Enter your email address to reset your password.";
+
+//MARK: Home:
+"TitleHome" = "ACCESS4MII";
+
+//MARK: Change PAssword
+"OldPassword" = "Old Password";
+"NewPassword" = "New Password";
+"ConfirmPassword" = "Confirm Password";
+"TitleChangePassword" = "Change Password";
+"MsgChangePassword" = "Please change your password here";
+
+//MARK: WebContent:
+"TermsConditions" = "TERM AND CONDITION";
+"ContactUs" = "CONTACT US";
+"AboutUs" = "ABOUT US";
+"StandardPractice" = "STANDARD AND GOOD PRACTICES";
+"News" = "NEWS";
+"Help2" = "HELP";
+"ChangePassword" = "CHANGE PASSWORD";
+"PushNotification" = "PUSH NOTIFICATION";
+
+//MARK: ContaCTUS:
+"NAME" = "Name";
+"EMAIL" = "Email Address";
+"SUBJECT" = "Subject";
+"DESCRIPTION" = "Description";
+"CONTACTUS" = "CONTACT US";
+"SUGGESTION" = "Suggestions / Feedback";
+"Send" = "SEND";
+
+
+//MARK: Edit Profile
+"FirstName" = "First Name";
+"LastName" = "Last Name";
+"Email" = "Email";
+"ContactNumber" = "Contact Number";
+"Address" = "Address";
+"Update" = "Update";
+"TitleEdit" = "UPDATE PROFILE";
+
 
 //MARK: My Audit:
-
+"InComplete" = "In Complete";
+"InProgress" = "In Progress";
+"Completed" = "Completed";
 "MYAUDIT" = "My AUDIT";
 "AssignDate" = "Assign Date";
+"AssignBy" = "Assign By";
 "Title" = "Title";
 "TargetDate" = "Target Date";
 "View" = "View";
-
+"SortBy" = "Sort By";
+"ByTitle" = "Title(a-z)";
+"ByDate" = "Date";
+"Cancel" = "Cancel";
+"Confirm" = "Confirm";
+"DataSynced" = "Data Synced";
+"AuditSynced" = "Your audit data successfully synced";
 
 //MARK: File Manager:
 "Downloading...." = "Downloading....";
+"DownloadingData...." = "Downloading data....";
 "PhotoSaved" = "Photo saved successfully in your device, Please check your Photo Library";
 "FileSaved" = "File saved successfully in your device, Please check your FileApp -> App Folder -> Downloaded Files";
 //MARK: Report
 "AssignedOn" = "Assigned On";
+"Name" = "Name:";
+"AssignedDate" = "Assigned Date:";
+"AuditTitle" = "Title:";
+"Description" = "Description:";
 
 
 //MARK: SubFolder Screen:
 "subFolderName" = "Please enter sub folder name";
 "subFolderDescription" = "Please enter sub folder description";
 
+//MARK: Sub Location Sub Folder Screen:
+"SubFolderTitle" = "Sub Folder Title";
+"EditDescription" = "Enter description";
 
-"warning1" = "Warning: This will delete ";
-"warning2" = "Folders and SubFolders including associated questions, Do you want to proceed ?";
-"warningTitle" = "Warning!";
+//MARK: Question Answer:
+"AddPhoto" = "Add Photo";
+"DeletePhoto" = "Delete Photo";
+"Submit" = "Submit";
+"QuestionDataSaved" = "Your questions data saved successfully";
+"TextPlaceHolder" = "Write something here...";
+"Save" = "Save";
+"SelectOption" = "Select option";
+
+//MARK: Photo
+"ChoosePhoto" = "Choose Photo";
+"TakePhoto" = "Take Photo";
+"Cancel" = "Cancel";
+"PhotoLibrary" = "Choose From Library";
+
+//MARK: Priority
+"Priority" = "Priority";
+"Low" = "Low";
+"High" = "High";
+"Medium" = "Medium";
+"PPP" = "PPP";
+
+//MARK: Chat
+
+"Call" = "Call";
+"Email" = "Email";
+"Document" = "Document";
+"ChooseMedia" = "Choose Media";
+
+//MARK: Audit History
+
+"ChoosePreview" = "Choose Preview";
+"SelectPreviewType" = "Please select anyone type for previewing the report";
+"AuditorReport" = "Auditor Report";
+"InspectorReport" = "Inspector Report";

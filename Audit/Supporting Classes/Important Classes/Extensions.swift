@@ -9,8 +9,13 @@
 import UIKit
 import Foundation
 
-
-
+extension Array where Element: Hashable {
+    func difference(from other: [Element]) -> [Element] {
+        let thisSet = Set(self)
+        let otherSet = Set(other)
+        return Array(thisSet.symmetricDifference(otherSet))
+    }
+}
 
 extension URL {
     var isHidden: Bool {
@@ -23,14 +28,56 @@ extension URL {
             do {
                 try setResourceValues(resourceValues)
             } catch {
-                print("isHidden error:", error)
+                //print("isHidden error:", error)
             }
         }
     }
 }
 
+extension DesignableLabel {
+    @IBInspectable
+    var leftTextInset: CGFloat {
+        set { textInsets.left = newValue }
+        get { return textInsets.left }
+    }
+    
+    @IBInspectable
+    var rightTextInset: CGFloat {
+        set { textInsets.right = newValue }
+        get { return textInsets.right }
+    }
+    
+    @IBInspectable
+    var topTextInset: CGFloat {
+        set { textInsets.top = newValue }
+        get { return textInsets.top }
+    }
+    
+    @IBInspectable
+    var bottomTextInset: CGFloat {
+        set { textInsets.bottom = newValue }
+        get { return textInsets.bottom }
+    }
+}
+
 extension Int {
     var degreesToRadians: Double { return Double(self) * .pi / 180 }
+}
+
+extension Bool {
+    func intValue() -> Int {
+        if self {
+            return 1
+        }
+        return 0
+    }
+    
+    func int32Value() -> Int32 {
+        if self {
+            return 1
+        }
+        return 0
+    }
 }
 
 extension FloatingPoint {
@@ -46,7 +93,7 @@ extension UIButton {
         
         titleString.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.blue, range: NSMakeRange(0, text.count))
         titleString.addAttribute(NSAttributedStringKey.underlineColor, value: UIColor.blue, range: NSMakeRange(0, text.count))
-        self.setAttributedTitle(titleString, for: .normal)
+        setAttributedTitle(titleString, for: .normal)
     }
     
     func addBottomBorderWithColor(color: UIColor, height: CGFloat) {
@@ -56,7 +103,6 @@ extension UIButton {
         self.layer.addSublayer(border)
         self.layer.masksToBounds = true
     }
-    
 }
 
 extension NSMutableData {
@@ -102,6 +148,15 @@ extension String {
     var length1: Int {
         return self.count
     }
+    
+    func isValidForUrl()->Bool{
+        
+        if(self.hasPrefix("http") || self.hasPrefix("https") || self.hasPrefix("www"))  {
+            return true
+        }
+        return false
+    }
+    
     /*
     subscript (i: Int) -> String {
         return self[Range(i ..< i + 1)]
@@ -125,6 +180,14 @@ extension String {
 }
 
 extension UIViewController {
+    
+    var className: String {
+        return NSStringFromClass(self.classForCoder).components(separatedBy: ".").last!;
+    }
+    
+    func getClassName() -> String {
+        return NSStringFromClass(self.classForCoder).components(separatedBy: ".").last!;
+    }
 
     func executeUIProcess(_ block: @escaping () -> Void) {
         DispatchQueue.main.async(execute: block)
@@ -134,37 +197,73 @@ extension UIViewController {
         
         let alert = UIAlertController(title: nil, message: strMessage, preferredStyle: UIAlertControllerStyle.alert)
         
-        let messageFont = [NSAttributedStringKey.font: UIFont(name: "OpenSans-Regular", size: 16.0)!]
+        let messageFont = [NSAttributedStringKey.font: UIFont(name: CustomFont.themeFont, size: 16.0)!]
         let messageAttrString = NSMutableAttributedString(string: strMessage, attributes: messageFont)
         alert.setValue(messageAttrString, forKey: "attributedMessage")
         
         let okButton = UIAlertAction(title: NSLocalizedString("Ok", comment: ""), style: .default, handler: nil)
         alert.addAction(okButton)
-        vc.present(alert, animated: true, completion: nil)
+        //vc.present(alert, animated: true, completion: nil)
+        
+        MF.ShowPopUpViewOn(viewController: vc, popUpType: PopUpType.Simple, title: "", message: strMessage)
+        
     }
     
     func showAlertViewWithDuration(_ strMessage: String, vc: UIViewController)  {
         let alert = UIAlertController(title: "", message: strMessage, preferredStyle: UIAlertControllerStyle.alert)
-        let messageFont = [NSAttributedStringKey.font: UIFont(name: "OpenSans-Regular", size: 16.0)!]
+        let messageFont = [NSAttributedStringKey.font: UIFont(name: CustomFont.themeFont, size: 16.0)!]
         let messageAttrString = NSMutableAttributedString(string: strMessage, attributes: messageFont)
         alert.setValue(messageAttrString, forKey: "attributedMessage")
         
-        vc.present(alert, animated: true, completion: nil)
+    //    vc.present(alert, animated: true, completion: nil)
         let delay = 2.5 * Double(NSEC_PER_SEC)
         let time = DispatchTime.now() + Double(Int64(delay)) / Double(NSEC_PER_SEC)
         DispatchQueue.main.asyncAfter(deadline: time, execute: {
-            alert.dismiss(animated: true, completion: nil)
+       //     alert.dismiss(animated: true, completion: nil)
         })
+        
+        MF.ShowPopUpViewOn(viewController: vc, popUpType: PopUpType.Toast, title: "", message: strMessage)
+        
     }
 }
 
 extension UIImage {
+    
+    func fixOrientation() -> UIImage {
+        if self.imageOrientation == UIImageOrientation.up {
+            return self
+        }
+        
+        UIGraphicsBeginImageContextWithOptions(self.size, false, self.scale)
+        self.draw(in: CGRect(x: 0, y: 0, width: self.size.width, height: self.size.height))
+        let normalizedImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        
+        return normalizedImage;
+    }
+    
+    class func loadFromURL(url: NSURL, callback: @escaping (UIImage)->()) {
+        //*dispatch_async(dispatch_get_global_queue(DispatchQueue.GlobalQueuePriority.high, 0), {
+            
+        let imageData = NSData(contentsOf: url as URL)
+            if let data = imageData {
+                DispatchQueue.main.async {
+                    if let image = UIImage(data: data as Data) {
+                        callback(image)
+                    }
+                }
+            }
+        //})
+    }
+    
     enum JPEGQuality: CGFloat {
-        case lowest  = 0
+        case least = 0.05
+        case lowest  = 0.15
         case low     = 0.25
-        case medium  = 0.5
-        case high    = 0.75
-        case highest = 1
+        case medium  = 0.4
+        case high    = 0.5
+        case highest = 0.7
+        case peak = 1.0
     }
     
     /// Returns the data for the specified image in JPEG format.
@@ -190,18 +289,42 @@ extension UIImage {
     }
     
     class func imageWithColor(color: UIColor, size: CGSize) -> UIImage {
-            let rect: CGRect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
-            UIGraphicsBeginImageContextWithOptions(size, false, 0)
-            color.setFill()
-            UIRectFill(rect)
-            let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
-            UIGraphicsEndImageContext()
-            return image
+        let rect: CGRect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
+        UIGraphicsBeginImageContextWithOptions(size, false, 0)
+        color.setFill()
+        UIRectFill(rect)
+        let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        return image
+    }
+    
+    func resizeByByte(maxByte: Int, completion: @escaping (Data) -> Void) {
+        var compressQuality: CGFloat = 1
+        var imageData = Data()
+        var imageByte = UIImageJPEGRepresentation(self, 1)?.count
+        
+        //print("imageData = \(imageData.count)")
+        
+        while imageByte! > maxByte {
+            imageData = UIImageJPEGRepresentation(self, compressQuality)!
+            imageByte = UIImageJPEGRepresentation(self, compressQuality)?.count
+            compressQuality -= 0.1
         }
+        
+        if maxByte > imageByte! {
+            //print("imageData1 = \(imageData.count)")
+            completion(imageData)
+        } else {
+            completion(UIImageJPEGRepresentation(self, 1)!)
+        }
+    }
 }
 
-
 extension UIView {
+    
+    public func removeAllSubViews() {
+        self.subviews.forEach({ $0.removeFromSuperview() })
+    }
     
     // OUTPUT 1
     func dropShadow(scale: Bool = true) {
@@ -234,7 +357,6 @@ extension UIView {
         animation.duration = duration
         animation.isRemovedOnCompletion = false
         animation.fillMode = kCAFillModeForwards
-        
         self.layer.add(animation, forKey: nil)
     }
     
@@ -276,7 +398,7 @@ extension Date {
     }
     
     func endOfMonth() -> Date {
-        return Calendar.current.date(byAdding: DateComponents(month: 1, day: -1), to: self.startOfMonth())!
+        return Calendar.current.date(byAdding: DateComponents(month: 1, day: -1), to: startOfMonth())!
     }
 }
 
@@ -288,5 +410,17 @@ extension UIColor {
             blue:  CGFloat((hex & 0x0000FF) >> 0)  / 255.0,
             alpha: alpha
         )
+    }
+}
+
+extension UITableView {
+    
+    func reloadWithoutAnimation() {
+        let lastScrollOffset = contentOffset
+        beginUpdates()
+       
+        layer.removeAllAnimations()
+        endUpdates()
+        setContentOffset(lastScrollOffset, animated: false)
     }
 }

@@ -8,8 +8,16 @@
 
 import UIKit
 import SystemConfiguration
+import SafariServices
+
 
 class SupportingFunctions: NSObject {
+    
+    func getDescriptionTextCount(text:String?) -> Int {
+        var strDesc = text?.replacingOccurrences(of: " ", with: "")
+        strDesc = strDesc?.replacingOccurrences(of: "\n", with: "")
+        return strDesc!.count
+    }
     
     //MARK: Decode Data String
     func decodeDataIntoString(strMsg: String) -> String {
@@ -39,13 +47,31 @@ class SupportingFunctions: NSObject {
             var simpleString = ""
             let datadec  = strMsg.data(using: String.Encoding.utf8)
             if datadec == nil {
-                simpleString = self.decodeDataIntoString(strMsg: strMsg)
+                simpleString = decodeDataIntoString(strMsg: strMsg)
             } else {
                 simpleString = String(data: datadec!, encoding: String.Encoding.nonLossyASCII)!
             }
             return simpleString
         }
         return ""
+    }
+    
+    func fileSize(forURL url: Any) -> Double {
+        var fileURL: URL?
+        var fileSize: Double = 0.0
+        if (url is URL) || (url is String) {
+            if (url is URL) {
+                fileURL = url as? URL
+            } else {
+                fileURL = URL(fileURLWithPath: url as! String)
+            }
+            var fileSizeValue = 0.0
+            try? fileSizeValue = (fileURL?.resourceValues(forKeys: [URLResourceKey.fileSizeKey]).allValues.first?.value as! Double?)!
+            if fileSizeValue > 0.0 {
+                fileSize = (Double(fileSizeValue) / (1024 * 1024))
+            }
+        }
+        return fileSize
     }
     
     //MARK: Navigations:
@@ -58,6 +84,42 @@ class SupportingFunctions: NSObject {
             }
         }
     }
+    
+    func navigateToBuiltSubAudit(vc: UIViewController) {
+        var flagIsRedirect = false
+        for controller in vc.navigationController!.viewControllers as Array {
+            if controller.isKind(of: BuiltSubAuditViewController.self) {
+                flagIsRedirect = true
+                vc.navigationController!.popToViewController(controller, animated: true)
+                break
+            }
+        }
+        
+        if !flagIsRedirect {
+           // vc.navigationController?.popViewController(animated: true)
+        }
+        
+    }
+    
+    func openUrlInBrowser(urlString: String?, rootVC: UIViewController) {
+        if (urlString?.isValidForUrl())! {
+            if let url = URL(string: urlString!) {
+                if url.absoluteString.contains("http") {
+                    let vc = SFSafariViewController(url: url, entersReaderIfAvailable: true)
+                    vc.delegate = self as! SFSafariViewControllerDelegate
+                    rootVC.present(vc, animated: true)
+                } else {
+                    UIApplication.shared.open(URL(string: urlString!)!)
+                    //   UIApplication.shared.open(URL(string: strMapUrl!)!, options: [:], completionHandler: nil)
+                }
+            } else {
+                UIApplication.shared.open(URL(string: urlString!)!, options: [:], completionHandler: nil)
+            }
+        } else {
+            MF.ShowPopUpViewOn(viewController: rootVC, popUpType: PopUpType.Simple, title: NSLocalizedString("Alert", comment: ""), message: NSLocalizedString("UrlNotSupportive", comment: ""))
+        }
+    }
+    
     
     func animateViewNavigation(navigationController: UINavigationController) {
         let transition: CATransition = CATransition()
@@ -90,25 +152,49 @@ class SupportingFunctions: NSObject {
         return isAlphabet
     }
     
+    func numberFormatter(number: String) -> String {
+        let formatter = NumberFormatter()
+        formatter.locale = NSLocale.current   // you can specify locale that you want
+        formatter.numberStyle = .decimal
+        formatter.usesGroupingSeparator = true
+        
+        let returnNumber = formatter.number(from: number)
+      //  //print("returnNumber = \(returnNumber?.stringValue)")
+        return (returnNumber?.stringValue)!
+    }
+    
     //MARK: Image Picker
-    func openActionSheet(with imagePicker: UIImagePickerController, and delegate: UIViewController, targetFrame: CGRect)  {
-        let optionMenu = UIAlertController(title: nil, message: "Choose Photo", preferredStyle: .actionSheet)
-        let openCapturePhotoAction = UIAlertAction(title: "Take Photo", style: .default, handler: {
+    func openActionSheet(with imagePicker: UIImagePickerController, and delegate: UIViewController, targetFrame: CGRect ,isShowArrow: Bool = true)  {
+        
+        
+        
+        let optionMenu = UIAlertController(title: nil, message: NSLocalizedString("ChoosePhoto", comment: ""), preferredStyle: .actionSheet)
+        let openCapturePhotoAction = UIAlertAction(title: NSLocalizedString("TakePhoto", comment: ""), style: .default, handler: {
             (alert: UIAlertAction!) -> Void in
-            imagePicker.delegate = delegate as? UIImagePickerControllerDelegate & UINavigationControllerDelegate
-            imagePicker.allowsEditing = false
-            imagePicker.sourceType = .camera
-            delegate.present(imagePicker, animated: true, completion: nil)
+            autoreleasepool {
+                imagePicker.delegate = delegate as? UIImagePickerControllerDelegate & UINavigationControllerDelegate
+                imagePicker.allowsEditing = false
+                imagePicker.sourceType = .camera
+                delegate.present(imagePicker, animated: true, completion: nil)
+            }
         })
         
-        let openGalleryPhotoAction = UIAlertAction(title: "Choose from Library", style: .default, handler: {
+        let openGalleryPhotoAction = UIAlertAction(title: NSLocalizedString("PhotoLibrary", comment: ""), style: .default, handler: {
             (alert: UIAlertAction!) -> Void in
             imagePicker.delegate = delegate as? UIImagePickerControllerDelegate & UINavigationControllerDelegate
             imagePicker.allowsEditing = false
             imagePicker.sourceType = .photoLibrary
-            delegate.present(imagePicker, animated: true, completion: nil)
+          
+            imagePicker.modalPresentationStyle = .popover
+            delegate.present(imagePicker, animated: true)
+            
+            // Get the popover presentation controller and configure it.
+            let presentationController: UIPopoverPresentationController? = imagePicker.popoverPresentationController
+            presentationController?.permittedArrowDirections = .up
+            presentationController?.sourceView = delegate.view
+            presentationController?.sourceRect = targetFrame
         })
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: {
+        let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: {
             (alert: UIAlertAction!) -> Void in
         })
         
@@ -119,14 +205,100 @@ class SupportingFunctions: NSObject {
         optionMenu.addAction(cancelAction)
         optionMenu.popoverPresentationController?.sourceRect = targetFrame
         optionMenu.popoverPresentationController?.sourceView = delegate.view
-      
+        if isShowArrow == false {
+            optionMenu.popoverPresentationController?.permittedArrowDirections = []
+        }
+        autoreleasepool {
+            delegate.present(optionMenu, animated: true, completion: nil) 
+        }
+    }
+    
+    func openActionSheetDemo(with imagePicker: UIImagePickerController, and delegate: UIViewController, targetFrame: CGRect, sender: AnyObject ,isShowArrow: Bool = true)  {
+        let optionMenu = UIAlertController(title: nil, message: NSLocalizedString("ChoosePhoto", comment: ""), preferredStyle: .actionSheet)
+        let openCapturePhotoAction = UIAlertAction(title: NSLocalizedString("TakePhoto", comment: ""), style: .default, handler: {
+            (alert: UIAlertAction!) -> Void in
+            imagePicker.delegate = delegate as? UIImagePickerControllerDelegate & UINavigationControllerDelegate
+            imagePicker.allowsEditing = false
+            imagePicker.sourceType = .camera
+            delegate.present(imagePicker, animated: true, completion: nil)
+        })
+        
+        let openGalleryPhotoAction = UIAlertAction(title: NSLocalizedString("PhotoLibrary", comment: ""), style: .default, handler: {
+            (alert: UIAlertAction!) -> Void in
+            imagePicker.delegate = delegate as? UIImagePickerControllerDelegate & UINavigationControllerDelegate
+            imagePicker.allowsEditing = false
+            imagePicker.sourceType = .photoLibrary
+            imagePicker.modalPresentationStyle = .popover
+            
+            imagePicker.modalPresentationStyle = .popover
+            delegate.present(imagePicker, animated: true)
+            
+            // Get the popover presentation controller and configure it.
+            let presentationController: UIPopoverPresentationController? = imagePicker.popoverPresentationController
+            presentationController?.permittedArrowDirections = .up
+            presentationController?.sourceView = delegate.view
+            presentationController?.sourceRect = targetFrame
+            
+            
+        })
+        let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: {
+            (alert: UIAlertAction!) -> Void in
+        })
+        
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera) {
+            optionMenu.addAction(openCapturePhotoAction)
+        }
+        optionMenu.addAction(openGalleryPhotoAction)
+        optionMenu.addAction(cancelAction)
+        optionMenu.popoverPresentationController?.sourceRect = targetFrame
+        optionMenu.popoverPresentationController?.sourceView = delegate.view
+        if isShowArrow == false {
+            optionMenu.popoverPresentationController?.permittedArrowDirections = []
+        }
         delegate.present(optionMenu, animated: true, completion: nil)
+    }
+    
+    func resize(image: UIImage, maxHeight: Float = 500.0, maxWidth: Float = 500.0) -> UIImage? {
+        var actualHeight: Float = Float(image.size.height)
+        var actualWidth: Float = Float(image.size.width)
+        var imgRatio: Float = actualWidth / actualHeight
+        let maxRatio: Float = maxWidth / maxHeight
+        
+        if actualHeight > maxHeight || actualWidth > maxWidth {
+            if imgRatio < maxRatio {
+                //adjust width according to maxHeight
+                imgRatio = maxHeight / actualHeight
+                actualWidth = imgRatio * actualWidth
+                actualHeight = maxHeight
+            }  else if imgRatio > maxRatio {
+                //adjust height according to maxWidth
+                imgRatio = maxWidth / actualWidth
+                actualHeight = imgRatio * actualHeight
+                actualWidth = maxWidth
+            }else {
+                actualHeight = maxHeight
+                actualWidth = maxWidth
+            }
+        }
+        let rect = CGRect(x: 0.0, y: 0.0, width: CGFloat(actualWidth), height: CGFloat(actualHeight))
+        UIGraphicsBeginImageContext(rect.size)
+        image.draw(in:rect)
+        let img = UIGraphicsGetImageFromCurrentImageContext()
+        ///    let imageData = UIImageJPEGRepresentation(img!,CGFloat(compressionQuality))
+        UIGraphicsEndImageContext()
+        return img
     }
     
     //MARK: Menu View
     func OpenMenuView(viewController: UIViewController) {
+        var storyboardname = ""
+        if kAppDelegate.strLanguageName == LanguageType.Arabic {
+            storyboardname = "ArabicMenuViewController"
+        } else {
+            storyboardname = "MenuViewController"
+        }
         
-        let modalViewController = HomeStoryBoard.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
+        let modalViewController = HomeStoryBoard.instantiateViewController(withIdentifier: storyboardname) as! MenuViewController
         modalViewController.view.isOpaque = false
         
         modalViewController.view.backgroundColor = UIColor.clear
@@ -136,10 +308,8 @@ class SupportingFunctions: NSObject {
         } else {
             modalViewController.view.transform = CGAffineTransform(translationX: -viewController.view.frame.size.width, y: 0)
         }
-        
         viewController.view.superview?.insertSubview(modalViewController.view, aboveSubview: viewController.view)
         //viewController.view.frame.size.width
-        
         UIView.animate(withDuration: 0.40,
                        delay: 0.0,
                        options: .curveEaseInOut,
@@ -150,10 +320,46 @@ class SupportingFunctions: NSObject {
         })
     }
     
+    /**
+     To avoid from any heirarchy level issue, call this function in viewDidAppear
+     */
+    func ShowPopUpViewOn(viewController: UIViewController, popUpType: Int, title:String, message:String) {
+        DispatchQueue.main.async(execute: {
+            let modalViewController = CustomPopUpStoryBoard.instantiateViewController(withIdentifier: "CustomPopUpViewController") as! CustomPopUpViewController
+            modalViewController.view.isOpaque = false
+            modalViewController.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+            modalViewController.modalPresentationStyle = .overCurrentContext
+            
+            if popUpType == PopUpType.Simple {
+                modalViewController.ShowPopUpWithOk(title: title, message: message)
+            } else if popUpType == PopUpType.Action {
+                modalViewController.ShowPopUpWithAction(title: title, message: message, delegate: viewController)
+            } else if popUpType == PopUpType.Check {
+                modalViewController.ShowPopUpWithCheckUnCheck(title: title, message: message, delegate: viewController)
+            } else if popUpType == PopUpType.Toast {
+                modalViewController.ShowPopUpToast(title: title, message: message, delegate: viewController)
+            } else if popUpType == PopUpType.SimpleAction {
+                modalViewController.ShowPopUpWithOkAction(title: title, message: message, delegate: viewController)
+            }
+            
+            if kAppDelegate.strLanguageName == LanguageType.Arabic {  } else {    }
+            
+            viewController.view.superview?.insertSubview(modalViewController.view, aboveSubview: viewController.view)
+            viewController.present(modalViewController, animated: false, completion: nil)
+            if popUpType == PopUpType.Toast {
+                let delay = 2.5 * Double(NSEC_PER_SEC)
+                let time = DispatchTime.now() + Double(Int64(delay)) / Double(NSEC_PER_SEC)
+                DispatchQueue.main.asyncAfter(deadline: time, execute: {
+                    modalViewController.dismiss(animated: false, completion: nil)
+                })
+            }
+        })
+    }
+    
     //MARK: Image Picker
-    func openActionSheetForChat(with imagePicker: UIImagePickerController, with documentPicker: UIDocumentPickerViewController, and delegate: UIViewController)  {
-        let optionMenu = UIAlertController(title: nil, message: "Choose Media", preferredStyle: .actionSheet)
-        let openCapturePhotoAction = UIAlertAction(title: "Take Photo", style: .default, handler: {
+    func openActionSheetForChat(with imagePicker: UIImagePickerController, with documentPicker: UIDocumentPickerViewController, and delegate: UIViewController , targetFrame: CGRect)  {
+        let optionMenu = UIAlertController(title: nil, message: NSLocalizedString("ChooseMedia", comment: ""), preferredStyle: .actionSheet)
+        let openCapturePhotoAction = UIAlertAction(title: NSLocalizedString("TakePhoto", comment: ""), style: .default, handler: {
             (alert: UIAlertAction!) -> Void in
             imagePicker.delegate = delegate as? UIImagePickerControllerDelegate & UINavigationControllerDelegate
             imagePicker.allowsEditing = false
@@ -161,7 +367,7 @@ class SupportingFunctions: NSObject {
             delegate.present(imagePicker, animated: true, completion: nil)
         })
         
-        let openGalleryPhotoAction = UIAlertAction(title: "Choose from Library", style: .default, handler: {
+        let openGalleryPhotoAction = UIAlertAction(title: NSLocalizedString("PhotoLibrary", comment: ""), style: .default, handler: {
             (alert: UIAlertAction!) -> Void in
             imagePicker.delegate = delegate as? UIImagePickerControllerDelegate & UINavigationControllerDelegate
             imagePicker.allowsEditing = false
@@ -170,13 +376,13 @@ class SupportingFunctions: NSObject {
             delegate.present(imagePicker, animated: true, completion: nil)
         })
         
-        let openDocummentAction = UIAlertAction(title: "Document", style: .default, handler: {
+        let openDocummentAction = UIAlertAction(title: NSLocalizedString("Document", comment: ""), style: .default, handler: {
             (alert: UIAlertAction!) -> Void in
             documentPicker.delegate = delegate as? UIDocumentPickerDelegate & UINavigationControllerDelegate
             delegate.present(documentPicker, animated: true, completion: nil)
         })
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: {
+        let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: {
             (alert: UIAlertAction!) -> Void in
         })
         
@@ -186,10 +392,12 @@ class SupportingFunctions: NSObject {
         optionMenu.addAction(openGalleryPhotoAction)
         optionMenu.addAction(openDocummentAction)
         optionMenu.addAction(cancelAction)
+        
+        optionMenu.popoverPresentationController?.sourceRect = targetFrame
         optionMenu.popoverPresentationController?.sourceView = delegate.view
+        optionMenu.popoverPresentationController?.permittedArrowDirections = []
         delegate.present(optionMenu, animated: true, completion: nil)
     }
-    
     
     //MARK: Set TabBar View:
     func setUpTabBarView() -> UITabBarController {
@@ -209,7 +417,6 @@ class SupportingFunctions: NSObject {
            vcTabBarViewController?.viewControllers = [vc6, vc5, vc4, vc3, vc2, vc1]
            vcTabBarViewController?.selectedIndex = 5
          }
-        
         return vcTabBarViewController!
     }
     
@@ -230,7 +437,6 @@ class SupportingFunctions: NSObject {
             vcTabBarViewController?.viewControllers = [vc6, vc5, vc4, vc3, vc2, vc1]
             vcTabBarViewController?.selectedIndex = selectedIndex
         }
-        
         return vcTabBarViewController!
     }
     
@@ -300,33 +506,36 @@ class SupportingFunctions: NSObject {
         dictP.setValue(kAppDelegate.strDeviceToken, forKey: "devicetoken")
         dictP.setValue(ValidationConstants.DeviceType, forKey: "platform")
         dictP.setValue(kAppDelegate.strLanguageName, forKey: "lang")
-        
         return dictP
     }
     
     func logoutAndClearAllSessionData() {
-        let email = Preferences.value(forKey: "email")
-        let password = Preferences.value(forKey: "password")
+    //    let email = Preferences.value(forKey: "email")
+    //    let password = Preferences.value(forKey: "password")
         
         for key in UserDefaults.standard.dictionaryRepresentation().keys {
             UserDefaults.standard.removeObject(forKey: key.description)
         }
-        Preferences.setValue(email, forKey: "email")
-        Preferences.setValue(password, forKey: "password")
+   //     Preferences.setValue(email, forKey: "email")
+   //     Preferences.setValue(password, forKey: "password")
+  //      UserProfile = UserProfileModel.sharedInstance()
         
-        UserProfile = UserProfileModel.sharedInstance()
+        SDImageCache.shared().clearMemory()
+        SDImageCache.shared().clearDisk()
         
-        let vc1 = MainStoryBoard.instantiateViewController(withIdentifier: "Login_VC") as! Login_VC
-        let navigationController = kAppDelegate.window?.rootViewController as! UINavigationController
-        navigationController.viewControllers = [vc1]
-        kAppDelegate.window?.rootViewController = navigationController
+        DispatchQueue.main.async {
+            let vc1 = MainStoryBoard.instantiateViewController(withIdentifier: "Login_VC") as! Login_VC
+            let navigationController = kAppDelegate.window?.rootViewController as! UINavigationController
+            navigationController.viewControllers = [vc1]
+            kAppDelegate.window?.rootViewController = navigationController
+        }
     }
+    
     
     func setTableViewCellHeight(strMsg: String, andFont withSize: CGFloat) -> CGFloat {
         var cellHeight = CGFloat(0)
         let textRect: CGRect = MF.decodeDataIntoString(strMsg: strMsg).boundingRect(with: CGSize(width: ScreenSize.SCREEN_WIDTH - 60, height: 500), options: .usesLineFragmentOrigin, attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: withSize)], context: nil)
         let messageSize: CGSize  = textRect.size
-       // print("messageSize = \(messageSize.height)")
         if(messageSize.height > 200 && messageSize.height <= 300 ) {
             cellHeight = cellHeight + messageSize.height + 15
         } else if(messageSize.height > 50 && messageSize.height <= 100 ) {
@@ -352,6 +561,18 @@ class SupportingFunctions: NSObject {
         view.layer.cornerRadius = CGFloat(radius)
         view.clipsToBounds = false
         view.layer.masksToBounds = false
+    }
+    
+    func setBoldTextInLabel(boldText: String, normalText: String, fontSize: CGFloat) -> NSAttributedString {
+        let spaceString = boldText  + " " 
+        let attrs = [NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: fontSize)]
+        let attributedString = NSMutableAttributedString(string:spaceString, attributes:attrs)
+        
+        let normalText = normalText
+        let normalString = NSMutableAttributedString(string:normalText)
+        
+        attributedString.append(normalString)
+        return attributedString
     }
     
     func setUpNotificationArray() -> NSMutableArray {
@@ -393,21 +614,27 @@ class SupportingFunctions: NSObject {
         
         let d1 = NSMutableDictionary()
         d1.setValue(QuestionPriority.Low, forKey: "Value")
-        d1.setValue(UIColor.yellow, forKey: "Color")
-        d1.setValue(NSLocalizedString("Low", comment: ""), forKey: "Name")
+        d1.setValue(PriorityColor.Low, forKey: "Color")
+        d1.setValue(QuestionPriorityName.Low, forKey: "Name")
         arrQP.add(d1)
         
         let d2 = NSMutableDictionary()
         d2.setValue(QuestionPriority.Medium, forKey: "Value")
-        d2.setValue(UIColor.purple, forKey: "Color")
-        d2.setValue(NSLocalizedString("Medium", comment: ""), forKey: "Name")
+        d2.setValue(PriorityColor.Medium, forKey: "Color")
+        d2.setValue(QuestionPriorityName.Medium, forKey: "Name")
         arrQP.add(d2)
         
         let d3 = NSMutableDictionary()
         d3.setValue(QuestionPriority.High, forKey: "Value")
-        d3.setValue(UIColor.red, forKey: "Color")
-        d3.setValue(NSLocalizedString("High", comment: ""), forKey: "Name")
+        d3.setValue(PriorityColor.High, forKey: "Color")
+        d3.setValue(QuestionPriorityName.High, forKey: "Name")
         arrQP.add(d3)
+        
+        let d4 = NSMutableDictionary()
+        d4.setValue(QuestionPriority.PPP, forKey: "Value")
+        d4.setValue(PriorityColor.PPP, forKey: "Color")
+        d4.setValue(QuestionPriorityName.PPP, forKey: "Name")
+        arrQP.add(d4)
         
         return arrQP
     }
@@ -507,7 +734,8 @@ class SupportingFunctions: NSObject {
         case 3:
             return CustomColors.Orange
         default:
-            print("Invalid setAuditStatus")
+            return UIColor.clear
+            //print("Invalid setAuditStatus")
         }
         return UIColor.clear
     }
@@ -531,5 +759,4 @@ class SupportingFunctions: NSObject {
         let needsConnection = (flags.rawValue & UInt32(kSCNetworkFlagsConnectionRequired)) != 0
         return (isReachable && !needsConnection)
     }
-    
 }

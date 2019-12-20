@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Video Player View Controller-->
+        <scene sceneID="qjN-J8-im9">
+            <objects>
+                <viewController storyboardIdentifier="VideoPlayerViewController" id="KZQ-tN-Ayx" customClass="VideoPlayerViewController" customModule="Access4MII" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4zt-82-oUG">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lQx-fH-6sb">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I6L-gG-NOr">
+                                        <rect key="frame" x="5" y="24" width="35" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="1HK-vn-hDi"/>
+                                            <constraint firstAttribute="width" constant="35" id="rmG-Mm-dIc"/>
+                                        </constraints>
+                                        <color key="tintColor" red="0.99074074069999996" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" image="ic_back"/>
+                                        <connections>
+                                            <action selector="btn_Back:" destination="KZQ-tN-Ayx" eventType="touchUpInside" id="Ya1-KR-758"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.17254901959999999" green="0.74117647060000003" blue="0.64705882349999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="I6L-gG-NOr" secondAttribute="bottom" constant="5" id="ZrW-9y-eWU"/>
+                                    <constraint firstAttribute="height" constant="64" id="lca-N7-RS8"/>
+                                    <constraint firstItem="I6L-gG-NOr" firstAttribute="leading" secondItem="lQx-fH-6sb" secondAttribute="leading" constant="5" id="rpa-li-VaK"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AvT-rq-DV4">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="oAf-Q7-ai9" firstAttribute="top" secondItem="lQx-fH-6sb" secondAttribute="top" constant="20" id="1Lr-bN-Aiq"/>
+                            <constraint firstItem="lQx-fH-6sb" firstAttribute="trailing" secondItem="oAf-Q7-ai9" secondAttribute="trailing" id="2rt-2V-6eq"/>
+                            <constraint firstItem="AvT-rq-DV4" firstAttribute="leading" secondItem="oAf-Q7-ai9" secondAttribute="leading" id="3B4-SA-yfU"/>
+                            <constraint firstItem="lQx-fH-6sb" firstAttribute="top" secondItem="4zt-82-oUG" secondAttribute="top" id="LZ6-HX-nLG"/>
+                            <constraint firstItem="AvT-rq-DV4" firstAttribute="bottom" secondItem="oAf-Q7-ai9" secondAttribute="bottom" id="W3l-Vm-1cL"/>
+                            <constraint firstItem="AvT-rq-DV4" firstAttribute="top" secondItem="lQx-fH-6sb" secondAttribute="bottom" id="eLK-Vr-POS"/>
+                            <constraint firstItem="lQx-fH-6sb" firstAttribute="leading" secondItem="oAf-Q7-ai9" secondAttribute="leading" id="mHa-LF-M5w"/>
+                            <constraint firstItem="AvT-rq-DV4" firstAttribute="trailing" secondItem="oAf-Q7-ai9" secondAttribute="trailing" id="xGo-wE-EWE"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="oAf-Q7-ai9"/>
+                    </view>
+                    <connections>
+                        <outlet property="view_Video" destination="AvT-rq-DV4" id="b9Q-lB-G89"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FOf-w3-CyI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="128.80000000000001" y="187.55622188905548"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="ic_back" width="45" height="45"/>
+    </resources>
+</document>

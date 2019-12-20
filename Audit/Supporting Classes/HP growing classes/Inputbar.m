@@ -65,7 +65,7 @@
 //                                                                    5,
 //                                                                    size.width - 20 - RIGHT_BUTTON_SIZE,
 //                                                                    size.height)];
-   _textView.isScrollable = NO;
+    _textView.isScrollable = NO;
     _textView.contentInset = UIEdgeInsetsMake(0, 5, 0, 5);
     
     _textView.minNumberOfLines = 1;
@@ -107,7 +107,7 @@
     [self.rightButton setImage:self.rightButtonImage forState:UIControlStateNormal];
   //  [self.rightButton setTitle:@"Done" forState:UIControlStateNormal];
   //  self.rightButton.titleLabel.font = [UIFont fontWithName:@"Helvetica" size:15.0];
-
+    
     [self.rightButton addTarget:self action:@selector(didPressRightButton:) forControlEvents:UIControlEventTouchUpInside];
     
     [self addSubview:self.rightButton];

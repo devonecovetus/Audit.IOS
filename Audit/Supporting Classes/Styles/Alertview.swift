@@ -21,5 +21,4 @@ class Alertview {
         alertController.addAction(dismissAction)
         controller.present(alertController, animated: true, completion: nil)
     }
-    
 }

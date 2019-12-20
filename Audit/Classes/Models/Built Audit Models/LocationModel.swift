@@ -37,7 +37,7 @@ class LocationModel: NSObject {
         self.locationName = dict["title"] as? String
         self.locationCount = 1
         
-        if let desc = dict["desc"] as? String {
+        if let desc = dict["details"] as? String {
             self.locationDescription = desc
         } else {
             self.locationDescription = "This is a test description for the location/ module topic"

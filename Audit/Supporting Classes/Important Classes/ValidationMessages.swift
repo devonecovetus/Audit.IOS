@@ -10,7 +10,25 @@ import Foundation
 
 
 struct ValidationMessages {
-    
+  
+    static let validationMsgEmail = NSLocalizedString("ValidationEmail", comment: "")
+    static let validationMsgValidEmail = NSLocalizedString("ValidationValidEmail", comment: "")
+    static let validationMsgPassword = NSLocalizedString("ValidationPassword", comment: "")
+    static let validationMsgOldPswd = NSLocalizedString("ValidationOldPassword", comment: "")
+    static let validationMsgNewPswd = NSLocalizedString("ValidationNewPassword", comment: "")
+    static let validationMsgPswdLength = NSLocalizedString("ValidationPasswordLength", comment: "")
+    static let validationMsgComfirmPswd = NSLocalizedString("ValidationConfirmPassword", comment: "")
+    static let validationMsgPswdMatch = NSLocalizedString("ValidationPasswordMatch", comment: "")
+    static let validationMsgFirstName = NSLocalizedString("ValidationFirstName", comment: "")
+    static let validationMsgLastName = NSLocalizedString("ValidationLastName", comment: "")
+    static let validationMsgMobileNo = NSLocalizedString("ValidationMobileNo", comment: "")
+    static let validationMsgMobileNoLength = NSLocalizedString("ValidationMobileNoLength", comment: "")
+    static let validationMsgUserName = NSLocalizedString("ValidationUserName", comment: "")
+    static let validationMsgSubject = NSLocalizedString("ValidationSubject", comment: "")
+    static let validationMsgDescription = NSLocalizedString("ValidationDescription", comment: "")
+
+   
+ 
     // MARK: Registration Msgs
     static let strEnterFirstName = NSLocalizedString("strEnterFirstName", comment: "")
     static let strEnterLastName = NSLocalizedString("strEnterLastName", comment: "")
@@ -44,16 +62,20 @@ struct ValidationMessages {
     
     static let enterFolderName = NSLocalizedString("enterFolderName", comment: "")
     static let selectAuditId = NSLocalizedString("selectAuditId", comment: "")
-    static let selectCountry = NSLocalizedString("selectCountry", comment: "")
+    static let selectCountry = NSLocalizedString("selectCountryStandard", comment: "")
     static let selectLanguage = NSLocalizedString("selectlanguage", comment: "")
     
     static let subFolderName = NSLocalizedString("subFolderName", comment: "")
     static let subFolderDescription = NSLocalizedString("subFolderDescription", comment: "")
-
+    static let rejectAudit = NSLocalizedString("rejectAudit", comment: "")
+    static let urlNotSupportive = NSLocalizedString("rejectAudit", comment: "")
+    
 }
 
 class ShowAlert {
     func showAlertViewWithDuration(_ message: String)  {
+        DispatchQueue.main.async {
+
         let alert = UIAlertView(title: "", message: message, delegate: nil, cancelButtonTitle: nil)
         
         alert.alertViewStyle = .default
@@ -63,11 +85,14 @@ class ShowAlert {
         DispatchQueue.main.asyncAfter(deadline: time, execute: {
             alert.dismiss(withClickedButtonIndex: -1, animated: true)
         })
+        }
     }
     
     func showAlertViewWithMessage(_ strMessage: String){
+        DispatchQueue.main.async {
         let alert = UIAlertView(title: "", message: strMessage, delegate: nil, cancelButtonTitle: "Ok")
         alert.alertViewStyle = .default
         alert.show()
+        }
     }
 }

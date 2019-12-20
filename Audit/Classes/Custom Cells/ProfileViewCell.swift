@@ -14,7 +14,7 @@ class ProfileViewCell: UITableViewCell {
     @IBOutlet weak var imgView_Item: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.selectionStyle = .none
+        selectionStyle = .none
         setUpLanguageSetting()
         // Initialization code
     }
@@ -34,7 +34,6 @@ class ProfileViewCell: UITableViewCell {
     }
     
     func setUpLanguageSetting() {
-       // self.contentView.transform = CGAffineTransform(scaleX: kAppDelegate.intViewFlipStatus, y: 1)
         lbl_Name.transform = CGAffineTransform(scaleX: kAppDelegate.intViewFlipStatus, y: 1)
         imgView_Item.transform = CGAffineTransform(scaleX: kAppDelegate.intViewFlipStatus, y: 1)
         if kAppDelegate.strLanguageName == LanguageType.Arabic {

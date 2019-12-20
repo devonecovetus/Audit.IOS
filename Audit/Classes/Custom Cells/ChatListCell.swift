@@ -22,24 +22,30 @@ class ChatListCell: UITableViewCell {
     @IBOutlet weak var lbl_name: UILabel!
     @IBOutlet weak var lbl_msg: UILabel!
     @IBOutlet weak var lbl_date: UILabel!
-
     @IBOutlet weak var btn_msg: UIButton!
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+         setUpLangaugeSetting()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
     }
     
     //MARK: Button Actions:
     @IBAction func btn_msg(_ sender: Any) {
-        print("self tag = \(self.tag)")
         delegate?.msgAction(index: index, indexPath:indexpath)
     }
 
+    func setUpLangaugeSetting() {
+        img_profilepic.transform = CGAffineTransform(scaleX: kAppDelegate.intViewFlipStatus, y: 1)
+        lbl_name.transform = CGAffineTransform(scaleX: kAppDelegate.intViewFlipStatus, y: 1)
+        
+        if kAppDelegate.strLanguageName == LanguageType.Arabic {
+            lbl_name.textAlignment = NSTextAlignment.right
+        }
+    }
 }

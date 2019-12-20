@@ -7,8 +7,110 @@
 */
 
 //MARK: Validation Messages:
+"ValidationEmail" = "يرجى إدخال البريد الإلكتروني";
+"ValidationValidEmail" = "الرجاء إدخال بريد إلكتروني صحيح";
+"ValidationPassword" = "يرجى إدخال كلمة المرور";
+"ValidationOldPassword" = "يرجى إدخال كلمة المرور القديمة";
+"ValidationNewPassword" = "يرجى إدخال كلمة المرور الجديدة";
+"ValidationPasswordLength" = "كلمة المرور تحتوي على 6 أحرف على الأقل";
+"ValidationConfirmPassword" = "من فضلك أدخل كلمة مرور تأكيد";
+"ValidationPasswordMatch" = "تأكيد كلمة المرور لا تتطابق مع كلمة المرور الجديدة";
+"ValidationFirstName" = "يرجى إدخال الاسم الأول";
+"ValidationLastName" = "يرجى إدخال الاسم الأخير";
+"ValidationMobileNo" = "يرجى إدخال رقم الجوال";
+"ValidationMobileNoLength" = "رقم الجوال على الأقل يحتوي على 10 أرقام";
+"ValidationUserName" = "الرجاء إدخال اسم المستخدم";
+"ValidationSubject" = "يرجى إدخال الموضوع";
+"ValidationDescription" = "يرجى إدخال الوصف";
+"ValidationSyncAudit" = "هل ترغب في مزامنة البيانات الخاصة بك على الخادم. بمجرد بدء أو مزامنة البيانات ، لن تتمكن من إجراء أي تغييرات إضافية. هل تريد الاستمرار؟";
+"rejectAudit" = "هل أنت متأكد من رفض هذا التدقيق";
+"AuditAlert" = "بالنقر على تأكيد أنك سوف يكون تاريخ بدء التدقيق هو تاريخ اليوم. هل ترغب في المتابعة";
+"TextMessageAlert" = "Do you really really want to show the description message?";
+"FinallySyncedAlert" = "هل تريد بالتأكيد إنهاء عملية التدقيق هذه وطلب تقرير المراجعة النهائي؟";
+"ReauditAlert" = "هل تريد بالتأكيد إعادة تحرير هذا التدقيق؟";
+"cannotReeditAuditAlert" = "لا يمكنك إعادة تحرير التدقيق ومحتوياته حتى تقوم بتقديم التقرير النهائي للتقرير السابق";
+"SyncAuditAlert" = "لديك تدقيق في قسم المسودات. لإعادة تحرير أي تدقيق ، يجب عليك مزامنة مسودة التدقيق";
+"UrlNotSupportive" = "عنوان url هذا غير داعم أو قد يكون في وضع غير صحيح";
 
-"enterSubject" = "Please enter subject";
+
+//MARK: Profile
+"UpdateDetails" = "تحديث التفاصيل";
+"ChatAdmin" = "الدردشة مع المسؤول";
+"ShareApp" = "مشاركة ACCESS4MII";
+"HowUse" = "كيف تستعمل";
+
+
+//MARK: Menu View
+"MenuAccount" = "الحساب";
+"MenuHistory" = "التاريخ";
+"MenuReports" = "تقارير";
+"MenuSetting" = "ضبط";
+"MenuHelp" = "مساعدة";
+"MenuLogout" = "الخروج";
+
+
+//MARK: Settings
+"PushNotification1" = "دفع الإخطار";
+"ContactUs1" = "اتصل بنا";
+"Pages" = "صفحات";
+"AboutUs1" = "معلومات عنا";
+"TermsConditions1" = "الأحكام والشروط";
+"StandardPractice1" = "ممارسات قياسية وجيدة";
+"News1" = "أخبار";
+"AssignAudit" = "تدقيق";
+"SyncAudit" = "رسالة";
+"NewAudit" = "أبلغ عن";
+"ChangePassword1" = "غير كلمة السر";
+"Help" = "مساعدة";
+"Logout" = "الخروج";
+"AppLogout" = "تسجيل الخروج التطبيق!";
+
+//MARK: Audit OverView:
+"Date" = "تاريخ";
+"DueDate" = "تاريخ الاستحقاق";
+"Time" = "زمن";
+"Area" = "منطقة";
+"Name" = "اسم";
+"Email" = "البريد الإلكتروني";
+"Number" = "رقم";
+"Address" = "عنوان";
+"Landmark" = "معلم معروف";
+"PinCode" = "الرقم السري";
+
+//MARK: BUiltAudit:
+
+"BuiltAudit" = "بناء التدقيق";
+"Delete" = "حذف";
+"Next" = "التالى";
+"InformationBox" = "صندوق المعلومات";
+"Location" = "موقعك";
+"warning1" = "تحذير: هذا سيحذف ";
+"warning2" = "المجلدات و المجلدات الفرعية بما في ذلك الأسئلة المرتبطة بها ، هل تريد المتابعة؟";
+"warningTitle" = "تحذير!";
+"warning3" = "بيانات المجلدات الفرعية بما في ذلك الأسئلة المرتبطة بها ، هل تريد المتابعة؟";
+
+//MARK: Location View:
+"LocationMessage" = "الموقع المحدد لهذا التدقيق / التفتيش";
+"ContentMessage" = "الموقع المحدد لهذا التدقيق / التفتيش";
+"Add" = "إضافة";
+"Cancel" = "إلغاء";
+"AddSubFolder" = "إضافة مجلد فرعي؟";
+
+//MARK: Location Folder List:
+"Done" = "فعله";
+"View" = "رأي";
+"Archive" = "أرشيف";
+"ReInitiate" = "إعادة بدء";
+"FolderName1" = "إسم الملف";
+"FolderDescription" = "وصف المجلد";
+
+//MARK: BuiltAuditSubLocation
+"SelectSubLocation" = "من أجل المتابعة تحتاج إلى تحديد موقع فرعي واحد على الأقل.";
+"BuiltUnit" = "وحدة بنيت";
+"AddPhoto" = "إضافة صورة";
+"EditPhoto" = "تعديل الصورة";
+"Content" = "يحتوى";
+"enterSubject" = "يرجى إدخال الموضوع";
 "enterDescription" = "Please enter the description";
 "strEnterFirstName" = "Please enter first name";
 "strEnterLastName" = "Please enter last name";
@@ -25,7 +127,7 @@
 "strPasswordLength" = "Password contains at least 6 character";
 "strEnterValidCredentials" = "Please enter valid email or password";
 "strInternalError" = "Internal error, Please try again";
-"strLogout" = "Are you sure you want to logout from app";
+"strLogout" = "هل أنت متأكد من أنك تريد الخروج من التطبيق؟";
 "strServerError" = "Server communication error, Please try again";
 "strInternetIsNotAvailable" = "Internet is not available, Please establish network connection";
 "enterUserName" = "Please enter username";
@@ -40,7 +142,13 @@
 "selectAuditId" = "Please select audit Id";
 "selectCountry" = "Please select country";
 "selectLanguage" = "Please select language";
-
+"selectCountryStandard" = "يرجى اختيار الدولة القياسية أولا";
+"noCountryList" = "لم يتم العثور على قائمة البلد.";
+"cannotDownloadAudit" = "لا يمكنك تنزيل بيانات تدقيق أخرى حتى تقوم بمزامنة بيانات سابقة";
+"cannotDownloadNewAudit" = "You cannot download another audit data until you sync previous one";
+"noAuditInfo" = "لا توجد معلومات للتدقيق بحيث لا يمكنك المتابعة بعد الآن";
+"emptyAudit" = "هذا التدقيق فارغ ، يرجى الإجابة على الأقل على سؤال واحد قبل مزامنة هذا التدقيق.";
+"Alert" = "محزر!";
 
 "Ok" = "حسنا";
 "Yes" = "نعم فعلا";
@@ -48,13 +156,13 @@
 
 
 //MARK: Login:
-"AuditorLogin" = "تسجيل الدخول";
-"InspectorLogin" = "دخول المفتش";
-"ForgotPassword" = "هل نسيت كلمة المرور؟";
-"Email" = "البريد الإلكتروني";
-"Password" = "كلمه السر";
-"SignIn" = "تسجيل الدخول";
-"Submit" = "خضع";
+//"AuditorLogin" = "تسجيل الدخول";
+//"InspectorLogin" = "دخول المفتش";
+//"ForgotPassword" = "هل نسيت كلمة المرور؟";
+//"Email" = "البريد الإلكتروني";
+//"Password" = "كلمه السر";
+//"SignIn" = "تسجيل الدخول";
+//"Submit" = "خضع";
 
 //MARK: Forgot Password:
 "ForgotPasswordTitle" = "نسيت رقمك السري؟";
@@ -69,14 +177,6 @@
 "ConfirmPassword" = "تأكيد كلمة المرور";
 "TitleChangePassword" = "غير كلمة السر";
 "MsgChangePassword" = "يرجى تغيير كلمة المرور الخاصة بك هنا";
-
-//MARK: Menu View
-"MenuAccount" = "الحساب";
-"MenuHistory" = "التاريخ";
-"MenuReports" = "تقارير";
-"MenuSetting" = "ضبط";
-"MenuHelp" = "مساعدة";
-"MenuLogout" = "الخروج";
 
 //MARK: WebContent
 "TermsConditions" = "الأحكام والشروط";
@@ -95,13 +195,6 @@
 "SUGGESTION" = "اقتراح / ردود الفعل";
 "Send" = "إرسال";
 
-//MARK: Profile
-"UpdateDetails" = "تحديث التفاصيل";
-"ChatAdmin" = "الدردشة مع المشرف";
-"ShareApp" = "SHARE ACCESS4MII";
-"HowUse" = "كيف تستعمل";
-"TitleProfile" = "الملف الشخصي";
-
 //MARK: Edit Profile
 "FirstName" = "الاسم الاول";
 "LastName" = "الكنية";
@@ -111,24 +204,67 @@
 "Update" = "تحديث";
 "TitleEdit" = "تحديث الملف";
 
-//MARK: Settings
-"PushNotification1" = "دفع الإخطارات";
-"ContactUs1" = "اتصل بنا";
-"Pages" = "صفحات";
-"AboutUs1" = "معلومات عنا";
-"TermsConditions1" = "الأحكام والشروط";
-"StandardPractice1" = "الممارسة القياسية والسلع";
-"News1" = "أخبار";
-"AssignAudit" = "تعيين التدقيق";
-"SyncAudit" = "مراجعة المزامنة";
-"NewAudit" = "التدقيق الجديد";
-"Help" = "مساعدة";
-"ChangePassword1" = "غير كلمة السر";
-"TitleSetting" = "الإعدادات";
-"Logout" = "Logout";
+//MARK: My Audit:
+
+"InComplete" = "غير مكتمل";
+"InProgress" = "في تقدم";
+"Completed" = "منجز";
+"MYAUDIT" = "تقييمي";
+"AssignDate" = "تعيين التاريخ";
+"Title" = "عنوان";
+"AssignBy" = "تعيين بواسطة";
+"TargetDate" = "تاريخ التسليم";
+"View" = "رأي";
+"SortBy" = "ترتيب حسب";
+"ByTitle" = "العنوان (أ-ي)";
+"ByDate" = "تاريخ";
+"Cancel" = "إلغاء";
+"DataSynced" = "مزامنة البيانات";
+"AuditSynced" = "تمت مزامنة بيانات التدقيق بنجاح";
 
 
 //MARK: File Manager:
 "Downloading...." = "جارى التحميل.....";
+"DownloadingData...." = "تنزيل البيانات ....";
 "PhotoSaved" = "تم حفظ الصورة بنجاح في جهازك ، يرجى التحقق من مكتبة الصور الخاصة بك";
 "FileSaved" = "تم حفظ الملف بنجاح في جهازك ، يرجى التحقق من تطبيق الملف -> مجلد التطبيقات -> الملفات التي تم تنزيلها";
+
+//MARK: Report
+"AssignedOn" = "Assigned On";
+"Name" = "اسم:";
+"AssignedDate" = "تاريخ محدد:";
+"AuditTitle" = "عنوان:";
+"Description" = "وصف:";
+
+//MARK: Sub Location Sub Folder Screen:
+"SubFolderTitle" = "عنوان المجلد الفرعي";
+"EditDescription" = "أدخل الوصف";
+
+//MARK: Question Answer:
+"AddPhoto" = "إضافة صورة";
+"DeletePhoto" = "حذف الصورة";
+"Submit" = "خضع";
+"QuestionDataSaved" = "تم حفظ بيانات أسئلتك بنجاح";
+"TextPlaceHolder" = "اكتب شيئًا هنا ...";
+"Save" = "حفظ";
+"SelectOption" = "حدد الخيار";
+
+//MARK: Photo
+"ChoosePhoto" = "اختر الصورة";
+"TakePhoto" = "تصوير";
+"Cancel" = "إلغاء";
+"PhotoLibrary" = "اختر من المكتبة";
+
+//MARK: Priority
+"Priority" = "أفضلية";
+"Low" = "منخفض";
+"High" = "متوسط";
+"Medium" = "متوسط";
+"PPP" = "PPP";
+
+//MARK: Chat
+
+"Call" = "مكالمة";
+"Email" = "البريد الإلكتروني";
+"Document" = "وثيقة";
+"ChooseMedia" = "اختر الوسائط";

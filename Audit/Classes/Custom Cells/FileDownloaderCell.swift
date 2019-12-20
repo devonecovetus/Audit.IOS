@@ -41,7 +41,7 @@ class FileDownloaderCell: UICollectionViewCell {
             imgView_Item.image = UIImage(named: "jpg")
         } else if (arrExt?.last)! == FileExtension.EXCEL {
             imgView_Item.image = UIImage(named: "xls")
-        } else if (arrExt?.last)! == FileExtension.XLSX {
+        } else if (arrExt?.last)! == FileExtension.XLSX  || (arrExt?.last)! == FileExtension.XLS {
             imgView_Item.image = UIImage(named: "xls")
         } else if (arrExt?.last)! == FileExtension.DOC || (arrExt?.last)! == FileExtension.DOCX {
             imgView_Item.image = UIImage(named: "doc")

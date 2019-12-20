@@ -27,8 +27,19 @@ class Location_NewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        setUpLanguageSetting()
     }
 
+    func setUpLanguageSetting() {
+        lbl_Text.transform = CGAffineTransform(scaleX: kAppDelegate.intViewFlipStatus, y: 1)
+        btn_Edit.transform = CGAffineTransform(scaleX: kAppDelegate.intViewFlipStatus, y: 1)
+       
+        if kAppDelegate.strLanguageName == LanguageType.Arabic {
+            lbl_Text.textAlignment = NSTextAlignment.right
+        }
+        
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         // Configure the view for the selected state
@@ -36,7 +47,6 @@ class Location_NewCell: UITableViewCell {
     
     //MARK: Button Actions:
     @IBAction func btn_edit(_ sender: Any) {
-        print("self tag = \(self.tag)")
         delegate?.editValue(index: index, indexPath:indexpath)
     }
     

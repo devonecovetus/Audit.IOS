@@ -21,7 +21,10 @@ class SubQuestionsModel: NSObject {
     var lang:String? = String()
     var subQuestion:String? = String()
     var subQuestionType:Int? = Int()
-   
+    var hasSubQuestion:Int? = Int()
+    var isSubQuestion:Int? = Int()
+    var parentQuestionId: Int? = Int()
+    var arrSubQuestions:[SubQuestionsModel]? = [SubQuestionsModel]()
     
     override init() { }
 

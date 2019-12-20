@@ -30,8 +30,9 @@ enum ChatType {
 public class SocketIOClientClass {
     
     static let instance = SocketIOClientClass()
+    static let PortNo = 8090
     
-    let manager = SocketManager(socketURL: URL(string: "http://dev.covetus.com:8090")!, config: [.log(true), .compress])
+    let manager = SocketManager(socketURL: URL(string: String(format: "%@",Server.ChatBaseUrl))!, config: [.log(true), .compress])
     var socket:SocketIOClient
     
     private init() {

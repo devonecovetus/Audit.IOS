@@ -1,0 +1,123 @@
+
+/* Class = "UIButton"; normalTitle = "Ok"; ObjectID = "1LV-wq-Eiv"; */
+"1LV-wq-Eiv.normalTitle" = "Ok";
+
+/* Class = "UILabel"; text = "Target Date:"; ObjectID = "1eY-Yb-IMV"; */
+"1eY-Yb-IMV.text" = "Target Date:";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "1it-V7-xzB"; */
+"1it-V7-xzB.text" = "Label";
+
+/* Class = "UILabel"; text = "Select Option Below"; ObjectID = "6qD-hi-db3"; */
+"6qD-hi-db3.text" = "Select Option Below";
+
+/* Class = "UILabel"; text = "REPORT"; ObjectID = "8f2-B4-NmG"; */
+"8f2-B4-NmG.text" = "REPORT";
+
+/* Class = "UILabel"; text = "Language"; ObjectID = "9WP-DH-x5u"; */
+"9WP-DH-x5u.text" = "Language";
+
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "9td-j1-Sn8"; */
+"9td-j1-Sn8.normalTitle" = "Cancel";
+
+/* Class = "UIButton"; normalTitle = "Accept"; ObjectID = "EFL-ua-xWL"; */
+"EFL-ua-xWL.normalTitle" = "Accept";
+
+/* Class = "UILabel"; text = "SETTINGS"; ObjectID = "EIG-Ca-zwM"; */
+"EIG-Ca-zwM.text" = "SETTINGS";
+
+/* Class = "UILabel"; text = "NOTIFICATIONS"; ObjectID = "Fng-zh-CrM"; */
+"Fng-zh-CrM.text" = "NOTIFICATIONS";
+
+/* Class = "UILabel"; text = "Agent Details"; ObjectID = "I7E-RZ-vJs"; */
+"I7E-RZ-vJs.text" = "Agent Details";
+
+/* Class = "UILabel"; text = "DRAFT"; ObjectID = "KUP-Ud-mhh"; */
+"KUP-Ud-mhh.text" = "DRAFT";
+
+/* Class = "UILabel"; text = "Title:"; ObjectID = "LSH-cv-ESe"; */
+"LSH-cv-ESe.text" = "Title:";
+
+/* Class = "UITextField"; placeholder = "Search By User"; ObjectID = "LY5-qz-cGt"; */
+"LY5-qz-cGt.placeholder" = "Search By User";
+
+/* Class = "UITextField"; placeholder = "Search By User"; ObjectID = "MMV-mf-hbB"; */
+"MMV-mf-hbB.placeholder" = "Search By User";
+
+/* Class = "UILabel"; text = "Select Country Standard"; ObjectID = "NjE-0O-F0G"; */
+"NjE-0O-F0G.text" = "Select Country Standard";
+
+/* Class = "UILabel"; text = "AUDIT OVERVIEW"; ObjectID = "O4R-AY-7HO"; */
+"O4R-AY-7HO.text" = "AUDIT OVERVIEW";
+
+/* Class = "UIButton"; normalTitle = "View"; ObjectID = "ODB-EO-oFp"; */
+"ODB-EO-oFp.normalTitle" = "View";
+
+/* Class = "UISearchBar"; placeholder = "Search"; ObjectID = "TlL-hg-r3a"; */
+"TlL-hg-r3a.placeholder" = "Search";
+
+/* Class = "UILabel"; text = "MESSAGES"; ObjectID = "WVd-i0-bCX"; */
+"WVd-i0-bCX.text" = "MESSAGES";
+
+/* Class = "UILabel"; text = "15/12/90"; ObjectID = "X8V-7b-SEg"; */
+"X8V-7b-SEg.text" = "15/12/90";
+
+/* Class = "UIButton"; normalTitle = "View"; ObjectID = "aNE-c3-YtN"; */
+"aNE-c3-YtN.normalTitle" = "View";
+
+/* Class = "UILabel"; text = "Click on options to view details about country standard and language"; ObjectID = "aeR-xH-4cq"; */
+"aeR-xH-4cq.text" = "Click on options to view details about country standard and language";
+
+/* Class = "UILabel"; text = "MEDIA"; ObjectID = "bI4-FL-KOG"; */
+"bI4-FL-KOG.text" = "MEDIA";
+
+/* Class = "UILabel"; text = "AGENT LIST"; ObjectID = "bZ0-wq-1Mc"; */
+"bZ0-wq-1Mc.text" = "AGENT LIST";
+
+/* Class = "UIButton"; normalTitle = "Select"; ObjectID = "d5b-Ho-4dt"; */
+"d5b-Ho-4dt.normalTitle" = "Select";
+
+/* Class = "UILabel"; text = "MY AUDIT"; ObjectID = "f8a-yL-lvF"; */
+"f8a-yL-lvF.text" = "MY AUDIT";
+
+/* Class = "UILabel"; text = "Target Date:"; ObjectID = "guA-HN-KOp"; */
+"guA-HN-KOp.text" = "Target Date:";
+
+/* Class = "UILabel"; text = "Hello"; ObjectID = "h5N-lg-7lq"; */
+"h5N-lg-7lq.text" = "Hello";
+
+/* Class = "UILabel"; text = "Hello"; ObjectID = "LQN-93-sTr"; */
+"LQN-93-sTr.text" = "Hello";
+
+/* Class = "UIButton"; normalTitle = "Reject"; ObjectID = "hoG-aB-P18"; */
+"hoG-aB-P18.normalTitle" = "Reject";
+
+/* Class = "UILabel"; text = "Title:"; ObjectID = "i4c-uG-YWU"; */
+"i4c-uG-YWU.text" = "Title:";
+
+/* Class = "UILabel"; text = "Contact Person"; ObjectID = "iBe-oO-Cm0"; */
+"iBe-oO-Cm0.text" = "Contact Person";
+
+/* Class = "UILabel"; text = "15/12/90"; ObjectID = "lWU-Uu-z9W"; */
+"lWU-Uu-z9W.text" = "15/12/90";
+
+/* Class = "UIButton"; normalTitle = "Done"; ObjectID = "meb-QK-aXm"; */
+"meb-QK-aXm.normalTitle" = "Done";
+
+/* Class = "UILabel"; text = "Assign By:"; ObjectID = "ndp-2l-NXV"; */
+"ndp-2l-NXV.text" = "Assign By:";
+
+/* Class = "UILabel"; text = "Attached details"; ObjectID = "tc9-ut-eL8"; */
+"tc9-ut-eL8.text" = "Attached details";
+
+/* Class = "UILabel"; text = "ACCESS4MII"; ObjectID = "u7g-Kd-oE9"; */
+"u7g-Kd-oE9.text" = "ACCESS4MII";
+
+/* Class = "UILabel"; text = "Assign By:"; ObjectID = "vtD-Ve-K8E"; */
+"vtD-Ve-K8E.text" = "Assign By:";
+
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "wnc-cM-Lod"; */
+"wnc-cM-Lod.normalTitle" = "Cancel";
+
+/* Class = "UIButton"; normalTitle = "Select"; ObjectID = "z3f-ZC-g3K"; */
+"z3f-ZC-g3K.normalTitle" = "Select";

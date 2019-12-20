@@ -9,24 +9,36 @@
 import UIKit
 
 class ChatContactViewController: UIViewController {
-    
+    //MARK: Variables & Outlets:
     var flagIsSearch = false
     var arrSections = [NSLocalizedString("A", comment: ""), NSLocalizedString("B", comment: "") ,NSLocalizedString("C", comment: ""), NSLocalizedString("D", comment: ""), NSLocalizedString("E", comment: ""), NSLocalizedString("F", comment: ""), NSLocalizedString("G", comment: ""), NSLocalizedString("H", comment: ""), NSLocalizedString("I", comment: "") ,NSLocalizedString("J", comment: ""), NSLocalizedString("K", comment: ""), NSLocalizedString("L", comment: ""), NSLocalizedString("M", comment: ""), NSLocalizedString("N", comment: ""), NSLocalizedString("O", comment: ""), NSLocalizedString("P", comment: "") ,NSLocalizedString("Q", comment: ""), NSLocalizedString("R", comment: ""), NSLocalizedString("S", comment: ""), NSLocalizedString("T", comment: ""), NSLocalizedString("U", comment: ""), NSLocalizedString("V", comment: ""), NSLocalizedString("W", comment: ""), NSLocalizedString("X", comment: ""),NSLocalizedString("Y", comment: ""), NSLocalizedString("Z", comment: "")]
-    
     var arrSectionObejctList = [AgentListSectionModel]()
     var arrfilterdSectionObejctList = [AgentListSectionModel]()
     var arrSearchList = [AgentListModel]()
     
     @IBOutlet weak var tf_Search: DesignableUITextField!
     @IBOutlet weak var tbl_chat: UITableView!
-    
+    @IBOutlet weak var lbl_Title: UILabel!
+
+    //MARK:
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         // Create a padding view for padding on left
+        
+        setUpLanguageSetting()
         tf_Search.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: tf_Search.frame.height))
         tf_Search.leftViewMode = .always
         getAgentAuditIdList()
+    }
+    
+    func setUpLanguageSetting() {
+        self.view.transform = CGAffineTransform(scaleX: kAppDelegate.intViewFlipStatus, y: 1)
+        lbl_Title.transform = CGAffineTransform(scaleX: kAppDelegate.intViewFlipStatus, y: 1)
+        tf_Search.transform = CGAffineTransform(scaleX: kAppDelegate.intViewFlipStatus, y: 1)
+        if kAppDelegate.strLanguageName == LanguageType.Arabic {
+            tf_Search.textAlignment = NSTextAlignment.right
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -48,24 +60,30 @@ class ChatContactViewController: UIViewController {
                 let arrresponse = dictJson["response"] as! NSArray
                 
                 for i in 0..<self.arrSections.count {
-                    
-                    let str_section = self.arrSections[i]
-                    var arrAgentList = [AgentListModel]()
-                    for item in arrresponse {
-                        let arr = item as! NSDictionary
-                        var firstletter = arr["username"] as? String
-                        firstletter = String((firstletter?.prefix(1))!).uppercased() // Hell)!
-                        if str_section == firstletter {
-                            let obRequest = AgentListModel()
-                            obRequest.initWith(dict: (item as? NSDictionary)!)
-                            arrAgentList.append(obRequest)
+                    autoreleasepool {
+                        
+                        let str_section = self.arrSections[i]
+                        var arrAgentList = [AgentListModel]()
+                        for item in arrresponse {
+                            
+                            autoreleasepool {
+                                
+                                let arr = item as! NSDictionary
+                                var firstletter = arr["username"] as? String
+                                firstletter = String((firstletter?.prefix(1))!).uppercased() // Hell)!
+                                if str_section == firstletter {
+                                    let obRequest = AgentListModel()
+                                    obRequest.initWith(dict: (item as? NSDictionary)!)
+                                    arrAgentList.append(obRequest)
+                                }
+                            }
                         }
-                    }
-                    
-                    if arrAgentList.count != 0 {
-                        let obRequest2 = AgentListSectionModel()
-                        obRequest2.initWith(section: str_section, arrList: arrAgentList)
-                        self.arrSectionObejctList.append(obRequest2)
+                        
+                        if arrAgentList.count != 0 {
+                            let obRequest2 = AgentListSectionModel()
+                            obRequest2.initWith(section: str_section, arrList: arrAgentList)
+                            self.arrSectionObejctList.append(obRequest2)
+                        }
                     }
                 }
                 self.tbl_chat.reloadData()
@@ -77,7 +95,6 @@ class ChatContactViewController: UIViewController {
         super.viewWillAppear(false)
         kAppDelegate.currentViewController = self
     }
-    
 }
 
 extension ChatContactViewController: UITableViewDelegate, UITableViewDataSource {
@@ -103,8 +120,13 @@ extension ChatContactViewController: UITableViewDelegate, UITableViewDataSource 
         }
         
         label.textColor = UIColor.lightGray
-        label.font = UIFont(name: "OpenSans-Regular", size: 30)
+        label.font = UIFont(name: CustomFont.themeFont , size: 30)
         headerView.addSubview(label)
+        
+        if kAppDelegate.strLanguageName == LanguageType.Arabic {
+            label.transform = CGAffineTransform(scaleX: kAppDelegate.intViewFlipStatus, y: 1)
+            label.textAlignment = NSTextAlignment.right
+        }
         
         let labelline = UILabel()
         labelline.frame = CGRect.init(x: 25, y: label.frame.maxY - 8, width: headerView.frame.width-50, height: 1.5)
@@ -137,23 +159,22 @@ extension ChatContactViewController: UITableViewDelegate, UITableViewDataSource 
             cell.img_profilepic.sd_setImage(with: URL(string: arrSectionObejctList[indexPath.section].arrList[indexPath.row].profilePic!), placeholderImage: UIImage.init(named: "img_user"))
             cell.lbl_name.text = arrSectionObejctList[indexPath.section].arrList[indexPath.row].name
         }
+        if kAppDelegate.strLanguageName == LanguageType.Arabic {
+           cell.btn_msg.transform = CGAffineTransform(scaleX: kAppDelegate.intViewFlipStatus, y: 1)
+        }
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 75
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        return DeviceType.IS_PHONE ? 50 : 75
     }
 }
 
 extension ChatContactViewController : UITextFieldDelegate {
     
     // Chat list filter
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-    }
+    func textFieldDidBeginEditing(_ textField: UITextField) {  }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         return textField.resignFirstResponder()
@@ -164,8 +185,7 @@ extension ChatContactViewController : UITextFieldDelegate {
         let textFieldText: NSString = (textField.text ?? "") as NSString
         let txtAfterUpdate = textFieldText.replacingCharacters(in: range, with: string)
         
-        if string == " " {
-        } else if string == "" {
+        if string == " " { } else if string == "" {
             getSearchArrayContains(txtAfterUpdate)
         } else {
             getSearchArrayContains(txtAfterUpdate)
@@ -182,41 +202,55 @@ extension ChatContactViewController : UITextFieldDelegate {
         }
         
         for i in 0..<arrSectionObejctList.count {
-            let obSO = arrSectionObejctList[i]
-            for j in 0..<obSO.arrList.count {
-                let obUser = obSO.arrList[j]
-                
-                if obUser.name?.range(of: text, options: .caseInsensitive, range: (obUser.name?.startIndex)!..<(obUser.name?.endIndex)!, locale: nil) != nil {
-                    self.arrSearchList.append(obUser)
-                    print("self.arrSearchList = \(self.arrSearchList.count)")
-                    tbl_chat.reloadData()
+            autoreleasepool {
+                let obSO = arrSectionObejctList[i]
+                for j in 0..<obSO.arrList.count {
+                    
+                    autoreleasepool {
+                        let obUser = obSO.arrList[j]
+                        
+                        if obUser.name?.range(of: text, options: .caseInsensitive, range: (obUser.name?.startIndex)!..<(obUser.name?.endIndex)!, locale: nil) != nil {
+                            self.arrSearchList.append(obUser)
+                            //print("self.arrSearchList = \(self.arrSearchList.count)")
+                            tbl_chat.reloadData()
+                        }
+                    }
                 }
             }
         }
-        
-        tbl_chat.reloadData()
+            tbl_chat.reloadData()
     }
 }
 
 extension ChatContactViewController: ChatcellDelegate {
     
     func msgAction(index: Int, indexPath: IndexPath) {
-        
-        tf_Search.text = ""
+        //print("index = \(index), indexpath = \(indexPath.row)")
         tf_Search.resignFirstResponder()
         
         let vc = HomeStoryBoard.instantiateViewController(withIdentifier: "ChatViewController") as! ChatViewController
-        
-        if arrSectionObejctList[indexPath.section].arrList[index].role == "Agent" {
-            vc.sendmsg = ChatEvents.Agent_SendMsg
-            vc.getmsg = ChatEvents.Agent_GetMsg
-            vc.arr_ReciverDetail = [arrSectionObejctList[indexPath.section].arrList[index]]
+        if flagIsSearch {
+            //print("arrSearchList = \(arrSearchList.count)")
+            if arrSearchList[index].role == "Agent" {
+                vc.sendmsg = ChatEvents.Agent_SendMsg
+                vc.getmsg = ChatEvents.Agent_GetMsg
+                vc.arr_ReciverDetail = [arrSearchList[indexPath.row]]
+            } else {
+                vc.sendmsg = ChatEvents.Admin_SendMsg
+                vc.getmsg = ChatEvents.Admin_GetMsg
+                vc.arr_ReciverDetail = [arrSearchList[indexPath.row]]
+            }
         } else {
-            vc.sendmsg = ChatEvents.Admin_SendMsg
-            vc.getmsg = ChatEvents.Admin_GetMsg
-            vc.arr_ReciverDetail = [arrSectionObejctList[indexPath.section].arrList[index]]
+            if arrSectionObejctList[indexPath.section].arrList[index].role == "Agent" {
+                vc.sendmsg = ChatEvents.Agent_SendMsg
+                vc.getmsg = ChatEvents.Agent_GetMsg
+                vc.arr_ReciverDetail = [arrSectionObejctList[indexPath.section].arrList[index]]
+            } else {
+                vc.sendmsg = ChatEvents.Admin_SendMsg
+                vc.getmsg = ChatEvents.Admin_GetMsg
+                vc.arr_ReciverDetail = [arrSectionObejctList[indexPath.section].arrList[index]]
+            }
         }
         self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
+    }    
 }

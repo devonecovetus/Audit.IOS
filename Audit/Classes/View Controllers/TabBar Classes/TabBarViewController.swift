@@ -12,7 +12,6 @@ class TabBarViewController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
     }
     
@@ -20,5 +19,4 @@ class TabBarViewController: UITabBarController {
         super.viewWillAppear(false)
         kAppDelegate.currentViewController = self
     }
-    
 }

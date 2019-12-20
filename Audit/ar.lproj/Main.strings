@@ -1,0 +1,114 @@
+
+/* Class = "UIButton"; normalTitle = "Inspector"; ObjectID = "0Sb-5B-jrM"; */
+"0Sb-5B-jrM.normalTitle" = "مفتش";
+
+/* Class = "UITextField"; placeholder = "Last Name"; ObjectID = "1cV-M5-Fsk"; */
+"1cV-M5-Fsk.placeholder" = "الكنية";
+
+/* Class = "UITextView"; text = "Description"; ObjectID = "6UZ-B5-Mqc"; */
+"6UZ-B5-Mqc.text" = "وصف";
+
+/* Class = "UITextField"; placeholder = "Name"; ObjectID = "8WC-sX-usI"; */
+"8WC-sX-usI.placeholder" = "اسم";
+
+/* Class = "UITextView"; text = "Hello, Admin i wolud like to chat with you."; ObjectID = "98S-Ac-ynF"; */
+"98S-Ac-ynF.text" = "مرحبًا ، مسؤول أود الدردشة معك.";
+
+/* Class = "UIButton"; normalTitle = "SUBMIT"; ObjectID = "9PJ-Tg-M3x"; */
+"9PJ-Tg-M3x.normalTitle" = "خضع";
+
+/* Class = "UITextField"; placeholder = "Name"; ObjectID = "Bdp-SC-6Hh"; */
+"Bdp-SC-6Hh.placeholder" = "اسم";
+
+/* Class = "UITextField"; placeholder = "First Name"; ObjectID = "DQH-bd-uax"; */
+"DQH-bd-uax.placeholder" = "الاسم الاول";
+
+/* Class = "UILabel"; text = "CHANGE PASSWORD"; ObjectID = "ELZ-nz-lrW"; */
+"ELZ-nz-lrW.text" = "غير كلمة السر";
+
+/* Class = "UILabel"; text = "Send chat request to start chat with admin"; ObjectID = "F3W-kg-YqF"; */
+"F3W-kg-YqF.text" = "أرسل طلب دردشة لبدء الدردشة مع المسؤول";
+
+/* Class = "UILabel"; text = "CONTACT US"; ObjectID = "FTF-gN-RhU"; */
+"FTF-gN-RhU.text" = "اتصل بنا";
+
+/* Class = "UITextField"; placeholder = "Email Address"; ObjectID = "Fzb-Pm-6t7"; */
+"Fzb-Pm-6t7.placeholder" = "عنوان بريد الكتروني";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "Guz-CU-kxa"; */
+"Guz-CU-kxa.placeholder" = "كلمه السر";
+
+/* Class = "UIButton"; normalTitle = "UPDATE"; ObjectID = "GwA-3w-fgs"; */
+"GwA-3w-fgs.normalTitle" = "تحديث";
+
+/* Class = "UIButton"; normalTitle = "Forgot Password?"; ObjectID = "HiO-XS-FhS"; */
+"HiO-XS-FhS.normalTitle" = "هل نسيت كلمة المرور؟";
+
+/* Class = "UIButton"; normalTitle = "SEND"; ObjectID = "MJe-XY-eeS"; */
+"MJe-XY-eeS.normalTitle" = "إرسال";
+
+/* Class = "UIButton"; normalTitle = "SEND"; ObjectID = "MQr-6Q-yia"; */
+"MQr-6Q-yia.normalTitle" = "إرسال";
+
+/* Class = "UILabel"; text = "UPDATE PROFILE"; ObjectID = "MZa-bH-ifS"; */
+"MZa-bH-ifS.text" = "تحديث الملف";
+
+/* Class = "UILabel"; text = "CHAT WITH ADMIN"; ObjectID = "NhO-SJ-UaA"; */
+"NhO-SJ-UaA.text" = "الدردشة مع المشرف";
+
+/* Class = "UITextField"; placeholder = "Email"; ObjectID = "NrR-lJ-ms6"; */
+"NrR-lJ-ms6.placeholder" = "البريد الإلكتروني";
+
+/* Class = "UILabel"; text = "PROFILE"; ObjectID = "U0m-7l-I7d"; */
+"U0m-7l-I7d.text" = "الملف الشخصي";
+
+/* Class = "UITextField"; placeholder = "Subject"; ObjectID = "ZG0-F7-T85"; */
+"ZG0-F7-T85.placeholder" = "موضوع";
+
+/* Class = "UILabel"; text = "Enter your password here"; ObjectID = "bCu-NE-AlB"; */
+"bCu-NE-AlB.text" = "أدخل كلمة المرور الخاصة بك هنا";
+
+/* Class = "UIButton"; normalTitle = "HOME"; ObjectID = "bSM-CN-z3I"; */
+"bSM-CN-z3I.normalTitle" = "الصفحة الرئيسية";
+
+/* Class = "UILabel"; text = "Enter your email address to reset your password."; ObjectID = "ccD-C7-T3u"; */
+"ccD-C7-T3u.text" = "أدخل عنوان بريدك الإلكتروني لإعادة تعيين كلمة المرور الخاصة بك.";
+
+/* Class = "UILabel"; text = "THANK YOU !"; ObjectID = "emW-cD-ERB"; */
+"emW-cD-ERB.text" = "شكرا جزيلا !";
+
+/* Class = "UITextField"; placeholder = "Contact Number"; ObjectID = "f5Q-cs-xJc"; */
+"f5Q-cs-xJc.placeholder" = "رقم الاتصال";
+
+/* Class = "UITextField"; placeholder = "Email"; ObjectID = "fxf-LK-b1k"; */
+"fxf-LK-b1k.placeholder" = "البريد الإلكتروني";
+
+/* Class = "UITextField"; placeholder = "Old Password"; ObjectID = "kQC-Ni-iUx"; */
+"kQC-Ni-iUx.placeholder" = "كلمة المرور القديمة";
+
+/* Class = "UITextField"; placeholder = "Name"; ObjectID = "l2h-pz-dnC"; */
+"l2h-pz-dnC.placeholder" = "البريد الإلكتروني";
+
+/* Class = "UIButton"; normalTitle = "Auditor"; ObjectID = "loO-mY-jaG"; */
+"loO-mY-jaG.normalTitle" = "مدقق حسابات";
+
+/* Class = "UILabel"; text = "Forgot Your Password ?"; ObjectID = "nX3-iu-ifl"; */
+"nX3-iu-ifl.text" = "نسيت رقمك السري ؟";
+
+/* Class = "UIButton"; normalTitle = "SUBMIT"; ObjectID = "p06-O3-dWx"; */
+"p06-O3-dWx.normalTitle" = "خضع";
+
+/* Class = "UIButton"; normalTitle = "SIGN IN"; ObjectID = "qwD-5Z-J62"; */
+"qwD-5Z-J62.normalTitle" = "تسجيل الدخول";
+
+/* Class = "UITextField"; placeholder = "Confirm Password"; ObjectID = "tsr-Fr-uhR"; */
+"tsr-Fr-uhR.placeholder" = "تأكيد كلمة المرور";
+
+/* Class = "UITextField"; placeholder = "New Password"; ObjectID = "u1N-Ub-EhS"; */
+"u1N-Ub-EhS.placeholder" = "كلمة السر الجديدة";
+
+/* Class = "UILabel"; text = "Suggestions / Feedback"; ObjectID = "ugl-cC-8jk"; */
+"ugl-cC-8jk.text" = "اقتراحات / تعليقات";
+
+/* Class = "UILabel"; text = "This is a test description message for showing thank you message"; ObjectID = "whE-Vx-QIT"; */
+"whE-Vx-QIT.text" = "هذه رسالة وصف اختبار لعرض رسالة الشكر";

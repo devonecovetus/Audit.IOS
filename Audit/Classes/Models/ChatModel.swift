@@ -45,15 +45,38 @@ class ChatModel: NSObject {
         }
     }
     
+    func initWithCopy(to_user_id:Int, is_download:Int, from_name:String, dict: NSDictionary, time: String) {
+        
+        self.incId = 0
+        self.to_user_id = to_user_id
+        self.is_download = is_download
+        
+        if let form_id = dict["from"] as? Int {
+            self.fromid = form_id
+        } else if let strform_id = dict["from"] as? String {
+            self.fromid = Int(strform_id)
+        }
+        self.from_name = from_name
+        self.msg = dict["msg"] as? String
+        
+        self.msgtime = time
+        
+        if let msg_type = dict["msgtype"] as? Int {
+            self.msgtype = msg_type
+        } else if let strmsg_type = dict["msgtype"] as? String {
+            self.msgtype = Int(strmsg_type)
+        }
+    }
+    
     private static var chatmodel: ChatModel?
     
     class func sharedInstance() -> ChatModel {
         if self.chatmodel == nil {
-            print("chat object nil and initiates")
+            //print("chat object nil and initiates")
             self.chatmodel = ChatModel()
             // Here user profile data will be inserted.
         } else {
-            print("chat object not nil")
+            //print("chat object not nil")
         }
         return self.chatmodel!
     }

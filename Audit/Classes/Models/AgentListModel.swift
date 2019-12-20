@@ -18,7 +18,18 @@ class AgentListModel: NSObject {
     var phone: String? = String()
     
     func initWith(dict: NSDictionary) {
-        self.profilePic = dict["photo"] as? String
+        
+        if let imgUrl1 = dict["photo"] as? String {
+            if imgUrl1.count > 0 {
+                self.profilePic = imgUrl1
+                self.profilePic = self.profilePic?.replacingOccurrences(of: " ", with: "%20")
+            } else {
+                self.profilePic = ""
+            }
+        } else {
+            self.profilePic = ""
+        }
+        
         self.name = dict["username"] as? String
         self.role = dict["role"] as? String
         self.agentid = dict["user_id"] as? Int

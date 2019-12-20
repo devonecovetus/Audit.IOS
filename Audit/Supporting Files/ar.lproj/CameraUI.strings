@@ -1,0 +1,15 @@
+/* 
+  CameraUI.strings
+  Audit
+
+  Created by Rupesh Chhabra on 25/01/19.
+  Copyright © 2019 Mac. All rights reserved.
+*/
+"PHOTO" = "صورة فوتوغرافية";
+"AEAF_LOCK_TEXT" = "AE / AF القفل";
+"API_CANCEL_TITLE" = "إلغاء";
+"HDR_AUTO" = "تلقاءي";
+"HDR_ON" = "على";
+"HDR_OFF" = "إيقاف";
+"TIMER_OFF_TEXT" = "إيقاف";
+"USE_PHOTO" = "استخدم الصورة";

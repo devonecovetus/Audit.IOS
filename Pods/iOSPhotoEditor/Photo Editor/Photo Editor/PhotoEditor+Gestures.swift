@@ -17,7 +17,7 @@ extension PhotoEditorViewController : UIGestureRecognizerDelegate  {
      UIPanGestureRecognizer - Moving Objects
      Selecting transparent parts of the imageview won't move the object
      */
-   @objc func panGesture(_ recognizer: UIPanGestureRecognizer) {
+    @objc func panGesture(_ recognizer: UIPanGestureRecognizer) {
         if let view = recognizer.view {
             if view is UIImageView {
                 //Tap only on visible parts on the image
@@ -44,7 +44,7 @@ extension PhotoEditorViewController : UIGestureRecognizerDelegate  {
      UIPinchGestureRecognizer - Pinching Objects
      If it's a UITextView will make the font bigger so it doen't look pixlated
      */
-   @objc func pinchGesture(_ recognizer: UIPinchGestureRecognizer) {
+    @objc func pinchGesture(_ recognizer: UIPinchGestureRecognizer) {
         if let view = recognizer.view {
             if view is UITextView {
                 let textView = view as! UITextView
@@ -137,7 +137,7 @@ extension PhotoEditorViewController : UIGestureRecognizerDelegate  {
      Scale Effect
      */
     func scaleEffect(view: UIView) {
-        view.superview?.bringSubview(toFront: view)
+        view.superview?.bringSubviewToFront(view)
         
         if #available(iOS 10.0, *) {
             let generator = UIImpactFeedbackGenerator(style: .heavy)
@@ -166,7 +166,7 @@ extension PhotoEditorViewController : UIGestureRecognizerDelegate  {
         hideToolbar(hide: true)
         deleteView.isHidden = false
         
-        view.superview?.bringSubview(toFront: view)
+        view.superview?.bringSubviewToFront(view)
         let pointToSuperView = recognizer.location(in: self.view)
 
         view.center = CGPoint(x: view.center.x + recognizer.translation(in: canvasImageView).x,

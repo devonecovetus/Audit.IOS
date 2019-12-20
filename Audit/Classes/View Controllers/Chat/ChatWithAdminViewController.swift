@@ -9,15 +9,28 @@
 import UIKit
 
 class ChatWithAdminViewController: UIViewController {
-    
+    //MARK: Variables & Outlets
+    var decs_str = ""
     @IBOutlet weak var tf_name: DesignableUITextField!
     @IBOutlet weak var tv_description: UITextView!
     
+    //MARK: View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        decs_str = "Description"
         setUpLanguageSetting()
         // Do any additional setup after loading the view.
         tf_name.text = UserProfile.name
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(false)
+        kAppDelegate.currentViewController = self
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
     
     //MARK: BUtton Actions:
@@ -34,11 +47,17 @@ class ChatWithAdminViewController: UIViewController {
     }
     
     //MARK: Supporting Functions:
-    
     func setUpLanguageSetting() {
         self.view.transform = CGAffineTransform(scaleX: kAppDelegate.intViewFlipStatus, y: 1)
         tf_name.transform = CGAffineTransform(scaleX: kAppDelegate.intViewFlipStatus, y: 1)
         tv_description.transform = CGAffineTransform(scaleX: kAppDelegate.intViewFlipStatus, y: 1)
+        
+        if kAppDelegate.strLanguageName == LanguageType.Arabic {
+            tf_name.textAlignment = NSTextAlignment.right
+            tv_description.textAlignment = NSTextAlignment.right
+            tv_description.text = "مرحبًا ، مسؤول أود الدردشة معك."
+            decs_str = "وصف"
+        }
     }
     
     func submitChatRequest() {
@@ -55,21 +74,11 @@ class ChatWithAdminViewController: UIViewController {
     func checkValidations() -> String {
         var strMsg = String()
         if tf_name.text?.count == 0 {
-            strMsg = ValidationMessages.enterUserName
-        } else if tv_description.text.count == 0 || tv_description.text == "Description" {
-            strMsg = ValidationMessages.enterDescription
+            strMsg = ValidationMessages.validationMsgUserName
+        } else if tv_description.text.count == 0 || tv_description.text == decs_str {
+            strMsg = ValidationMessages.validationMsgDescription
         }
         return strMsg
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(false)
-        kAppDelegate.currentViewController = self
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 }
 
@@ -77,7 +86,7 @@ extension ChatWithAdminViewController: UITextViewDelegate {
     
     // Textview Delegate Method
     func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.text == "Description" {
+        if textView.text == decs_str {
             textView.textColor = UIColor.black
             textView.text = ""
         }
@@ -86,7 +95,7 @@ extension ChatWithAdminViewController: UITextViewDelegate {
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text == "" {
             textView.textColor = UIColor.lightGray
-            textView.text = "Description"
+            textView.text = decs_str
         }
     }
     

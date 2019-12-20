@@ -20,11 +20,14 @@ class BuiltAuditSubLocationModel: NSObject {
     var folderId: Int? = Int()
     var subFolderId: Int? = Int()
     var incId:Int? = Int()
-    
+    var isLocked:Int? = Int()
+    var arrFolders = [SubLocationSubFolderModel]()
+
     override init() { }
     
     func initWith(auditId: Int, locationId: Int, subLocationId: Int, folderId: Int, subFolderId: Int, workStatus: Int, subLocationCount: Int, subLocationName: String, subLocationDesc: String) {
         
+        self.arrFolders = []
         self.auditId = auditId
         self.locationId = locationId
         self.subLocationId = subLocationId
@@ -35,8 +38,7 @@ class BuiltAuditSubLocationModel: NSObject {
         self.subLocationName = subLocationName
         self.subLocationDescription = subLocationDesc
         self.isModified = 1
-        
+        self.isLocked = 0
     }
-    
     
 }

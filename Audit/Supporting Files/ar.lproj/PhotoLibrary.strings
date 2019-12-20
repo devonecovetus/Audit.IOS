@@ -1,0 +1,15 @@
+/* 
+  PhotoLibrary.strings
+  Audit
+  Created by Rupesh Chhabra on 25/01/19.
+  Copyright © 2019 Mac. All rights reserved.
+*/
+"CANCEL" = "إلغاء";
+"RETAKE" = "استعادة";
+"STREAM_SHARED_BY_ME_SUBTITLE" = "منك";
+"STREAM_SHARED_BY_SUBTITLE" = "من عند %@";
+"ALBUM_IMAGE_COUNT_FORMAT" = "%@ الصور";
+"ALBUM_VIDEO_COUNT_FORMAT" = "%@ أشرطة فيديو";
+"1_ALBUM_PHOTO" = "1 صورة";
+"1_ALBUM_VIDEO" = "1 فيديو";
+"ALBUM_TWO_TYPES_LABEL_COMMAS" = "%@, %@";

@@ -13,10 +13,14 @@ import CoreLocation
 
 
 let DEVICEID = UIDevice.current.identifierForVendor
-let MainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
-let UIStoryBoard = UIStoryboard(name: "UI", bundle: nil)
-let HomeStoryBoard = UIStoryboard(name: "Home", bundle: nil)
-let BuiltAuditStoryBoard = UIStoryboard(name: "BuiltAudit", bundle: nil)
+let MainStoryBoard = UIStoryboard(name: DeviceType.IS_PHONE ? "Main_iPhone": "Main" , bundle: nil)
+let UIStoryBoard = UIStoryboard(name: DeviceType.IS_PHONE ? "UI_iPhone": "UI", bundle: nil)
+let HomeStoryBoard = UIStoryboard(name: DeviceType.IS_PHONE ? "Home_iPhone": "Home", bundle: nil)
+let BuiltAuditStoryBoard = UIStoryboard(name:DeviceType.IS_PHONE ? "BuiltAudit_iPhone": "BuiltAudit", bundle: nil)
+let CustomPopUpStoryBoard = UIStoryboard(name: DeviceType.IS_PHONE ? "CustomPopUp_iPhone" : "CustomPopUp", bundle: nil)
+let MediaGalleryStoryBoard = UIStoryboard(name: DeviceType.IS_PHONE ?  "MediaGallery_iPhone" : "MediaGallery", bundle: nil)
+let VideoStoryBoard = UIStoryboard(name: DeviceType.IS_PHONE ? "CustomVideo_iPhone": "CustomVideo", bundle: nil)
+
 let OB_WEBSERVICE = WebServiceClass()
 
 let SHOWALERT = ShowAlert()
@@ -24,7 +28,6 @@ let MF = SupportingFunctions()
 let dc = DateClassFunctions()
 var UserProfile = UserProfileModel.sharedInstance()
 var obSqlite = SqliteDB.sharedInstance()
-
 
 let dateFormatCustom = DateFormatter()
 let DateFormat_DMMY = "dd MMMM YYYY"
@@ -41,7 +44,9 @@ let DateFormat_YMD_HMS2 = "YYYY-MM-dd HH:mm:ss"
 
 let AnswerSeperator = "|*|"
    
-   var SESSION = URLSession.shared   /// Its a singleton of session that creates a default session
+   /// Its a singleton of session that creates a default session
+ 
+
 let SelectedLanguage = "SelectedLanguage"
    let kAppDelegate = UIApplication.shared.delegate as! AppDelegate
    let ApplicationVersion = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
@@ -51,9 +56,9 @@ let AppVersion = Double(ApplicationVersion)
    let fSize = CGFloat(13.0)
 
    let dullWhite = UIColor(red: 225/255, green: 225/255, blue: 225/255, alpha: 1)
-   let Preferences = UserDefaults.standard
+let Preferences:UserDefaults? = UserDefaults.standard
 
-let DailyTimeInterval1 = TimeInterval((3600 * 18) )
+let UAETimeInterval1 = TimeInterval((3600 * 4))
 let DailyTimeInterval = TimeInterval(((3600 * 24) * 1))
 let WeeklyTimeInterval = TimeInterval(((3600 * 24) * 7))
 let MonthlyTimeInterval = TimeInterval(((3600 * 24) * 30))
@@ -101,6 +106,7 @@ struct CustomColors {
     static let themeColorGray = UIColor(red: 208/255, green: 208/255, blue: 208/255, alpha: 1)
     static let themeColorGreen = UIColor(red: 44/255, green: 189/255, blue: 165/255, alpha: 1)
     static let themeColorVoilet = UIColor.init(hexString: "#D8B5FF")
+    static let themeColorYellow = UIColor.init(hexString: "#E8D746")
 }
 
 struct ValidationConstants {
@@ -115,11 +121,12 @@ struct ValidationConstants {
 
 struct AppLinks {
     static let GoogleAppStoreLink = "https://play.google.com/store/apps/details?id=app.bundle.id"
-    static let AppleAppStoreLink = "https://itunes.apple.com/us/app/your_app_name/id_app_id?ls=1&mt=8"
+    static let AppleAppStoreLink = "https://itunes.apple.com/us/app/your-app-name/idapp_id?ls=1&mt=8"
 }
 
 struct PreferencesKeys {
     static let savedItems = "savedItems"
+    static let questionScreen = "questionScreen"
 }
 
 enum UserRoles {
@@ -138,6 +145,16 @@ struct WebContentName {
     static let AboutUs =   NSLocalizedString("AboutUs", comment: "")
     static let ContactUs =   NSLocalizedString("ContactUs", comment: "")
     static let Standards =   NSLocalizedString("StandardPractice", comment: "")
+    static let News = NSLocalizedString("News", comment: "")
+    static let Help = NSLocalizedString("Help2", comment: "")
+}
+
+struct WebContentData {
+    static let AboutUs =  Server.BaseURL + WebServiceName.AboutUs
+    static let TermsAndConditions = Server.BaseURL + WebServiceName.TermsConditions
+    static let StandardsAndPractices = Server.BaseURL + WebServiceName.StandardAndPractices
+    static let News = Server.BaseURL + WebServiceName.News
+    static let Help = Server.BaseURL + WebServiceName.Help
 }
 
 struct ScreenSize {
@@ -166,23 +183,37 @@ struct Version {
     static let iOS9 = (Version.SYS_VERSION >= 9.0 && Version.SYS_VERSION < 10.0)
     static let iOS10 = (Version.SYS_VERSION >= 10.0 && Version.SYS_VERSION < 11.0)
     static let iOS11 = (Version.SYS_VERSION >= 11.0 && Version.SYS_VERSION < 12.0)
-    static let iOS12 = (Version.SYS_VERSION >= 12.0 && Version.SYS_VERSION < 12.0)
+    static let iOS12 = (Version.SYS_VERSION >= 12.0 && Version.SYS_VERSION < 13.0)
+    static let iOS13 = (Version.SYS_VERSION >= 13.0 && Version.SYS_VERSION < 14.0)
+}
+
+struct MessageType {
+    static let Text = 1
+    static let Image = 2
+    static let Video = 3
+    static let Document = 4
 }
 
 struct NotificationType {
    static let Audit = "Audit"
    static let Chat = "Chat"
+   static let Report = "Report"
+}
+
+enum CustomFont {
+    static let themeFont = "Montserrat-Regular"
 }
 
 /*
  to check and manage question type
  */
 enum QuestionType {
-    static let CheckBox = 3
-    static let Radio = 2
     static let Text = 1
+    static let Radio = 2
+    static let CheckBox = 3
     static let DropDown = 4
     static let PopUp = 5
+    static let TrueFalse = 6
 }
 
 /*
@@ -192,6 +223,21 @@ enum QuestionPriority {
     static let Low = 1
     static let Medium = 2
     static let High = 3
+    static let PPP = 4
+}
+
+enum PriorityColor {
+    static let Low = CustomColors.themeColorGreen//UIColor(red: 255/255.0, green: 186/255.0, blue: 91/255.0, alpha: 1.0)
+    static let Medium = UIColor(red: 232/255.0, green: 215/255.0, blue: 70/255.0, alpha: 0.75)
+    static let High = UIColor(red: 249/255.0, green: 95/255.0, blue: 98/255.0, alpha: 1.0)
+    static let PPP = UIColor(red: 47/255.0, green: 54/255.0, blue: 113/255.0, alpha: 1.0)
+}
+
+enum QuestionPriorityName {
+    static let Low = NSLocalizedString("Low", comment: "")
+    static let Medium = NSLocalizedString("Medium", comment: "")
+    static let High = NSLocalizedString("High", comment: "")
+    static let PPP = NSLocalizedString("PPP", comment: "")
 }
 
 enum QuestionCategory {
@@ -199,12 +245,25 @@ enum QuestionCategory {
     static let Measurement = 2
 }
 
+enum PopUpType {
+    static let Simple = 1
+    static let Action = 2
+    static let Check = 3
+    static let Toast = 4
+    static let SimpleAction = 5
+}
 
 enum MethodType {
     static let Get =    "GET"
     static let Post =   "POST"
     static let Put =     "PUT"
     static let Patch = "PATCH"
+}
+
+enum AuditType {
+    static let Auditor = 1
+    static let Inspector = 2
+    static let SuperAudit = 3
 }
 
 struct SettingContent {
@@ -225,8 +284,7 @@ struct SettingContent {
     static let Standars = NSLocalizedString("StandardPractice1", comment: "")
     static let TermsConditions = NSLocalizedString("TermsConditions1", comment: "")
     static let Help = NSLocalizedString("Help", comment: "")
-     static let Logout = NSLocalizedString("Logout", comment: "")
-    
+    static let Logout = NSLocalizedString("Logout", comment: "")
 }
 
 enum ProfileContent {
@@ -237,14 +295,12 @@ enum ProfileContent {
 }
 
 enum MenuContent {
-    
     static let Account = NSLocalizedString("MenuAccount", comment: "")
     static let History = NSLocalizedString("MenuHistory", comment: "")
     static let Report = NSLocalizedString("MenuReports", comment: "")
     static let Setting = NSLocalizedString("MenuSetting", comment: "")
     static let Help = NSLocalizedString("MenuHelp", comment: "")
     static let Logout = NSLocalizedString("MenuLogout", comment: "")
-    
 }
 
 enum MediaFilesMetaDataConstants {
@@ -259,7 +315,19 @@ enum MediaFilesMetaDataConstants {
 }
 
 enum AuditStatus {
-    static let Completed = 2
-    static let Pending = 1
     static let InComplete = 0
+    static let Pending = 1
+    static let Completed = 2
+}
+
+enum ProgressColor {
+    static let InCompleted = UIColor(red: 249/255.0, green: 95/255.0, blue: 98/255.0, alpha: 1.0)
+    static let InProgress = UIColor(red: 255/255.0, green: 186/255.0, blue: 91/255.0, alpha: 1.0)
+    static let Completed = CustomColors.themeColorGreen
+}
+
+enum ProgressText {
+    static let InCompleted = NSLocalizedString("InComplete", comment: "")
+    static let InProgress = NSLocalizedString("InProgress", comment: "")
+    static let Completed = NSLocalizedString("Completed", comment: "")
 }

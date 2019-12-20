@@ -20,12 +20,4 @@ class LocationHeaderView: UITableViewHeaderFooterView {
     @IBOutlet weak var lbl_Count: UILabel!
     @IBOutlet weak var lbl_LocationName: UILabel!
     
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
-
 }

@@ -210,6 +210,7 @@ static const CGFloat SVProgressHUDLabelSpacing = 8.0f;
 }
 
 + (void)showWithStatus:(NSString*)status {
+    [self setDefaultMaskType:SVProgressHUDMaskTypeGradient];
     [self showProgress:SVProgressHUDUndefinedProgress status:status];
 }
 
@@ -329,7 +330,6 @@ static const CGFloat SVProgressHUDLabelSpacing = 8.0f;
     [self showImage:image status:status];
     [self setDefaultMaskType:existingMaskType];
 }
-
 
 #pragma mark - Dismiss Methods
 

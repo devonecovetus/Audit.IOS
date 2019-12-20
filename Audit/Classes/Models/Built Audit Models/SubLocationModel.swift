@@ -10,6 +10,7 @@ import UIKit
 
 class SubLocationModel: NSObject {
     var subLocationId: Int? = Int()
+    var strLocationId:String? = String()
     var subLocationName:String? = String()
     var subLocationCount:Int? = Int()
     var subLocationDescription:String? = String()
@@ -17,10 +18,14 @@ class SubLocationModel: NSObject {
     var isModified:Int? = Int()
     var locationId:Int? = Int()
     var work_status:Int? = Int()
+    var arrSubFolderList = [SubLocationFolderModel]()
     
     override init() { }
     
     func initWith(dict:NSDictionary, auditId: Int, locationId: Int) {
+        
+        self.strLocationId = dict["location_id"] as? String
+        
         if let lId = dict["id"] as? Int {
             self.subLocationId = lId
         } else {
@@ -29,10 +34,10 @@ class SubLocationModel: NSObject {
         self.subLocationName = dict["title"] as? String
         self.subLocationCount = 0
         
-        if let desc = dict["desc"] as? String {
+        if let desc = dict["details"] as? String {
             self.subLocationDescription = desc
         } else {
-            self.subLocationDescription = "This is a test description for the location/ module topic"
+            self.subLocationDescription = "This is a test description for the sublocation/ module topic"
         }
         
         self.auditId = auditId

@@ -9,11 +9,20 @@
 import UIKit
 
 class SubLocationCounterCell: UICollectionViewCell {
-     @IBOutlet weak var lbl_Name: UILabel!
+    @IBOutlet weak var lbl_Count: UILabel!
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+        setUpLanguageSetting()
+    }
     
     func setSubLocationCounterData() {
         
     }
     
+    func setUpLanguageSetting() {
+        lbl_Count.transform = CGAffineTransform(scaleX: kAppDelegate.intViewFlipStatus, y: 1)
+    }
     
 }

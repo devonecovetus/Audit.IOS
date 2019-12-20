@@ -20,12 +20,10 @@ class menu_cell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
     }
 
     func setUpMenuData(dict: NSDictionary) {
-        self.contentView.transform = CGAffineTransform(scaleX: kAppDelegate.intViewFlipStatus, y: 1)
         img_icons.transform = CGAffineTransform(scaleX: kAppDelegate.intViewFlipStatus, y: 1)
         lbl_title.transform = CGAffineTransform(scaleX: kAppDelegate.intViewFlipStatus, y: 1)
         if kAppDelegate.strLanguageName == LanguageType.Arabic {

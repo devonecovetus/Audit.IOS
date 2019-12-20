@@ -1,17 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="87j-m7-5hY">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="87j-m7-5hY">
     <device id="ipad9_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="OpenSans-Regular.ttf">
-            <string>OpenSans-Regular</string>
+        <array key="Montserrat-Bold.otf">
+            <string>Montserrat-Bold</string>
+        </array>
+        <array key="Montserrat-Regular.otf">
+            <string>Montserrat-Regular</string>
+        </array>
+        <array key="Montserrat-SemiBold.otf">
+            <string>Montserrat-SemiBold</string>
         </array>
         <array key="OpenSans-SemiBold.ttf">
             <string>OpenSans-SemiBold</string>
@@ -42,32 +48,40 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="wLe-xO-mDd">
-                                <rect key="frame" x="184" y="141" width="400" height="240"/>
+                                <rect key="frame" x="184" y="110" width="400" height="275"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IxK-XT-ZRl" customClass="DesignableView" customModule="Access4MII" customModuleProvider="target">
-                                <rect key="frame" x="115" y="430" width="538" height="520"/>
+                                <rect key="frame" x="115" y="470" width="538" height="500"/>
                                 <subviews>
                                     <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="5v1-ph-Ps3">
-                                        <rect key="frame" x="40" y="0.0" width="458" height="70"/>
+                                        <rect key="frame" x="40" y="0.0" width="458" height="65"/>
                                         <subviews>
                                             <button opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="loO-mY-jaG">
-                                                <rect key="frame" x="0.0" y="0.0" width="229" height="70"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="229" height="65"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans" pointSize="23"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="23"/>
                                                 <state key="normal" title="Auditor">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <state key="selected">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                                        <color key="value" red="0.17254901959999999" green="0.74117647060000003" blue="0.64705882349999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="action_auditor_inspector:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lSU-3e-gtG"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Sb-5B-jrM" customClass="DesignableButton" customModule="Access4MII" customModuleProvider="target">
-                                                <rect key="frame" x="229" y="0.0" width="229" height="70"/>
+                                                <rect key="frame" x="229" y="0.0" width="229" height="65"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans" pointSize="23"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="23"/>
                                                 <state key="normal" title="Inspector">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
@@ -78,6 +92,9 @@
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                         <real key="value" value="0.0"/>
                                                     </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                                        <color key="value" red="0.17254901959999999" green="0.74117647060000003" blue="0.64705882349999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="action_auditor_inspector:" destination="BYZ-38-t0r" eventType="touchUpInside" id="t8e-1Q-w4P"/>
@@ -85,17 +102,17 @@
                                             </button>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="70" id="yvb-cD-hgv"/>
+                                            <constraint firstAttribute="height" constant="65" id="yvb-cD-hgv"/>
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="XaO-Hi-bVW">
-                                        <rect key="frame" x="40" y="145" width="458" height="150"/>
+                                        <rect key="frame" x="40" y="115" width="458" height="150"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="l2h-pz-dnC" customClass="DesignableUITextField" customModule="Access4MII" customModuleProvider="target">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="l2h-pz-dnC" customClass="DesignableUITextField" customModule="Access4MII" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="458" height="65"/>
                                                 <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="19"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="19"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="ic_email"/>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
@@ -112,7 +129,7 @@
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Guz-CU-kxa" customClass="DesignableUITextField" customModule="Access4MII" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="85" width="458" height="65"/>
                                                 <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="19"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="19"/>
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="ic_password"/>
@@ -128,20 +145,21 @@
                                                 </connections>
                                             </textField>
                                         </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="150" id="1AI-f4-seW"/>
                                         </constraints>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qwD-5Z-J62">
-                                        <rect key="frame" x="169" y="360" width="200" height="50"/>
+                                        <rect key="frame" x="169" y="315" width="200" height="50"/>
                                         <color key="backgroundColor" red="0.17254901959999999" green="0.74117647060000003" blue="0.64705882349999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="Tzp-1N-DDf"/>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="cht-ab-GnH"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans" pointSize="22"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="22"/>
                                         <inset key="imageEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        <state key="normal" title="SIGN IN">
+                                        <state key="normal" title="Sign In">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
@@ -154,13 +172,13 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HiO-XS-FhS">
-                                        <rect key="frame" x="169" y="480" width="200" height="30"/>
+                                        <rect key="frame" x="169" y="420" width="200" height="30"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="Thu-yG-dfx"/>
                                             <constraint firstAttribute="height" constant="30" id="wNA-zP-7gJ"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans" pointSize="20"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="20"/>
                                         <state key="normal" title="Forgot Password?">
                                             <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
@@ -172,15 +190,15 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="HiO-XS-FhS" firstAttribute="centerX" secondItem="IxK-XT-ZRl" secondAttribute="centerX" id="3Po-ic-oAS"/>
-                                    <constraint firstAttribute="height" constant="520" id="5dc-d1-1kP"/>
+                                    <constraint firstAttribute="height" constant="500" id="5dc-d1-1kP"/>
                                     <constraint firstAttribute="trailing" secondItem="5v1-ph-Ps3" secondAttribute="trailing" constant="40" id="9h7-wh-31t"/>
-                                    <constraint firstItem="XaO-Hi-bVW" firstAttribute="top" secondItem="5v1-ph-Ps3" secondAttribute="bottom" constant="75" id="9nQ-YB-FMF"/>
+                                    <constraint firstItem="XaO-Hi-bVW" firstAttribute="top" secondItem="5v1-ph-Ps3" secondAttribute="bottom" constant="50" id="9nQ-YB-FMF"/>
                                     <constraint firstAttribute="trailing" secondItem="XaO-Hi-bVW" secondAttribute="trailing" constant="40" id="GGP-Vn-eyQ"/>
                                     <constraint firstItem="5v1-ph-Ps3" firstAttribute="leading" secondItem="IxK-XT-ZRl" secondAttribute="leading" constant="40" id="Khp-S6-6CG"/>
-                                    <constraint firstItem="HiO-XS-FhS" firstAttribute="top" secondItem="qwD-5Z-J62" secondAttribute="bottom" constant="70" id="T97-50-Kxh"/>
+                                    <constraint firstItem="HiO-XS-FhS" firstAttribute="top" secondItem="qwD-5Z-J62" secondAttribute="bottom" constant="55" id="T97-50-Kxh"/>
                                     <constraint firstItem="5v1-ph-Ps3" firstAttribute="top" secondItem="IxK-XT-ZRl" secondAttribute="top" id="VAe-7S-sU4"/>
                                     <constraint firstItem="qwD-5Z-J62" firstAttribute="centerX" secondItem="IxK-XT-ZRl" secondAttribute="centerX" id="hHM-dE-aye"/>
-                                    <constraint firstItem="qwD-5Z-J62" firstAttribute="top" secondItem="XaO-Hi-bVW" secondAttribute="bottom" constant="65" id="jhA-y3-F57"/>
+                                    <constraint firstItem="qwD-5Z-J62" firstAttribute="top" secondItem="XaO-Hi-bVW" secondAttribute="bottom" constant="50" id="jhA-y3-F57"/>
                                     <constraint firstItem="XaO-Hi-bVW" firstAttribute="leading" secondItem="IxK-XT-ZRl" secondAttribute="leading" constant="40" id="tIO-i9-4S2"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
@@ -189,15 +207,42 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Arg-GW-Tmb">
+                                <rect key="frame" x="155" y="422" width="458" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Lku-ms-bAN"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="20"/>
+                                <color key="textColor" red="0.17254901959999999" green="0.74117647060000003" blue="0.64705882349999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                        <size key="value" width="0.0" height="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                        <color key="value" red="0.17254901959999999" green="0.74117647060000003" blue="0.64705882349999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Arg-GW-Tmb" secondAttribute="trailing" constant="155" id="23S-uz-Yaf"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="wLe-xO-mDd" secondAttribute="trailing" constant="184" id="4yS-3G-3vi"/>
-                            <constraint firstItem="IxK-XT-ZRl" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="410" id="5tu-pI-Gre"/>
+                            <constraint firstItem="IxK-XT-ZRl" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="450" id="5tu-pI-Gre"/>
                             <constraint firstItem="wLe-xO-mDd" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="184" id="8tR-XE-c0C"/>
-                            <constraint firstItem="IxK-XT-ZRl" firstAttribute="top" secondItem="wLe-xO-mDd" secondAttribute="bottom" constant="49" id="IMj-ww-Xf9"/>
+                            <constraint firstItem="IxK-XT-ZRl" firstAttribute="top" secondItem="wLe-xO-mDd" secondAttribute="bottom" constant="85" id="IMj-ww-Xf9"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="IxK-XT-ZRl" secondAttribute="trailing" constant="115" id="KJd-hF-kBN"/>
-                            <constraint firstItem="wLe-xO-mDd" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="121" id="lT5-gA-iYu"/>
+                            <constraint firstItem="Arg-GW-Tmb" firstAttribute="top" secondItem="wLe-xO-mDd" secondAttribute="bottom" constant="37" id="KPo-le-Ou4"/>
+                            <constraint firstItem="IxK-XT-ZRl" firstAttribute="top" secondItem="Arg-GW-Tmb" secondAttribute="bottom" constant="18" id="PNV-jf-gxs"/>
+                            <constraint firstItem="Arg-GW-Tmb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="155" id="gB6-wk-2Cx"/>
+                            <constraint firstItem="wLe-xO-mDd" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="90" id="lT5-gA-iYu"/>
                             <constraint firstItem="IxK-XT-ZRl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="115" id="mDR-a2-2Ue"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -209,13 +254,14 @@
                         <outlet property="btn_auditor" destination="loO-mY-jaG" id="t6w-i3-JGf"/>
                         <outlet property="btn_inspector" destination="0Sb-5B-jrM" id="15Z-1o-y9s"/>
                         <outlet property="imgView_Logo" destination="wLe-xO-mDd" id="miw-G3-A9k"/>
+                        <outlet property="lbl_TypeText" destination="Arg-GW-Tmb" id="h2D-us-dPZ"/>
                         <outlet property="tf_name" destination="l2h-pz-dnC" id="i85-XZ-Omn"/>
                         <outlet property="tf_password" destination="Guz-CU-kxa" id="mzQ-Qc-4Dj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4" y="38"/>
+            <point key="canvasLocation" x="14.84375" y="37.5"/>
         </scene>
         <!--Forgot PasswordVC-->
         <scene sceneID="Cxg-8W-iAo">
@@ -251,18 +297,18 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="70" id="9Ah-pr-3kh"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans" pointSize="38"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="38"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p06-O3-dWx" customClass="DesignableButton" customModule="Access4MII" customModuleProvider="target">
-                                <rect key="frame" x="284" y="850" width="200" height="60"/>
+                                <rect key="frame" x="284" y="842.5" width="200" height="60"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="R8l-ea-3R1"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="YYL-yO-rt6"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans" pointSize="22"/>
+                                <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="22"/>
                                 <inset key="imageEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="SUBMIT">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -283,14 +329,14 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email Address" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fzb-Pm-6t7" customClass="DesignableUITextField" customModule="Access4MII" customModuleProvider="target">
-                                <rect key="frame" x="169" y="590" width="430" height="60"/>
+                                <rect key="frame" x="169" y="582.5" width="430" height="60"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="5Xb-0N-VXS"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="430" id="MS1-s0-BY3"/>
                                 </constraints>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="19"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="19"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
@@ -311,12 +357,12 @@
                                 </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter your email address to reset your password." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ccD-C7-T3u">
-                                <rect key="frame" x="174" y="450" width="420" height="68.5"/>
+                                <rect key="frame" x="174" y="450" width="420" height="61"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="35" id="6t9-1F-0RX"/>
                                     <constraint firstAttribute="width" constant="420" id="QPc-WS-1xs"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="25"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="25"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -367,7 +413,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="2rC-8y-Vwa"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans" pointSize="22"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="22"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -399,12 +445,12 @@
                                 <rect key="frame" x="115" y="430" width="538" height="450"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter your password here" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bCu-NE-AlB">
-                                        <rect key="frame" x="142.5" y="25" width="253" height="40"/>
+                                        <rect key="frame" x="134.5" y="25" width="269.5" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="KQu-la-dSY"/>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="253" id="Wsq-c4-5PW"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="21"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="21"/>
                                         <color key="textColor" red="0.17254901959999999" green="0.74117647060000003" blue="0.64705882349999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -415,7 +461,7 @@
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="2la-Av-4HG"/>
                                             <constraint firstAttribute="height" constant="50" id="8Oz-VR-dgz"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans" pointSize="22"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="22"/>
                                         <inset key="imageEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <state key="normal" title="SUBMIT">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -435,7 +481,7 @@
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Old Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kQC-Ni-iUx" customClass="DesignableUITextField" customModule="Access4MII" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="458" height="60"/>
                                                 <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="19"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="19"/>
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="ic_password"/>
@@ -453,7 +499,7 @@
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="New Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="u1N-Ub-EhS" customClass="DesignableUITextField" customModule="Access4MII" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="80" width="458" height="60"/>
                                                 <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="19"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="19"/>
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="ic_password"/>
@@ -471,7 +517,7 @@
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Confirm Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tsr-Fr-uhR" customClass="DesignableUITextField" customModule="Access4MII" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="160" width="458" height="60"/>
                                                 <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="19"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="19"/>
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="ic_password"/>
@@ -552,7 +598,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="vcR-s1-Od2"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans" pointSize="22"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="22"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -606,7 +652,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="SDP-a3-1G8"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans" pointSize="24"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="24"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -616,7 +662,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="35" id="Q48-h9-C7h"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="19"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="19"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -627,8 +673,7 @@
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="190" id="Jh0-08-9eW"/>
                                             <constraint firstAttribute="height" constant="50" id="XOK-td-mym"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="22"/>
-                                        <state key="normal" title="AUDITOR"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="22"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                 <real key="value" value="25"/>
@@ -651,7 +696,7 @@
                                     <constraint firstItem="CRx-PA-q5l" firstAttribute="top" secondItem="0eH-jl-1z5" secondAttribute="bottom" constant="10" id="wov-82-rmE"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="80" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="M9u-bb-bjI">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="80" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="M9u-bb-bjI">
                                 <rect key="frame" x="30" y="354" width="708" height="670"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -669,12 +714,12 @@
                                                         <constraint firstAttribute="height" constant="32" id="Tgu-8z-gw8"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p02-mz-dij">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p02-mz-dij">
                                                     <rect key="frame" x="82" y="25" width="596" height="35"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="35" id="qeA-bN-lvG"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="22"/>
+                                                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="22"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -830,7 +875,7 @@
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DQH-bd-uax" customClass="DesignableUITextField" customModule="Access4MII" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="708" height="65"/>
                                         <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="20"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="20"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
@@ -848,7 +893,7 @@
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1cV-M5-Fsk" customClass="DesignableUITextField" customModule="Access4MII" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="75" width="708" height="65"/>
                                         <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="20"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="20"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
@@ -866,7 +911,7 @@
                                     <textField opaque="NO" userInteractionEnabled="NO" alpha="0.75" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fxf-LK-b1k" customClass="DesignableUITextField" customModule="Access4MII" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="150" width="708" height="65"/>
                                         <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="20"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="20"/>
                                         <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="bottomBorderColor">
@@ -881,7 +926,7 @@
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Contact Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="f5Q-cs-xJc" customClass="DesignableUITextField" customModule="Access4MII" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="225" width="708" height="65"/>
                                         <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="20"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="20"/>
                                         <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="bottomBorderColor">
@@ -905,7 +950,7 @@
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="210" id="ZHw-4K-sT1"/>
                                     <constraint firstAttribute="height" constant="55" id="r7Z-3r-iv0"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="23"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="23"/>
                                 <state key="normal" title="UPDATE"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -964,7 +1009,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="dCm-Ce-xzy"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans" pointSize="22"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="22"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -996,11 +1041,11 @@
                                 <rect key="frame" x="0.0" y="64" width="768" height="110"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Suggestions / Feedback" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ugl-cC-8jk">
-                                        <rect key="frame" x="20" y="23" width="728" height="65"/>
+                                        <rect key="frame" x="20" y="22.5" width="728" height="65"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="65" id="GzL-rT-Wad"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans" pointSize="23"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="23"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -1019,7 +1064,7 @@
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8WC-sX-usI" customClass="DesignableUITextField" customModule="Access4MII" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="508" height="72.5"/>
                                         <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="20"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="20"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
@@ -1037,7 +1082,7 @@
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NrR-lJ-ms6" customClass="DesignableUITextField" customModule="Access4MII" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="82.5" width="508" height="72"/>
                                         <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="20"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="20"/>
                                         <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
@@ -1056,7 +1101,7 @@
                                         <rect key="frame" x="0.0" y="164.5" width="508" height="72.5"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="20"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="20"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
@@ -1083,7 +1128,7 @@
                                     <constraint firstAttribute="height" constant="145" id="67I-ek-NeG"/>
                                 </constraints>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="20"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <connections>
                                     <outlet property="delegate" destination="OLT-5X-QFc" id="3jq-7r-MEb"/>
@@ -1113,7 +1158,7 @@
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="210" id="Tle-db-y4P"/>
                                     <constraint firstAttribute="height" constant="55" id="b9h-y1-syK"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="22"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="22"/>
                                 <state key="normal" title="SEND"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -1178,7 +1223,7 @@
                                     <constraint firstAttribute="height" constant="500" id="o47-9z-NZY"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star_yellow_icon" translatesAutoresizingMaskIntoConstraints="NO" id="u07-1a-ac0">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_star" translatesAutoresizingMaskIntoConstraints="NO" id="u07-1a-ac0">
                                 <rect key="frame" x="364" y="544" width="40" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="iTx-VT-vVA"/>
@@ -1186,31 +1231,31 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="THANK YOU !" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="emW-cD-ERB">
-                                <rect key="frame" x="290" y="616" width="189" height="45"/>
+                                <rect key="frame" x="282" y="616" width="204" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="wAh-JQ-DEe"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans" pointSize="30"/>
+                                <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="30"/>
                                 <color key="textColor" red="0.18039215689999999" green="0.74117647060000003" blue="0.64705882349999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is a test description message for showing thank you message" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="whE-Vx-QIT">
-                                <rect key="frame" x="48" y="675" width="673" height="150"/>
+                                <rect key="frame" x="48" y="675" width="672" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="qzt-Vs-hIu"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="22"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bSM-CN-z3I">
-                                <rect key="frame" x="309.5" y="897" width="150" height="65"/>
+                                <rect key="frame" x="309" y="897" width="150" height="65"/>
                                 <color key="backgroundColor" red="0.18039215689999999" green="0.74117647060000003" blue="0.64705882349999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="65" id="CvV-KG-Csx"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="hur-wb-l3r"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans" pointSize="25"/>
+                                <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="25"/>
                                 <state key="normal" title="HOME"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -1224,6 +1269,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="whE-Vx-QIT" secondAttribute="trailing" constant="48" id="07D-Mn-KU2"/>
                             <constraint firstItem="emW-cD-ERB" firstAttribute="top" secondItem="u07-1a-ac0" secondAttribute="bottom" constant="22" id="1Uh-y6-vwp"/>
                             <constraint firstItem="whE-Vx-QIT" firstAttribute="centerX" secondItem="emW-cD-ERB" secondAttribute="centerX" id="39I-Un-VUd"/>
                             <constraint firstItem="D6v-1e-81O" firstAttribute="leading" secondItem="jWI-7t-zTB" secondAttribute="leading" id="5MK-VM-GOj"/>
@@ -1302,7 +1348,7 @@
                                 <rect key="frame" x="0.0" y="64" width="768" height="110"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Send chat request to start chat with admin" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F3W-kg-YqF">
-                                        <rect key="frame" x="20" y="23" width="728" height="65"/>
+                                        <rect key="frame" x="20" y="22.5" width="728" height="65"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="65" id="PXZ-8F-clS"/>
                                         </constraints>
@@ -1325,7 +1371,7 @@
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bdp-SC-6Hh" customClass="DesignableUITextField" customModule="Access4MII" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="508" height="72.5"/>
                                         <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="20"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="20"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
@@ -1342,14 +1388,14 @@
                                     <constraint firstAttribute="height" constant="72.5" id="yfx-MJ-7UK"/>
                                 </constraints>
                             </stackView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Hello, Admin i wolud like to chat with you." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="98S-Ac-ynF">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Hello, Admin i would like to chat with you." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="98S-Ac-ynF">
                                 <rect key="frame" x="168" y="392.5" width="470" height="145"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="145" id="YYu-zn-QZV"/>
                                 </constraints>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="20"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="description_icon" translatesAutoresizingMaskIntoConstraints="NO" id="kx9-1b-5Q9">
@@ -1376,7 +1422,7 @@
                                     <constraint firstAttribute="height" constant="55" id="Zro-La-3EG"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="210" id="qgT-4O-Q17"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="22"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="22"/>
                                 <state key="normal" title="SEND"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -1429,11 +1475,11 @@
         <image name="ic_back" width="45" height="45"/>
         <image name="ic_email" width="80" height="80"/>
         <image name="ic_password" width="80" height="80"/>
+        <image name="ic_star" width="80" height="80"/>
         <image name="img_password" width="150" height="150"/>
-        <image name="logo" width="400" height="240"/>
+        <image name="logo" width="350" height="350"/>
         <image name="mail_icon" width="45" height="45"/>
         <image name="mobile_icon" width="45" height="45"/>
-        <image name="star_yellow_icon" width="45" height="45"/>
         <image name="subject_icon" width="45" height="45"/>
         <image name="thumb_icon" width="250" height="250"/>
         <image name="user-green_icon" width="45" height="45"/>

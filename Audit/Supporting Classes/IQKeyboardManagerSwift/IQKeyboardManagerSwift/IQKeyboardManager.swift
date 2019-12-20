@@ -977,7 +977,7 @@ open class IQKeyboardManager: NSObject, UIGestureRecognizerDelegate {
  
                 
                 }) { (animated:Bool) -> Void in}
-        } else {  //  If can't get rootViewController then printing warning to user.
+        } else {  //  If can't get rootViewController then//printing warning to user.
             showLog("You must set UIWindow.rootViewController in your AppDelegate to work with IQKeyboardManager")
         }
     }
@@ -2290,7 +2290,7 @@ open class IQKeyboardManager: NSObject, UIGestureRecognizerDelegate {
     fileprivate func showLog(_ logString: String) {
         
         if enableDebugging {
-            print("IQKeyboardManager: " + logString)
+            //print("IQKeyboardManager: " + logString)
         }
     }
 }
